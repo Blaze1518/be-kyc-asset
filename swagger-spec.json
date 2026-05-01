@@ -506,7 +506,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "object"
                 }
               }
             }
@@ -827,8 +827,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "a0b97693-ec90-4797-a1f9-a76b379da91c",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "5ca179ab-b18f-44af-a565-bc7f1836c768",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -851,8 +851,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "3793ab9a-5673-4c20-8580-c3240e3f3342",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "80d59b47-0152-49e3-91e6-e088df64bf17",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -875,8 +875,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "a3d8f67a-a6d6-4a98-ad6c-ffa15711e862",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "393ff9e1-cae6-427f-9070-271bc55de7f4",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -899,8 +899,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "a9b02586-d72b-41b3-be78-1d1f29e18312",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "358945e1-885e-48f3-8901-2914ac6bb4fd",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1040,8 +1040,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "a0b97693-ec90-4797-a1f9-a76b379da91c",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "5ca179ab-b18f-44af-a565-bc7f1836c768",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1064,8 +1064,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "3793ab9a-5673-4c20-8580-c3240e3f3342",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "80d59b47-0152-49e3-91e6-e088df64bf17",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1088,8 +1088,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "a3d8f67a-a6d6-4a98-ad6c-ffa15711e862",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "393ff9e1-cae6-427f-9070-271bc55de7f4",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1112,8 +1112,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "a9b02586-d72b-41b3-be78-1d1f29e18312",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "358945e1-885e-48f3-8901-2914ac6bb4fd",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1183,8 +1183,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "a0b97693-ec90-4797-a1f9-a76b379da91c",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "5ca179ab-b18f-44af-a565-bc7f1836c768",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1207,8 +1207,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "3793ab9a-5673-4c20-8580-c3240e3f3342",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "80d59b47-0152-49e3-91e6-e088df64bf17",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1231,8 +1231,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "a3d8f67a-a6d6-4a98-ad6c-ffa15711e862",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "393ff9e1-cae6-427f-9070-271bc55de7f4",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1255,8 +1255,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "a9b02586-d72b-41b3-be78-1d1f29e18312",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "358945e1-885e-48f3-8901-2914ac6bb4fd",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1334,8 +1334,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "a0b97693-ec90-4797-a1f9-a76b379da91c",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "5ca179ab-b18f-44af-a565-bc7f1836c768",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1358,8 +1358,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "3793ab9a-5673-4c20-8580-c3240e3f3342",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "80d59b47-0152-49e3-91e6-e088df64bf17",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1382,8 +1382,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "a3d8f67a-a6d6-4a98-ad6c-ffa15711e862",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "393ff9e1-cae6-427f-9070-271bc55de7f4",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1406,8 +1406,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "a9b02586-d72b-41b3-be78-1d1f29e18312",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "358945e1-885e-48f3-8901-2914ac6bb4fd",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1475,8 +1475,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "a0b97693-ec90-4797-a1f9-a76b379da91c",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "5ca179ab-b18f-44af-a565-bc7f1836c768",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1499,8 +1499,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "3793ab9a-5673-4c20-8580-c3240e3f3342",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "80d59b47-0152-49e3-91e6-e088df64bf17",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1523,8 +1523,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "a3d8f67a-a6d6-4a98-ad6c-ffa15711e862",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "393ff9e1-cae6-427f-9070-271bc55de7f4",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1547,8 +1547,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "a9b02586-d72b-41b3-be78-1d1f29e18312",
-                      "timestamp": "2026-05-01T07:02:21.515Z",
+                      "requestId": "358945e1-885e-48f3-8901-2914ac6bb4fd",
+                      "timestamp": "2026-05-01T09:12:17.327Z",
                       "path": "/attribute"
                     }
                   }
@@ -1647,9 +1647,42 @@
         "type": "object",
         "properties": {}
       },
+      "PermissionConditionDto": {
+        "type": "object",
+        "properties": {
+          "attribute_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "logic": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "attribute_id",
+          "logic"
+        ]
+      },
       "CreatePermissionDto": {
         "type": "object",
-        "properties": {}
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "conditions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PermissionConditionDto"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "conditions"
+        ]
       },
       "UpdatePermissionDto": {
         "type": "object",

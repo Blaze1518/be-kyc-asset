@@ -2,6 +2,9 @@
 import { Prisma } from 'src/generated/prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handlePrismaError } from './prisma-error-handler';
+import { IDatabaseContext } from 'src/common/database/interface/db-context.interface';
+
+export type PrismaClientCustom = PrismaService | Prisma.TransactionClient;
 
 export abstract class PrismaRepository<T extends Prisma.ModelName> {
   constructor(
@@ -9,15 +12,19 @@ export abstract class PrismaRepository<T extends Prisma.ModelName> {
     protected readonly model: Uncapitalize<T>,
   ) {}
 
-  private get delegate() {
-    return this.prisma[this.model as keyof PrismaService] as any;
+  protected getModel(ctx?: IDatabaseContext) {
+    const client = ctx
+      ? (ctx as unknown as Prisma.TransactionClient)
+      : this.prisma;
+    return client[this.model as keyof typeof client] as any;
   }
 
   async findMany(
     input?: Prisma.TypeMap['model'][T]['operations']['findMany']['args'],
+    ctx?: IDatabaseContext,
   ): Promise<Prisma.TypeMap['model'][T]['operations']['findMany']['result']> {
     try {
-      return await this.delegate.findMany(input);
+      return await this.getModel(ctx).findMany(input);
     } catch (error) {
       return handlePrismaError(error, this.model);
     }
@@ -31,6 +38,7 @@ export abstract class PrismaRepository<T extends Prisma.ModelName> {
       sortOrder?: 'asc' | 'desc';
     },
     where?: Prisma.TypeMap['model'][T]['operations']['findMany']['args']['where'],
+    ctx?: IDatabaseContext,
   ): Promise<
     [Prisma.TypeMap['model'][T]['operations']['findMany']['result'], number]
   > {
@@ -42,10 +50,20 @@ export abstract class PrismaRepository<T extends Prisma.ModelName> {
         ? { [query.sortBy]: query.sortOrder ?? 'asc' }
         : undefined;
 
-      return await this.prisma.$transaction([
-        this.delegate.findMany({ where, skip, take: limit, orderBy }),
-        this.delegate.count({ where }),
-      ]);
+      const model = this.getModel(ctx);
+      const operations = [
+        model.findMany({ where, skip, take: limit, orderBy }),
+        model.count({ where }),
+      ];
+      return ctx
+        ? ((await Promise.all(operations)) as [
+            Prisma.TypeMap['model'][T]['operations']['findMany']['result'],
+            number,
+          ])
+        : ((await this.prisma.$transaction(operations)) as [
+            Prisma.TypeMap['model'][T]['operations']['findMany']['result'],
+            number,
+          ]);
     } catch (error) {
       return handlePrismaError(error, this.model);
     }
@@ -53,9 +71,10 @@ export abstract class PrismaRepository<T extends Prisma.ModelName> {
 
   async findFirst(
     input?: Prisma.TypeMap['model'][T]['operations']['findFirst']['args'],
+    ctx?: IDatabaseContext,
   ): Promise<Prisma.TypeMap['model'][T]['operations']['findFirst']['result']> {
     try {
-      return await this.delegate.findFirst(input);
+      return await this.getModel(ctx).findFirst(input);
     } catch (error) {
       return handlePrismaError(error, this.model);
     }
@@ -63,9 +82,10 @@ export abstract class PrismaRepository<T extends Prisma.ModelName> {
 
   async findUnique(
     input: Prisma.TypeMap['model'][T]['operations']['findUnique']['args'],
+    ctx?: IDatabaseContext,
   ): Promise<Prisma.TypeMap['model'][T]['operations']['findUnique']['result']> {
     try {
-      return await this.delegate.findUnique(input);
+      return await this.getModel(ctx).findUnique(input);
     } catch (error) {
       return handlePrismaError(error, this.model);
     }
@@ -73,9 +93,21 @@ export abstract class PrismaRepository<T extends Prisma.ModelName> {
 
   async create(
     input: Prisma.TypeMap['model'][T]['operations']['create']['args'],
+    ctx?: IDatabaseContext,
   ): Promise<Prisma.TypeMap['model'][T]['operations']['create']['result']> {
     try {
-      return await this.delegate.create(input);
+      return await this.getModel(ctx).create(input);
+    } catch (error) {
+      return handlePrismaError(error, this.model);
+    }
+  }
+
+  async createMany(
+    input: Prisma.TypeMap['model'][T]['operations']['createMany']['args'],
+    ctx?: IDatabaseContext,
+  ): Promise<Prisma.TypeMap['model'][T]['operations']['createMany']['result']> {
+    try {
+      return await this.getModel(ctx).createMany(input);
     } catch (error) {
       return handlePrismaError(error, this.model);
     }
@@ -83,9 +115,10 @@ export abstract class PrismaRepository<T extends Prisma.ModelName> {
 
   async update(
     input: Prisma.TypeMap['model'][T]['operations']['update']['args'],
+    ctx?: IDatabaseContext,
   ): Promise<Prisma.TypeMap['model'][T]['operations']['update']['result']> {
     try {
-      return await this.delegate.update(input);
+      return await this.getModel(ctx).update(input);
     } catch (error) {
       return handlePrismaError(error, this.model);
     }
@@ -93,9 +126,10 @@ export abstract class PrismaRepository<T extends Prisma.ModelName> {
 
   async delete(
     input: Prisma.TypeMap['model'][T]['operations']['delete']['args'],
+    ctx?: IDatabaseContext,
   ): Promise<Prisma.TypeMap['model'][T]['operations']['delete']['result']> {
     try {
-      return await this.delegate.delete(input);
+      return await this.getModel(ctx).delete(input);
     } catch (error) {
       return handlePrismaError(error, this.model);
     }
@@ -103,9 +137,10 @@ export abstract class PrismaRepository<T extends Prisma.ModelName> {
 
   async deleteMany(
     input?: Prisma.TypeMap['model'][T]['operations']['deleteMany']['args'],
+    ctx?: IDatabaseContext,
   ): Promise<Prisma.TypeMap['model'][T]['operations']['deleteMany']['result']> {
     try {
-      return await this.delegate.deleteMany(input);
+      return await this.getModel(ctx).deleteMany(input);
     } catch (error) {
       return handlePrismaError(error, this.model);
     }
