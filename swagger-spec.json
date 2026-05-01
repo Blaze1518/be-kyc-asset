@@ -572,7 +572,10 @@
             "name": "id",
             "required": true,
             "in": "path",
+            "description": "ID của điều kiện quyền (định dạng UUID)",
             "schema": {
+              "format": "uuid",
+              "example": "550e8400-e29b-41d4-a716-446655440000",
               "type": "string"
             }
           }
@@ -593,7 +596,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "object"
                 }
               }
             }
@@ -610,7 +613,10 @@
             "name": "id",
             "required": true,
             "in": "path",
+            "description": "ID của điều kiện quyền (định dạng UUID)",
             "schema": {
+              "format": "uuid",
+              "example": "550e8400-e29b-41d4-a716-446655440000",
               "type": "string"
             }
           }
@@ -621,7 +627,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "object"
                 }
               }
             }
@@ -827,8 +833,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "5ca179ab-b18f-44af-a565-bc7f1836c768",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "b1513410-92eb-43fb-8f38-ccdfd339c7b1",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -851,8 +857,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "80d59b47-0152-49e3-91e6-e088df64bf17",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "8aed8fb0-8cca-4b1a-9cc7-86ddbb219964",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -875,8 +881,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "393ff9e1-cae6-427f-9070-271bc55de7f4",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "dcd054c4-63ef-4569-b9e9-74b58e0d77ed",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -899,8 +905,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "358945e1-885e-48f3-8901-2914ac6bb4fd",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "c155db9f-d077-4e95-b7b0-8d4ce5feecf1",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1040,8 +1046,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "5ca179ab-b18f-44af-a565-bc7f1836c768",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "b1513410-92eb-43fb-8f38-ccdfd339c7b1",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1064,8 +1070,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "80d59b47-0152-49e3-91e6-e088df64bf17",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "8aed8fb0-8cca-4b1a-9cc7-86ddbb219964",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1088,8 +1094,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "393ff9e1-cae6-427f-9070-271bc55de7f4",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "dcd054c4-63ef-4569-b9e9-74b58e0d77ed",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1112,8 +1118,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "358945e1-885e-48f3-8901-2914ac6bb4fd",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "c155db9f-d077-4e95-b7b0-8d4ce5feecf1",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1183,8 +1189,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "5ca179ab-b18f-44af-a565-bc7f1836c768",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "b1513410-92eb-43fb-8f38-ccdfd339c7b1",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1207,8 +1213,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "80d59b47-0152-49e3-91e6-e088df64bf17",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "8aed8fb0-8cca-4b1a-9cc7-86ddbb219964",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1231,8 +1237,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "393ff9e1-cae6-427f-9070-271bc55de7f4",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "dcd054c4-63ef-4569-b9e9-74b58e0d77ed",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1255,8 +1261,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "358945e1-885e-48f3-8901-2914ac6bb4fd",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "c155db9f-d077-4e95-b7b0-8d4ce5feecf1",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1334,8 +1340,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "5ca179ab-b18f-44af-a565-bc7f1836c768",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "b1513410-92eb-43fb-8f38-ccdfd339c7b1",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1358,8 +1364,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "80d59b47-0152-49e3-91e6-e088df64bf17",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "8aed8fb0-8cca-4b1a-9cc7-86ddbb219964",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1382,8 +1388,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "393ff9e1-cae6-427f-9070-271bc55de7f4",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "dcd054c4-63ef-4569-b9e9-74b58e0d77ed",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1406,8 +1412,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "358945e1-885e-48f3-8901-2914ac6bb4fd",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "c155db9f-d077-4e95-b7b0-8d4ce5feecf1",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1475,8 +1481,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "5ca179ab-b18f-44af-a565-bc7f1836c768",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "b1513410-92eb-43fb-8f38-ccdfd339c7b1",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1499,8 +1505,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "80d59b47-0152-49e3-91e6-e088df64bf17",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "8aed8fb0-8cca-4b1a-9cc7-86ddbb219964",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1523,8 +1529,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "393ff9e1-cae6-427f-9070-271bc55de7f4",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "dcd054c4-63ef-4569-b9e9-74b58e0d77ed",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1547,8 +1553,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "358945e1-885e-48f3-8901-2914ac6bb4fd",
-                      "timestamp": "2026-05-01T09:12:17.327Z",
+                      "requestId": "c155db9f-d077-4e95-b7b0-8d4ce5feecf1",
+                      "timestamp": "2026-05-01T15:29:41.845Z",
                       "path": "/attribute"
                     }
                   }
@@ -1652,41 +1658,61 @@
         "properties": {
           "attribute_id": {
             "type": "string",
-            "format": "uuid"
-          },
-          "logic": {
-            "type": "object"
+            "format": "uuid",
+            "description": "Danh sách các điều kiện của quyền"
           }
         },
         "required": [
-          "attribute_id",
-          "logic"
+          "attribute_id"
         ]
       },
       "CreatePermissionDto": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
           "conditions": {
+            "example": [
+              {
+                "attribute_id": "550e8400-e29b-41d4-a716-446655440000",
+                "logic": {
+                  "eq": "admin"
+                }
+              }
+            ],
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PermissionConditionDto"
             }
+          },
+          "name": {
+            "type": "string",
+            "description": "@description Tên định danh duy nhất của quyền",
+            "example": "view_user"
+          },
+          "description": {
+            "type": "string",
+            "description": "@description Mô tả chi tiết về quyền",
+            "example": "Cho phép xem thông tin người dùng"
           }
         },
         "required": [
-          "name",
-          "conditions"
+          "conditions",
+          "name"
         ]
       },
       "UpdatePermissionDto": {
         "type": "object",
-        "properties": {}
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "@description Tên định danh duy nhất của quyền (optional khi update)",
+            "example": "edit_user"
+          },
+          "description": {
+            "type": "string",
+            "description": "@description Mô tả chi tiết về quyền (optional khi update)",
+            "example": "Cho phép chỉnh sửa thông tin người dùng"
+          }
+        }
       },
       "CreateAuthDto": {
         "type": "object",

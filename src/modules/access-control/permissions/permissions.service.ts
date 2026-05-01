@@ -40,6 +40,56 @@ export class PermissionsService {
     });
   }
 
+  async updatePermission(id: string, data: UpdatePermissionDto) {
+    return await this.txManager.run(async (ctx) => {
+      const updatedPermission = await this.permissionsRepository.update(
+        {
+          where: { id },
+          data: {
+            name: data.name,
+            description: data.description,
+          },
+        },
+        ctx,
+      );
+
+      await this.permissionConditionsRepository.deleteMany(
+        {
+          where: { permission_id: id },
+        },
+        ctx,
+      );
+
+      if (data.conditions && data.conditions.length > 0) {
+        await this.permissionConditionsRepository.createMany(
+          {
+            data: data.conditions.map((cond) => ({
+              permission_id: id,
+              attribute_id: cond.attribute_id,
+              conditions: cond.logic,
+            })),
+          },
+          ctx,
+        );
+      }
+
+      return updatedPermission;
+    });
+  }
+
+  async deletePermission(id: string) {
+    return await this.txManager.run(async (ctx) => {
+      const deleted = await this.permissionsRepository.delete(
+        {
+          where: { id },
+        },
+        ctx,
+      );
+
+      return deleted;
+    });
+  }
+
   findAll() {
     return `This action returns all permissions`;
   }

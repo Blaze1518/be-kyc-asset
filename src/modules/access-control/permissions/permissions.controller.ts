@@ -10,7 +10,7 @@ import {
 import { PermissionsService } from './permissions.service';
 import { CreatePermissionDto } from './dto/create-permission.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
-
+import { ParamsWithIdDto } from 'src/common/dto/param-id.dto';
 @Controller('permissions')
 export class PermissionsController {
   constructor(private readonly permissionsService: PermissionsService) {}
@@ -32,14 +32,17 @@ export class PermissionsController {
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param() params: ParamsWithIdDto,
     @Body() updatePermissionDto: UpdatePermissionDto,
   ) {
-    return this.permissionsService.update(+id, updatePermissionDto);
+    return this.permissionsService.updatePermission(
+      params.id,
+      updatePermissionDto,
+    );
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.permissionsService.remove(+id);
+  remove(@Param() params: ParamsWithIdDto) {
+    return this.permissionsService.deletePermission(params.id);
   }
 }
