@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: be-kyc-asset-db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-admin}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-your_password_here}
+      POSTGRES_DB: ${DB_DATABASE:-kyc_asset_db}
+    ports:
+      - '${DB_PORT:-5432}:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - kyc-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: be-kyc-asset-pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+    ports:
+      - '5051:80'
+    networks:
+      - kyc-network
+    depends_on:
+      - postgres-db
+
+networks:
+  kyc-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

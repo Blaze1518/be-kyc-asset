@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id              String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  username        String      @unique @db.VarChar(255)
+  hashed_password String      @db.Text
+  displayName     String      @map("display_name") @db.VarChar(100)
+  isActive        Boolean     @default(true)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  deletedAt       DateTime?   @map("deleted_at")
+  roles           UserRole[]
+
+  @@map("users")
+  @@index([username, isActive])
+}
+
+model Role {
+  id             String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name           String      @unique @db.VarChar(255)
+  description    String?     @db.Text
+  parent_role_id String?     @db.Uuid
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  deletedAt      DateTime?   @map("deleted_at")
+
+  parent_role    Role?       @relation("RoleHierarchy", fields: [parent_role_id], references: [id])
+  child_roles    Role[]      @relation("RoleHierarchy")
+  users          UserRole[]
+  permissions    RolePermission[]
+
+  @@map("roles")
+  @@index([parent_role_id])
+}
+
+model UserRole {
+  user_id    String   @db.Uuid
+  role_id    String   @db.Uuid
+  assignedAt DateTime @default(now())
+
+  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  role       Role     @relation(fields: [role_id], references: [id], onDelete: Cascade)
+
+  @@id([user_id, role_id])
+  @@map("user_roles")
+}
+
+model Permission {
+  id          String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String      @unique @db.VarChar(255)
+  description String?     @db.Text
+  createdAt   DateTime    @default(now())
+
+  roles       RolePermission[]
+  conditions  PermissionCondition[]
+
+  @@map("permissions")
+}
+
+model RolePermission {
+  role_id       String     @db.Uuid
+  permission_id String     @db.Uuid
+
+  role          Role       @relation(fields: [role_id], references: [id], onDelete: Cascade)
+  permission    Permission @relation(fields: [permission_id], references: [id], onDelete: Cascade)
+
+  @@id([role_id, permission_id])
+  @@map("role_permissions")
+}
+
+model PermissionCondition {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  permission_id String    @db.Uuid
+  attribute_id  String    @db.Uuid
+  conditions    Json      @db.JsonB
+
+  permission    Permission @relation(fields: [permission_id], references: [id], onDelete: Cascade)
+  attribute     Attribute  @relation(fields: [attribute_id], references: [id], onDelete: Cascade)
+
+  @@map("permission_conditions")
+}
+
+model Attribute {
+  id   String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name String @unique @db.VarChar(255)
+
+  conditions PermissionCondition[]
+
+  @@map("attributes")
+}
