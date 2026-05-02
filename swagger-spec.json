@@ -488,6 +488,7 @@
     },
     "/permissions": {
       "post": {
+        "description": "Chỉ dành cho tài khoản có quyền Admin. Dùng để định nghĩa các quyền cho hệ thống.",
         "operationId": "PermissionsController_create",
         "parameters": [],
         "requestBody": {
@@ -502,69 +503,345 @@
         },
         "responses": {
           "201": {
-            "description": "",
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/ResponsePermissionConditionDto"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 400,
+                      "message": "Bad Request",
+                      "requestId": "14b69dcc-aa1c-4f5d-8d03-04e2db7b67c5",
+                      "timestamp": "2026-05-02T12:12:00.276Z",
+                      "path": "/permissions"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 404,
+                      "message": "Not Found",
+                      "requestId": "f0988819-12ae-4e1f-899e-ab423ccf29d2",
+                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "path": "/permissions"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 409,
+                      "message": "Conflict",
+                      "requestId": "e1c1d3ca-771e-4a89-a8ec-7f6c05e13075",
+                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "path": "/permissions"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 500,
+                      "message": "Internal Server Error",
+                      "requestId": "bffc1026-86f7-4242-9533-4b02dd4e2dc9",
+                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "path": "/permissions"
+                    }
+                  }
                 }
               }
             }
           }
         },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Tạo quyền mới",
         "tags": [
-          "Permissions"
+          "Permissions (Quản lý quyền)"
         ]
       },
       "get": {
-        "operationId": "PermissionsController_findAll",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Permissions"
-        ]
-      }
-    },
-    "/permissions/{id}": {
-      "get": {
-        "operationId": "PermissionsController_findOne",
+        "description": "Hỗ trợ lọc theo tên, sắp xếp và phân trang.",
+        "operationId": "PermissionsController_findAllPaginated",
         "parameters": [
           {
-            "name": "id",
-            "required": true,
-            "in": "path",
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "description": "Tìm kiếm theo tên hoặc mô tả của điều kiện.",
             "schema": {
+              "example": "department",
               "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "Số trang hiện tại.",
+            "schema": {
+              "minimum": 1,
+              "example": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Số lượng bản ghi trên mỗi trang.",
+            "schema": {
+              "minimum": 1,
+              "example": 10,
+              "type": "number"
+            }
+          },
+          {
+            "name": "sortBy",
+            "required": false,
+            "in": "query",
+            "description": "Trường dữ liệu dùng để sắp xếp.",
+            "schema": {
+              "example": "name",
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "required": false,
+            "in": "query",
+            "description": "Thứ tự sắp xếp.",
+            "schema": {
+              "default": "asc",
+              "example": "asc",
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ResponsePermissionConditionDto"
+                          }
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "number"
+                            },
+                            "page": {
+                              "type": "number"
+                            },
+                            "limit": {
+                              "type": "number"
+                            },
+                            "totalPages": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 400,
+                      "message": "Bad Request",
+                      "requestId": "14b69dcc-aa1c-4f5d-8d03-04e2db7b67c5",
+                      "timestamp": "2026-05-02T12:12:00.276Z",
+                      "path": "/permissions"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 404,
+                      "message": "Not Found",
+                      "requestId": "f0988819-12ae-4e1f-899e-ab423ccf29d2",
+                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "path": "/permissions"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 409,
+                      "message": "Conflict",
+                      "requestId": "e1c1d3ca-771e-4a89-a8ec-7f6c05e13075",
+                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "path": "/permissions"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 500,
+                      "message": "Internal Server Error",
+                      "requestId": "bffc1026-86f7-4242-9533-4b02dd4e2dc9",
+                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "path": "/permissions"
+                    }
+                  }
                 }
               }
             }
           }
         },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Lấy danh sách quyền (phân trang)",
         "tags": [
-          "Permissions"
+          "Permissions (Quản lý quyền)"
         ]
-      },
+      }
+    },
+    "/permissions/{id}": {
       "patch": {
         "operationId": "PermissionsController_update",
         "parameters": [
@@ -592,18 +869,128 @@
         },
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/ResponsePermissionConditionDto"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 400,
+                      "message": "Bad Request",
+                      "requestId": "14b69dcc-aa1c-4f5d-8d03-04e2db7b67c5",
+                      "timestamp": "2026-05-02T12:12:00.276Z",
+                      "path": "/permissions"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 404,
+                      "message": "Not Found",
+                      "requestId": "f0988819-12ae-4e1f-899e-ab423ccf29d2",
+                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "path": "/permissions"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 409,
+                      "message": "Conflict",
+                      "requestId": "e1c1d3ca-771e-4a89-a8ec-7f6c05e13075",
+                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "path": "/permissions"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 500,
+                      "message": "Internal Server Error",
+                      "requestId": "bffc1026-86f7-4242-9533-4b02dd4e2dc9",
+                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "path": "/permissions"
+                    }
+                  }
                 }
               }
             }
           }
         },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Cập nhật quyền",
         "tags": [
-          "Permissions"
+          "Permissions (Quản lý quyền)"
         ]
       },
       "delete": {
@@ -623,18 +1010,128 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/ResponsePermissionConditionDto"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 400,
+                      "message": "Bad Request",
+                      "requestId": "14b69dcc-aa1c-4f5d-8d03-04e2db7b67c5",
+                      "timestamp": "2026-05-02T12:12:00.276Z",
+                      "path": "/permissions"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 404,
+                      "message": "Not Found",
+                      "requestId": "f0988819-12ae-4e1f-899e-ab423ccf29d2",
+                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "path": "/permissions"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 409,
+                      "message": "Conflict",
+                      "requestId": "e1c1d3ca-771e-4a89-a8ec-7f6c05e13075",
+                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "path": "/permissions"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 500,
+                      "message": "Internal Server Error",
+                      "requestId": "bffc1026-86f7-4242-9533-4b02dd4e2dc9",
+                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "path": "/permissions"
+                    }
+                  }
                 }
               }
             }
           }
         },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Xóa quyền",
         "tags": [
-          "Permissions"
+          "Permissions (Quản lý quyền)"
         ]
       }
     },
@@ -833,8 +1330,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "b1513410-92eb-43fb-8f38-ccdfd339c7b1",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "5471f83e-bd54-49d4-b5a4-f637a2dd0153",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -857,8 +1354,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "8aed8fb0-8cca-4b1a-9cc7-86ddbb219964",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "ab7c5a95-2465-49e1-85bf-b4db21c2f812",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -881,8 +1378,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "dcd054c4-63ef-4569-b9e9-74b58e0d77ed",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "77c0692f-1dc8-4752-b34c-ce3318a80707",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -905,8 +1402,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "c155db9f-d077-4e95-b7b0-8d4ce5feecf1",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "dbd9e8b9-f33d-4347-b7a0-f86491b808bb",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1046,8 +1543,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "b1513410-92eb-43fb-8f38-ccdfd339c7b1",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "5471f83e-bd54-49d4-b5a4-f637a2dd0153",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1070,8 +1567,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "8aed8fb0-8cca-4b1a-9cc7-86ddbb219964",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "ab7c5a95-2465-49e1-85bf-b4db21c2f812",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1094,8 +1591,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "dcd054c4-63ef-4569-b9e9-74b58e0d77ed",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "77c0692f-1dc8-4752-b34c-ce3318a80707",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1118,8 +1615,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "c155db9f-d077-4e95-b7b0-8d4ce5feecf1",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "dbd9e8b9-f33d-4347-b7a0-f86491b808bb",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1189,8 +1686,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "b1513410-92eb-43fb-8f38-ccdfd339c7b1",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "5471f83e-bd54-49d4-b5a4-f637a2dd0153",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1213,8 +1710,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "8aed8fb0-8cca-4b1a-9cc7-86ddbb219964",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "ab7c5a95-2465-49e1-85bf-b4db21c2f812",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1237,8 +1734,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "dcd054c4-63ef-4569-b9e9-74b58e0d77ed",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "77c0692f-1dc8-4752-b34c-ce3318a80707",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1261,8 +1758,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "c155db9f-d077-4e95-b7b0-8d4ce5feecf1",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "dbd9e8b9-f33d-4347-b7a0-f86491b808bb",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1340,8 +1837,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "b1513410-92eb-43fb-8f38-ccdfd339c7b1",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "5471f83e-bd54-49d4-b5a4-f637a2dd0153",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1364,8 +1861,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "8aed8fb0-8cca-4b1a-9cc7-86ddbb219964",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "ab7c5a95-2465-49e1-85bf-b4db21c2f812",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1388,8 +1885,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "dcd054c4-63ef-4569-b9e9-74b58e0d77ed",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "77c0692f-1dc8-4752-b34c-ce3318a80707",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1412,8 +1909,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "c155db9f-d077-4e95-b7b0-8d4ce5feecf1",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "dbd9e8b9-f33d-4347-b7a0-f86491b808bb",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1481,8 +1978,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "b1513410-92eb-43fb-8f38-ccdfd339c7b1",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "5471f83e-bd54-49d4-b5a4-f637a2dd0153",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1505,8 +2002,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "8aed8fb0-8cca-4b1a-9cc7-86ddbb219964",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "ab7c5a95-2465-49e1-85bf-b4db21c2f812",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1529,8 +2026,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "dcd054c4-63ef-4569-b9e9-74b58e0d77ed",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "77c0692f-1dc8-4752-b34c-ce3318a80707",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1553,8 +2050,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "c155db9f-d077-4e95-b7b0-8d4ce5feecf1",
-                      "timestamp": "2026-05-01T15:29:41.845Z",
+                      "requestId": "dbd9e8b9-f33d-4347-b7a0-f86491b808bb",
+                      "timestamp": "2026-05-02T12:12:00.292Z",
                       "path": "/attribute"
                     }
                   }
@@ -1653,75 +2150,6 @@
         "type": "object",
         "properties": {}
       },
-      "PermissionConditionDto": {
-        "type": "object",
-        "properties": {
-          "attribute_id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Danh sách các điều kiện của quyền"
-          }
-        },
-        "required": [
-          "attribute_id"
-        ]
-      },
-      "CreatePermissionDto": {
-        "type": "object",
-        "properties": {
-          "conditions": {
-            "example": [
-              {
-                "attribute_id": "550e8400-e29b-41d4-a716-446655440000",
-                "logic": {
-                  "eq": "admin"
-                }
-              }
-            ],
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PermissionConditionDto"
-            }
-          },
-          "name": {
-            "type": "string",
-            "description": "@description Tên định danh duy nhất của quyền",
-            "example": "view_user"
-          },
-          "description": {
-            "type": "string",
-            "description": "@description Mô tả chi tiết về quyền",
-            "example": "Cho phép xem thông tin người dùng"
-          }
-        },
-        "required": [
-          "conditions",
-          "name"
-        ]
-      },
-      "UpdatePermissionDto": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "@description Tên định danh duy nhất của quyền (optional khi update)",
-            "example": "edit_user"
-          },
-          "description": {
-            "type": "string",
-            "description": "@description Mô tả chi tiết về quyền (optional khi update)",
-            "example": "Cho phép chỉnh sửa thông tin người dùng"
-          }
-        }
-      },
-      "CreateAuthDto": {
-        "type": "object",
-        "properties": {}
-      },
-      "UpdateAuthDto": {
-        "type": "object",
-        "properties": {}
-      },
       "ErrorDetailDto": {
         "type": "object",
         "properties": {
@@ -1796,6 +2224,99 @@
           "id",
           "name"
         ]
+      },
+      "ResponsePermissionConditionDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "logic": {
+            "type": "object",
+            "description": "Giá trị logic lưu trong JsonB"
+          },
+          "attribute": {
+            "$ref": "#/components/schemas/ResponseAttributeDto"
+          },
+          "attribute_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "logic",
+          "attribute",
+          "attribute_id"
+        ]
+      },
+      "PermissionConditionDto": {
+        "type": "object",
+        "properties": {
+          "attribute_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Danh sách các điều kiện của quyền"
+          }
+        },
+        "required": [
+          "attribute_id"
+        ]
+      },
+      "CreatePermissionDto": {
+        "type": "object",
+        "properties": {
+          "conditions": {
+            "example": [
+              {
+                "attribute_id": "550e8400-e29b-41d4-a716-446655440000",
+                "logic": {
+                  "eq": "admin"
+                }
+              }
+            ],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PermissionConditionDto"
+            }
+          },
+          "name": {
+            "type": "string",
+            "description": "@description Tên định danh duy nhất của quyền",
+            "example": "view_user"
+          },
+          "description": {
+            "type": "string",
+            "description": "@description Mô tả chi tiết về quyền",
+            "example": "Cho phép xem thông tin người dùng"
+          }
+        },
+        "required": [
+          "conditions",
+          "name"
+        ]
+      },
+      "UpdatePermissionDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "@description Tên định danh duy nhất của quyền (optional khi update)",
+            "example": "edit_user"
+          },
+          "description": {
+            "type": "string",
+            "description": "@description Mô tả chi tiết về quyền (optional khi update)",
+            "example": "Cho phép chỉnh sửa thông tin người dùng"
+          }
+        }
+      },
+      "CreateAuthDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdateAuthDto": {
+        "type": "object",
+        "properties": {}
       },
       "CreateAttributeDto": {
         "type": "object",

@@ -4,6 +4,9 @@ import { UpdatePermissionDto } from './dto/update-permission.dto';
 import { PermissionsRepository } from './repositories/permissions.repository';
 import { PermissionConditionsRepository } from './repositories/permission-conditions.repository';
 import { TransactionManager } from 'src/common/database/abstract/transaction-manager.abstract';
+import { QueryDto } from 'src/common/dto/query.dto';
+import { plainToInstance } from 'class-transformer';
+import { ResponsePermissionConditionDto } from './dto/response-permission.dto';
 
 @Injectable()
 export class PermissionsService {
@@ -90,19 +93,30 @@ export class PermissionsService {
     });
   }
 
-  findAll() {
-    return `This action returns all permissions`;
-  }
+  async findAllPaginated(query: QueryDto) {
+    const { search, page = 1, limit = 10, ...paginationParams } = query;
+    let where = {};
+    if (search) {
+      where = {
+        OR: [{ name: { contains: search, mode: 'insensitive' } }],
+      };
+    }
 
-  findOne(id: number) {
-    return `This action returns a #${id} permission`;
-  }
+    const [items, total] = await this.permissionsRepository.findManyPaginated(
+      paginationParams,
+      where,
+    );
 
-  update(id: number, updatePermissionDto: UpdatePermissionDto) {
-    return `This action updates a #${id} permission`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} permission`;
+    return {
+      items: plainToInstance(ResponsePermissionConditionDto, items, {
+        excludeExtraneousValues: true,
+      }),
+      meta: {
+        total,
+        page: Number(page),
+        limit: Number(limit),
+        totalPages: Math.ceil(total / limit),
+      },
+    };
   }
 }

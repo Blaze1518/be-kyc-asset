@@ -8,16 +8,12 @@ import { ResponseAttributeDto } from './dto/response-attribute.dto';
 
 @Injectable()
 export class AttributeService {
-  private readonly logger = new Logger(AttributeService.name);
   constructor(private readonly attributesRepository: AttributesRepository) {}
   create(createAttributeDto: CreateAttributeDto) {
     return this.attributesRepository.create({ data: createAttributeDto });
   }
 
   async findAllPaginated(query: QueryAttributeDto) {
-    this.logger.log(
-      `Finding all attributes with query: ${JSON.stringify(query)}`,
-    );
     const { search, page = 1, limit = 10, ...paginationParams } = query;
 
     let where = {};
