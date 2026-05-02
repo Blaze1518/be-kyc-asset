@@ -6,7 +6,7 @@ import { UsersModule } from './modules/users/users.module';
 import { WhitelistIpModule } from './modules/whitelist-ip/whitelist-ip.module';
 import { RolesModule } from './modules/roles/roles.module';
 import { PermissionsModule } from './modules/access-control/permissions/permissions.module';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './modules/auth/auth.module';
 import { CommonModule } from './common/common.module';
 import { PrismaModule } from '../src/prisma/prisma.module';
 import { AttributeModule } from './modules/access-control/attribute/attribute.module';
