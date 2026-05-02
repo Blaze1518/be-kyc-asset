@@ -342,6 +342,7 @@
     },
     "/roles": {
       "post": {
+        "description": "Tạo vai trò và gán danh sách quyền trực tiếp cho vai trò trong cùng transaction.",
         "operationId": "RolesController_create",
         "parameters": [],
         "requestBody": {
@@ -356,37 +357,341 @@
         },
         "responses": {
           "201": {
-            "description": "",
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/RoleWithPermissionsDto"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 400,
+                      "message": "Bad Request",
+                      "requestId": "8247bd5b-2202-4163-8ebf-b1fc2f6d4747",
+                      "timestamp": "2026-05-02T14:18:56.702Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 404,
+                      "message": "Not Found",
+                      "requestId": "c301da6c-f615-48ed-a3c9-07e71bbccd33",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 409,
+                      "message": "Conflict",
+                      "requestId": "8e7af276-682a-46a2-8b89-306942f3f70e",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 500,
+                      "message": "Internal Server Error",
+                      "requestId": "6f46efff-f1fd-442f-9c01-eef17a1d58f2",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
                 }
               }
             }
           }
         },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Tạo vai trò mới",
         "tags": [
-          "Roles"
+          "Roles (Quản lý vai trò)"
         ]
       },
       "get": {
+        "description": "Hỗ trợ lọc theo tên, sắp xếp và phân trang.",
         "operationId": "RolesController_findAll",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "description": "Tìm kiếm theo tên hoặc mô tả của điều kiện.",
+            "schema": {
+              "example": "department",
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "Số trang hiện tại.",
+            "schema": {
+              "minimum": 1,
+              "example": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Số lượng bản ghi trên mỗi trang.",
+            "schema": {
+              "minimum": 1,
+              "example": 10,
+              "type": "number"
+            }
+          },
+          {
+            "name": "sortBy",
+            "required": false,
+            "in": "query",
+            "description": "Trường dữ liệu dùng để sắp xếp.",
+            "schema": {
+              "example": "name",
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "required": false,
+            "in": "query",
+            "description": "Thứ tự sắp xếp.",
+            "schema": {
+              "default": "asc",
+              "example": "asc",
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/RoleWithPermissionsDto"
+                          }
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "number"
+                            },
+                            "page": {
+                              "type": "number"
+                            },
+                            "limit": {
+                              "type": "number"
+                            },
+                            "totalPages": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 400,
+                      "message": "Bad Request",
+                      "requestId": "8247bd5b-2202-4163-8ebf-b1fc2f6d4747",
+                      "timestamp": "2026-05-02T14:18:56.702Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 404,
+                      "message": "Not Found",
+                      "requestId": "c301da6c-f615-48ed-a3c9-07e71bbccd33",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 409,
+                      "message": "Conflict",
+                      "requestId": "8e7af276-682a-46a2-8b89-306942f3f70e",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 500,
+                      "message": "Internal Server Error",
+                      "requestId": "6f46efff-f1fd-442f-9c01-eef17a1d58f2",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
                 }
               }
             }
           }
         },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Lấy danh sách vai trò (phân trang)",
         "tags": [
-          "Roles"
+          "Roles (Quản lý vai trò)"
         ]
       }
     },
@@ -398,25 +703,138 @@
             "name": "id",
             "required": true,
             "in": "path",
+            "description": "ID của điều kiện quyền (định dạng UUID)",
             "schema": {
+              "format": "uuid",
+              "example": "550e8400-e29b-41d4-a716-446655440000",
               "type": "string"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/RoleWithPermissionsDto"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 400,
+                      "message": "Bad Request",
+                      "requestId": "8247bd5b-2202-4163-8ebf-b1fc2f6d4747",
+                      "timestamp": "2026-05-02T14:18:56.702Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 404,
+                      "message": "Not Found",
+                      "requestId": "c301da6c-f615-48ed-a3c9-07e71bbccd33",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 409,
+                      "message": "Conflict",
+                      "requestId": "8e7af276-682a-46a2-8b89-306942f3f70e",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 500,
+                      "message": "Internal Server Error",
+                      "requestId": "6f46efff-f1fd-442f-9c01-eef17a1d58f2",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
                 }
               }
             }
           }
         },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Lấy chi tiết một vai trò",
         "tags": [
-          "Roles"
+          "Roles (Quản lý vai trò)"
         ]
       },
       "patch": {
@@ -426,7 +844,10 @@
             "name": "id",
             "required": true,
             "in": "path",
+            "description": "ID của điều kiện quyền (định dạng UUID)",
             "schema": {
+              "format": "uuid",
+              "example": "550e8400-e29b-41d4-a716-446655440000",
               "type": "string"
             }
           }
@@ -443,18 +864,128 @@
         },
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/RoleWithPermissionsDto"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 400,
+                      "message": "Bad Request",
+                      "requestId": "8247bd5b-2202-4163-8ebf-b1fc2f6d4747",
+                      "timestamp": "2026-05-02T14:18:56.702Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 404,
+                      "message": "Not Found",
+                      "requestId": "c301da6c-f615-48ed-a3c9-07e71bbccd33",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 409,
+                      "message": "Conflict",
+                      "requestId": "8e7af276-682a-46a2-8b89-306942f3f70e",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 500,
+                      "message": "Internal Server Error",
+                      "requestId": "6f46efff-f1fd-442f-9c01-eef17a1d58f2",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
                 }
               }
             }
           }
         },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Cập nhật vai trò",
         "tags": [
-          "Roles"
+          "Roles (Quản lý vai trò)"
         ]
       },
       "delete": {
@@ -464,25 +995,138 @@
             "name": "id",
             "required": true,
             "in": "path",
+            "description": "ID của điều kiện quyền (định dạng UUID)",
             "schema": {
+              "format": "uuid",
+              "example": "550e8400-e29b-41d4-a716-446655440000",
               "type": "string"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/RoleWithPermissionsDto"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 400,
+                      "message": "Bad Request",
+                      "requestId": "8247bd5b-2202-4163-8ebf-b1fc2f6d4747",
+                      "timestamp": "2026-05-02T14:18:56.702Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 404,
+                      "message": "Not Found",
+                      "requestId": "c301da6c-f615-48ed-a3c9-07e71bbccd33",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 409,
+                      "message": "Conflict",
+                      "requestId": "8e7af276-682a-46a2-8b89-306942f3f70e",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 500,
+                      "message": "Internal Server Error",
+                      "requestId": "6f46efff-f1fd-442f-9c01-eef17a1d58f2",
+                      "timestamp": "2026-05-02T14:18:56.703Z",
+                      "path": "/roles"
+                    }
+                  }
                 }
               }
             }
           }
         },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Xóa vai trò",
         "tags": [
-          "Roles"
+          "Roles (Quản lý vai trò)"
         ]
       }
     },
@@ -535,8 +1179,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "14b69dcc-aa1c-4f5d-8d03-04e2db7b67c5",
-                      "timestamp": "2026-05-02T12:12:00.276Z",
+                      "requestId": "6350e11f-30ae-474c-9400-6b27ea8ce45e",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -559,8 +1203,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "f0988819-12ae-4e1f-899e-ab423ccf29d2",
-                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "requestId": "5c35f000-8946-4424-82cf-22a584b095b5",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -583,8 +1227,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "e1c1d3ca-771e-4a89-a8ec-7f6c05e13075",
-                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "requestId": "354c1c62-7175-4f8a-a04d-e1fa01c4a4a7",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -607,8 +1251,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "bffc1026-86f7-4242-9533-4b02dd4e2dc9",
-                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "requestId": "6e472059-9db8-4cb8-ae22-6ae90e992f79",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -748,8 +1392,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "14b69dcc-aa1c-4f5d-8d03-04e2db7b67c5",
-                      "timestamp": "2026-05-02T12:12:00.276Z",
+                      "requestId": "6350e11f-30ae-474c-9400-6b27ea8ce45e",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -772,8 +1416,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "f0988819-12ae-4e1f-899e-ab423ccf29d2",
-                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "requestId": "5c35f000-8946-4424-82cf-22a584b095b5",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -796,8 +1440,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "e1c1d3ca-771e-4a89-a8ec-7f6c05e13075",
-                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "requestId": "354c1c62-7175-4f8a-a04d-e1fa01c4a4a7",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -820,8 +1464,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "bffc1026-86f7-4242-9533-4b02dd4e2dc9",
-                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "requestId": "6e472059-9db8-4cb8-ae22-6ae90e992f79",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -901,8 +1545,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "14b69dcc-aa1c-4f5d-8d03-04e2db7b67c5",
-                      "timestamp": "2026-05-02T12:12:00.276Z",
+                      "requestId": "6350e11f-30ae-474c-9400-6b27ea8ce45e",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -925,8 +1569,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "f0988819-12ae-4e1f-899e-ab423ccf29d2",
-                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "requestId": "5c35f000-8946-4424-82cf-22a584b095b5",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -949,8 +1593,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "e1c1d3ca-771e-4a89-a8ec-7f6c05e13075",
-                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "requestId": "354c1c62-7175-4f8a-a04d-e1fa01c4a4a7",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -973,8 +1617,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "bffc1026-86f7-4242-9533-4b02dd4e2dc9",
-                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "requestId": "6e472059-9db8-4cb8-ae22-6ae90e992f79",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -1042,8 +1686,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "14b69dcc-aa1c-4f5d-8d03-04e2db7b67c5",
-                      "timestamp": "2026-05-02T12:12:00.276Z",
+                      "requestId": "6350e11f-30ae-474c-9400-6b27ea8ce45e",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -1066,8 +1710,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "f0988819-12ae-4e1f-899e-ab423ccf29d2",
-                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "requestId": "5c35f000-8946-4424-82cf-22a584b095b5",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -1090,8 +1734,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "e1c1d3ca-771e-4a89-a8ec-7f6c05e13075",
-                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "requestId": "354c1c62-7175-4f8a-a04d-e1fa01c4a4a7",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -1114,8 +1758,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "bffc1026-86f7-4242-9533-4b02dd4e2dc9",
-                      "timestamp": "2026-05-02T12:12:00.277Z",
+                      "requestId": "6e472059-9db8-4cb8-ae22-6ae90e992f79",
+                      "timestamp": "2026-05-02T14:18:56.711Z",
                       "path": "/permissions"
                     }
                   }
@@ -1330,8 +1974,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "5471f83e-bd54-49d4-b5a4-f637a2dd0153",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "027bbc3b-3d01-4af6-bd82-4936bb5b5e1b",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1354,8 +1998,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "ab7c5a95-2465-49e1-85bf-b4db21c2f812",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "b6d193da-3990-477c-8939-68bc989bf9d5",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1378,8 +2022,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "77c0692f-1dc8-4752-b34c-ce3318a80707",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "f372277e-3063-484a-8681-f3ef4139a737",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1402,8 +2046,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "dbd9e8b9-f33d-4347-b7a0-f86491b808bb",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "2c88b1c2-694b-43cc-b8cb-647580e501ee",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1543,8 +2187,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "5471f83e-bd54-49d4-b5a4-f637a2dd0153",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "027bbc3b-3d01-4af6-bd82-4936bb5b5e1b",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1567,8 +2211,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "ab7c5a95-2465-49e1-85bf-b4db21c2f812",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "b6d193da-3990-477c-8939-68bc989bf9d5",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1591,8 +2235,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "77c0692f-1dc8-4752-b34c-ce3318a80707",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "f372277e-3063-484a-8681-f3ef4139a737",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1615,8 +2259,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "dbd9e8b9-f33d-4347-b7a0-f86491b808bb",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "2c88b1c2-694b-43cc-b8cb-647580e501ee",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1686,8 +2330,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "5471f83e-bd54-49d4-b5a4-f637a2dd0153",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "027bbc3b-3d01-4af6-bd82-4936bb5b5e1b",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1710,8 +2354,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "ab7c5a95-2465-49e1-85bf-b4db21c2f812",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "b6d193da-3990-477c-8939-68bc989bf9d5",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1734,8 +2378,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "77c0692f-1dc8-4752-b34c-ce3318a80707",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "f372277e-3063-484a-8681-f3ef4139a737",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1758,8 +2402,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "dbd9e8b9-f33d-4347-b7a0-f86491b808bb",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "2c88b1c2-694b-43cc-b8cb-647580e501ee",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1837,8 +2481,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "5471f83e-bd54-49d4-b5a4-f637a2dd0153",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "027bbc3b-3d01-4af6-bd82-4936bb5b5e1b",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1861,8 +2505,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "ab7c5a95-2465-49e1-85bf-b4db21c2f812",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "b6d193da-3990-477c-8939-68bc989bf9d5",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1885,8 +2529,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "77c0692f-1dc8-4752-b34c-ce3318a80707",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "f372277e-3063-484a-8681-f3ef4139a737",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1909,8 +2553,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "dbd9e8b9-f33d-4347-b7a0-f86491b808bb",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "2c88b1c2-694b-43cc-b8cb-647580e501ee",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -1978,8 +2622,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "5471f83e-bd54-49d4-b5a4-f637a2dd0153",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "027bbc3b-3d01-4af6-bd82-4936bb5b5e1b",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -2002,8 +2646,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "ab7c5a95-2465-49e1-85bf-b4db21c2f812",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "b6d193da-3990-477c-8939-68bc989bf9d5",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -2026,8 +2670,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "77c0692f-1dc8-4752-b34c-ce3318a80707",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "f372277e-3063-484a-8681-f3ef4139a737",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -2050,8 +2694,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "dbd9e8b9-f33d-4347-b7a0-f86491b808bb",
-                      "timestamp": "2026-05-02T12:12:00.292Z",
+                      "requestId": "2c88b1c2-694b-43cc-b8cb-647580e501ee",
+                      "timestamp": "2026-05-02T14:18:56.726Z",
                       "path": "/attribute"
                     }
                   }
@@ -2142,14 +2786,6 @@
         "type": "object",
         "properties": {}
       },
-      "CreateRoleDto": {
-        "type": "object",
-        "properties": {}
-      },
-      "UpdateRoleDto": {
-        "type": "object",
-        "properties": {}
-      },
       "ErrorDetailDto": {
         "type": "object",
         "properties": {
@@ -2197,6 +2833,196 @@
           "success",
           "error"
         ]
+      },
+      "RoleResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
+          },
+          "name": {
+            "type": "string",
+            "example": "Manager"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "example": "Quản lý cấp trung trong hệ thống"
+          },
+          "parent_role_id": {
+            "type": "string",
+            "nullable": true,
+            "example": "550e8400-e29b-41d4-a716-446655440002"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2026-05-02T10:00:00.000Z"
+          },
+          "child_roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoleResponseDto"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "createdAt"
+        ]
+      },
+      "PermissionDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "550e8400-e29b-41d4-a716-446655440001"
+          },
+          "name": {
+            "type": "string",
+            "example": "view_user"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "example": "Cho phép xem thông tin người dùng"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "RoleWithPermissionsDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
+          },
+          "name": {
+            "type": "string",
+            "example": "Manager"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "example": "Quản lý cấp trung trong hệ thống"
+          },
+          "parent_role_id": {
+            "type": "string",
+            "nullable": true,
+            "example": "550e8400-e29b-41d4-a716-446655440002"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2026-05-02T10:00:00.000Z"
+          },
+          "child_roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoleResponseDto"
+            }
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PermissionDto"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "createdAt",
+          "permissions"
+        ]
+      },
+      "PermissionIdDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "550e8400-e29b-41d4-a716-446655440001",
+            "description": "ID của quyền được gán cho vai trò"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "CreateRoleDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "example": "Manager",
+            "description": "Tên duy nhất của vai trò"
+          },
+          "description": {
+            "type": "string",
+            "example": "Quản lý cấp trung trong hệ thống"
+          },
+          "parent_role_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "description": "ID của vai trò cha (nếu có)"
+          },
+          "permissions": {
+            "description": "Danh sách các ID quyền hạn gán trực tiếp cho vai trò",
+            "example": [
+              {
+                "id": "550e8400-e29b-41d4-a716-446655440001"
+              }
+            ],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PermissionIdDto"
+            }
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "UpdateRoleDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "example": "Manager",
+            "description": "Tên duy nhất của vai trò"
+          },
+          "description": {
+            "type": "string",
+            "example": "Quản lý cấp trung trong hệ thống"
+          },
+          "parent_role_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "description": "ID của vai trò cha (nếu có)"
+          },
+          "permissions": {
+            "description": "Danh sách các ID quyền hạn gán trực tiếp cho vai trò",
+            "example": [
+              {
+                "id": "550e8400-e29b-41d4-a716-446655440001"
+              }
+            ],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PermissionIdDto"
+            }
+          }
+        }
       },
       "ResponseAttributeDto": {
         "type": "object",
