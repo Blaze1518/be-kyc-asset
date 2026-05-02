@@ -131,3 +131,16 @@ model Attribute {
 
   @@map("attributes")
 }
+
+model IPWhitelist {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  address     String   @unique @db.VarChar(50)
+  description String?  @db.Text
+  isActive    Boolean  @default(true)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("ip_whitelist")
+  @@index([address, isActive])
+}
