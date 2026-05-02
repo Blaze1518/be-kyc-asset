@@ -2842,3 +2842,534 @@
 {"context":"InstanceLoader","level":"info","message":"PrismaModule dependencies initialized","timestamp":"2026-05-02T13:59:15.824Z"}
 {"context":"InstanceLoader","level":"info","message":"AttributeModule dependencies initialized","timestamp":"2026-05-02T13:59:15.825Z"}
 {"context":"InstanceLoader","level":"info","message":"PermissionsModule dependencies initialized","timestamp":"2026-05-02T13:59:15.825Z"}
+{"level":"info","message":"Khởi tạo ứng dụng...","timestamp":"2026-05-02T14:18:56.781Z"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application...","timestamp":"2026-05-02T14:18:56.858Z"}
+{"context":"InstanceLoader","level":"info","message":"CommonModule dependencies initialized","timestamp":"2026-05-02T14:18:56.865Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized","timestamp":"2026-05-02T14:18:56.865Z"}
+{"context":"PrismaService","level":"info","message":"🔌 Prisma Connection String: postgresql://admin:******@localhost:5433/kyc_asset_db?schema=public","timestamp":"2026-05-02T14:18:56.868Z"}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized","timestamp":"2026-05-02T14:18:56.868Z"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized","timestamp":"2026-05-02T14:18:56.868Z"}
+{"context":"InstanceLoader","level":"info","message":"WhitelistIpModule dependencies initialized","timestamp":"2026-05-02T14:18:56.869Z"}
+{"context":"InstanceLoader","level":"info","message":"AuthModule dependencies initialized","timestamp":"2026-05-02T14:18:56.869Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized","timestamp":"2026-05-02T14:18:56.869Z"}
+{"context":"InstanceLoader","level":"info","message":"PrismaModule dependencies initialized","timestamp":"2026-05-02T14:18:56.870Z"}
+{"context":"InstanceLoader","level":"info","message":"AttributeModule dependencies initialized","timestamp":"2026-05-02T14:18:56.870Z"}
+{"context":"InstanceLoader","level":"info","message":"RolesModule dependencies initialized","timestamp":"2026-05-02T14:18:56.871Z"}
+{"context":"InstanceLoader","level":"info","message":"PermissionsModule dependencies initialized","timestamp":"2026-05-02T14:18:56.871Z"}
+{"context":"RoutesResolver","level":"info","message":"AppController {/}:","timestamp":"2026-05-02T14:18:56.889Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/, GET} route","timestamp":"2026-05-02T14:18:56.892Z"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:","timestamp":"2026-05-02T14:18:56.892Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, POST} route","timestamp":"2026-05-02T14:18:56.892Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, GET} route","timestamp":"2026-05-02T14:18:56.892Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route","timestamp":"2026-05-02T14:18:56.893Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, PATCH} route","timestamp":"2026-05-02T14:18:56.893Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route","timestamp":"2026-05-02T14:18:56.893Z"}
+{"context":"RoutesResolver","level":"info","message":"WhitelistIpController {/whitelist-ip}:","timestamp":"2026-05-02T14:18:56.893Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, POST} route","timestamp":"2026-05-02T14:18:56.893Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, GET} route","timestamp":"2026-05-02T14:18:56.894Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, GET} route","timestamp":"2026-05-02T14:18:56.894Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, PATCH} route","timestamp":"2026-05-02T14:18:56.894Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, DELETE} route","timestamp":"2026-05-02T14:18:56.894Z"}
+{"context":"RoutesResolver","level":"info","message":"RolesController {/roles}:","timestamp":"2026-05-02T14:18:56.894Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, POST} route","timestamp":"2026-05-02T14:18:56.894Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, GET} route","timestamp":"2026-05-02T14:18:56.894Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, GET} route","timestamp":"2026-05-02T14:18:56.895Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, PATCH} route","timestamp":"2026-05-02T14:18:56.895Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, DELETE} route","timestamp":"2026-05-02T14:18:56.895Z"}
+{"context":"RoutesResolver","level":"info","message":"PermissionsController {/permissions}:","timestamp":"2026-05-02T14:18:56.895Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, POST} route","timestamp":"2026-05-02T14:18:56.895Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, GET} route","timestamp":"2026-05-02T14:18:56.895Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, PATCH} route","timestamp":"2026-05-02T14:18:56.895Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, DELETE} route","timestamp":"2026-05-02T14:18:56.895Z"}
+{"context":"RoutesResolver","level":"info","message":"AuthController {/auth}:","timestamp":"2026-05-02T14:18:56.896Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, POST} route","timestamp":"2026-05-02T14:18:56.896Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, GET} route","timestamp":"2026-05-02T14:18:56.896Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, GET} route","timestamp":"2026-05-02T14:18:56.896Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, PATCH} route","timestamp":"2026-05-02T14:18:56.896Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, DELETE} route","timestamp":"2026-05-02T14:18:56.896Z"}
+{"context":"RoutesResolver","level":"info","message":"AttributeController {/attribute}:","timestamp":"2026-05-02T14:18:56.896Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, POST} route","timestamp":"2026-05-02T14:18:56.896Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, GET} route","timestamp":"2026-05-02T14:18:56.897Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, GET} route","timestamp":"2026-05-02T14:18:56.897Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, PATCH} route","timestamp":"2026-05-02T14:18:56.897Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, DELETE} route","timestamp":"2026-05-02T14:18:56.897Z"}
+{"context":"PrismaService","level":"info","message":"Kết nối database thành công","timestamp":"2026-05-02T14:18:56.935Z"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started","timestamp":"2026-05-02T14:18:56.938Z"}
+{"context":"LoggerMiddleware","level":"info","message":"[RequestID: df7b0d5b-fbf6-40cb-a1b6-98a94b602faf] GET /permissions?page=1&limit=10&sortBy=name&sortOrder=asc | Status: 200 | Duration: 73ms | IP: ::1 | UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36","requestId":"df7b0d5b-fbf6-40cb-a1b6-98a94b602faf","timestamp":"2026-05-02T14:20:36.294Z"}
+{"level":"info","message":"Khởi tạo ứng dụng...","timestamp":"2026-05-02T14:59:15.983Z"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application...","timestamp":"2026-05-02T14:59:16.063Z"}
+{"context":"InstanceLoader","level":"info","message":"CommonModule dependencies initialized","timestamp":"2026-05-02T14:59:16.069Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized","timestamp":"2026-05-02T14:59:16.069Z"}
+{"context":"PrismaService","level":"info","message":"🔌 Prisma Connection String: postgresql://admin:******@localhost:5433/kyc_asset_db?schema=public","timestamp":"2026-05-02T14:59:16.071Z"}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized","timestamp":"2026-05-02T14:59:16.071Z"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized","timestamp":"2026-05-02T14:59:16.072Z"}
+{"context":"InstanceLoader","level":"info","message":"WhitelistIpModule dependencies initialized","timestamp":"2026-05-02T14:59:16.072Z"}
+{"context":"InstanceLoader","level":"info","message":"AuthModule dependencies initialized","timestamp":"2026-05-02T14:59:16.072Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized","timestamp":"2026-05-02T14:59:16.072Z"}
+{"context":"InstanceLoader","level":"info","message":"PrismaModule dependencies initialized","timestamp":"2026-05-02T14:59:16.072Z"}
+{"context":"InstanceLoader","level":"info","message":"AttributeModule dependencies initialized","timestamp":"2026-05-02T14:59:16.073Z"}
+{"context":"InstanceLoader","level":"info","message":"RolesModule dependencies initialized","timestamp":"2026-05-02T14:59:16.074Z"}
+{"context":"InstanceLoader","level":"info","message":"PermissionsModule dependencies initialized","timestamp":"2026-05-02T14:59:16.074Z"}
+{"context":"RoutesResolver","level":"info","message":"AppController {/}:","timestamp":"2026-05-02T14:59:16.093Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/, GET} route","timestamp":"2026-05-02T14:59:16.094Z"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:","timestamp":"2026-05-02T14:59:16.095Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, POST} route","timestamp":"2026-05-02T14:59:16.095Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, GET} route","timestamp":"2026-05-02T14:59:16.095Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route","timestamp":"2026-05-02T14:59:16.095Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, PATCH} route","timestamp":"2026-05-02T14:59:16.096Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route","timestamp":"2026-05-02T14:59:16.096Z"}
+{"context":"RoutesResolver","level":"info","message":"WhitelistIpController {/whitelist-ip}:","timestamp":"2026-05-02T14:59:16.096Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, POST} route","timestamp":"2026-05-02T14:59:16.096Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, GET} route","timestamp":"2026-05-02T14:59:16.096Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, GET} route","timestamp":"2026-05-02T14:59:16.097Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, PATCH} route","timestamp":"2026-05-02T14:59:16.097Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, DELETE} route","timestamp":"2026-05-02T14:59:16.097Z"}
+{"context":"RoutesResolver","level":"info","message":"RolesController {/roles}:","timestamp":"2026-05-02T14:59:16.097Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, POST} route","timestamp":"2026-05-02T14:59:16.097Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, GET} route","timestamp":"2026-05-02T14:59:16.097Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, GET} route","timestamp":"2026-05-02T14:59:16.097Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, PATCH} route","timestamp":"2026-05-02T14:59:16.098Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, DELETE} route","timestamp":"2026-05-02T14:59:16.098Z"}
+{"context":"RoutesResolver","level":"info","message":"PermissionsController {/permissions}:","timestamp":"2026-05-02T14:59:16.098Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, POST} route","timestamp":"2026-05-02T14:59:16.098Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, GET} route","timestamp":"2026-05-02T14:59:16.098Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, PATCH} route","timestamp":"2026-05-02T14:59:16.098Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, DELETE} route","timestamp":"2026-05-02T14:59:16.098Z"}
+{"context":"RoutesResolver","level":"info","message":"AuthController {/auth}:","timestamp":"2026-05-02T14:59:16.098Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, POST} route","timestamp":"2026-05-02T14:59:16.099Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, GET} route","timestamp":"2026-05-02T14:59:16.099Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, GET} route","timestamp":"2026-05-02T14:59:16.099Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, PATCH} route","timestamp":"2026-05-02T14:59:16.100Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, DELETE} route","timestamp":"2026-05-02T14:59:16.100Z"}
+{"context":"RoutesResolver","level":"info","message":"AttributeController {/attribute}:","timestamp":"2026-05-02T14:59:16.100Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, POST} route","timestamp":"2026-05-02T14:59:16.100Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, GET} route","timestamp":"2026-05-02T14:59:16.100Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, GET} route","timestamp":"2026-05-02T14:59:16.100Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, PATCH} route","timestamp":"2026-05-02T14:59:16.101Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, DELETE} route","timestamp":"2026-05-02T14:59:16.101Z"}
+{"context":"PrismaService","level":"info","message":"Kết nối database thành công","timestamp":"2026-05-02T14:59:16.137Z"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started","timestamp":"2026-05-02T14:59:16.140Z"}
+{"level":"info","message":"Khởi tạo ứng dụng...","timestamp":"2026-05-02T14:59:17.999Z"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application...","timestamp":"2026-05-02T14:59:18.071Z"}
+{"context":"InstanceLoader","level":"info","message":"CommonModule dependencies initialized","timestamp":"2026-05-02T14:59:18.077Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized","timestamp":"2026-05-02T14:59:18.077Z"}
+{"context":"PrismaService","level":"info","message":"🔌 Prisma Connection String: postgresql://admin:******@localhost:5433/kyc_asset_db?schema=public","timestamp":"2026-05-02T14:59:18.079Z"}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized","timestamp":"2026-05-02T14:59:18.079Z"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized","timestamp":"2026-05-02T14:59:18.080Z"}
+{"context":"InstanceLoader","level":"info","message":"WhitelistIpModule dependencies initialized","timestamp":"2026-05-02T14:59:18.080Z"}
+{"context":"InstanceLoader","level":"info","message":"AuthModule dependencies initialized","timestamp":"2026-05-02T14:59:18.080Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized","timestamp":"2026-05-02T14:59:18.080Z"}
+{"context":"InstanceLoader","level":"info","message":"PrismaModule dependencies initialized","timestamp":"2026-05-02T14:59:18.081Z"}
+{"context":"InstanceLoader","level":"info","message":"AttributeModule dependencies initialized","timestamp":"2026-05-02T14:59:18.081Z"}
+{"context":"InstanceLoader","level":"info","message":"RolesModule dependencies initialized","timestamp":"2026-05-02T14:59:18.082Z"}
+{"context":"InstanceLoader","level":"info","message":"PermissionsModule dependencies initialized","timestamp":"2026-05-02T14:59:18.082Z"}
+{"context":"RoutesResolver","level":"info","message":"AppController {/}:","timestamp":"2026-05-02T14:59:18.102Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/, GET} route","timestamp":"2026-05-02T14:59:18.104Z"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:","timestamp":"2026-05-02T14:59:18.104Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, POST} route","timestamp":"2026-05-02T14:59:18.105Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, GET} route","timestamp":"2026-05-02T14:59:18.105Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route","timestamp":"2026-05-02T14:59:18.105Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, PATCH} route","timestamp":"2026-05-02T14:59:18.105Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route","timestamp":"2026-05-02T14:59:18.105Z"}
+{"context":"RoutesResolver","level":"info","message":"WhitelistIpController {/whitelist-ip}:","timestamp":"2026-05-02T14:59:18.106Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, POST} route","timestamp":"2026-05-02T14:59:18.106Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, GET} route","timestamp":"2026-05-02T14:59:18.106Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, GET} route","timestamp":"2026-05-02T14:59:18.106Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, PATCH} route","timestamp":"2026-05-02T14:59:18.106Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, DELETE} route","timestamp":"2026-05-02T14:59:18.106Z"}
+{"context":"RoutesResolver","level":"info","message":"RolesController {/roles}:","timestamp":"2026-05-02T14:59:18.107Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, POST} route","timestamp":"2026-05-02T14:59:18.107Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, GET} route","timestamp":"2026-05-02T14:59:18.107Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, GET} route","timestamp":"2026-05-02T14:59:18.107Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, PATCH} route","timestamp":"2026-05-02T14:59:18.107Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, DELETE} route","timestamp":"2026-05-02T14:59:18.107Z"}
+{"context":"RoutesResolver","level":"info","message":"PermissionsController {/permissions}:","timestamp":"2026-05-02T14:59:18.107Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, POST} route","timestamp":"2026-05-02T14:59:18.108Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, GET} route","timestamp":"2026-05-02T14:59:18.108Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, PATCH} route","timestamp":"2026-05-02T14:59:18.108Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, DELETE} route","timestamp":"2026-05-02T14:59:18.108Z"}
+{"context":"RoutesResolver","level":"info","message":"AuthController {/auth}:","timestamp":"2026-05-02T14:59:18.108Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, POST} route","timestamp":"2026-05-02T14:59:18.108Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, GET} route","timestamp":"2026-05-02T14:59:18.108Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, GET} route","timestamp":"2026-05-02T14:59:18.108Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, PATCH} route","timestamp":"2026-05-02T14:59:18.109Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, DELETE} route","timestamp":"2026-05-02T14:59:18.109Z"}
+{"context":"RoutesResolver","level":"info","message":"AttributeController {/attribute}:","timestamp":"2026-05-02T14:59:18.109Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, POST} route","timestamp":"2026-05-02T14:59:18.109Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, GET} route","timestamp":"2026-05-02T14:59:18.110Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, GET} route","timestamp":"2026-05-02T14:59:18.110Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, PATCH} route","timestamp":"2026-05-02T14:59:18.110Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, DELETE} route","timestamp":"2026-05-02T14:59:18.110Z"}
+{"context":"PrismaService","level":"info","message":"Kết nối database thành công","timestamp":"2026-05-02T14:59:18.148Z"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started","timestamp":"2026-05-02T14:59:18.150Z"}
+{"level":"info","message":"Khởi tạo ứng dụng...","timestamp":"2026-05-02T15:13:11.914Z"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application...","timestamp":"2026-05-02T15:13:11.989Z"}
+{"context":"InstanceLoader","level":"info","message":"CommonModule dependencies initialized","timestamp":"2026-05-02T15:13:11.994Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized","timestamp":"2026-05-02T15:13:11.995Z"}
+{"context":"PrismaService","level":"info","message":"🔌 Prisma Connection String: postgresql://admin:******@localhost:5433/kyc_asset_db?schema=public","timestamp":"2026-05-02T15:13:11.996Z"}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized","timestamp":"2026-05-02T15:13:11.997Z"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized","timestamp":"2026-05-02T15:13:11.997Z"}
+{"context":"InstanceLoader","level":"info","message":"WhitelistIpModule dependencies initialized","timestamp":"2026-05-02T15:13:11.997Z"}
+{"context":"InstanceLoader","level":"info","message":"AuthModule dependencies initialized","timestamp":"2026-05-02T15:13:11.997Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized","timestamp":"2026-05-02T15:13:11.997Z"}
+{"context":"InstanceLoader","level":"info","message":"PrismaModule dependencies initialized","timestamp":"2026-05-02T15:13:11.998Z"}
+{"context":"InstanceLoader","level":"info","message":"AttributeModule dependencies initialized","timestamp":"2026-05-02T15:13:11.999Z"}
+{"context":"InstanceLoader","level":"info","message":"RolesModule dependencies initialized","timestamp":"2026-05-02T15:13:11.999Z"}
+{"context":"InstanceLoader","level":"info","message":"PermissionsModule dependencies initialized","timestamp":"2026-05-02T15:13:11.999Z"}
+{"context":"RoutesResolver","level":"info","message":"AppController {/}:","timestamp":"2026-05-02T15:13:12.020Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/, GET} route","timestamp":"2026-05-02T15:13:12.021Z"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:","timestamp":"2026-05-02T15:13:12.022Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, POST} route","timestamp":"2026-05-02T15:13:12.022Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, GET} route","timestamp":"2026-05-02T15:13:12.022Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route","timestamp":"2026-05-02T15:13:12.023Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, PATCH} route","timestamp":"2026-05-02T15:13:12.023Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route","timestamp":"2026-05-02T15:13:12.023Z"}
+{"context":"RoutesResolver","level":"info","message":"WhitelistIpController {/whitelist-ip}:","timestamp":"2026-05-02T15:13:12.023Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, POST} route","timestamp":"2026-05-02T15:13:12.024Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, GET} route","timestamp":"2026-05-02T15:13:12.024Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, GET} route","timestamp":"2026-05-02T15:13:12.024Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, PATCH} route","timestamp":"2026-05-02T15:13:12.024Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, DELETE} route","timestamp":"2026-05-02T15:13:12.024Z"}
+{"context":"RoutesResolver","level":"info","message":"RolesController {/roles}:","timestamp":"2026-05-02T15:13:12.025Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, POST} route","timestamp":"2026-05-02T15:13:12.025Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, GET} route","timestamp":"2026-05-02T15:13:12.025Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, GET} route","timestamp":"2026-05-02T15:13:12.025Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, PATCH} route","timestamp":"2026-05-02T15:13:12.026Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, DELETE} route","timestamp":"2026-05-02T15:13:12.026Z"}
+{"context":"RoutesResolver","level":"info","message":"PermissionsController {/permissions}:","timestamp":"2026-05-02T15:13:12.026Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, POST} route","timestamp":"2026-05-02T15:13:12.026Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, GET} route","timestamp":"2026-05-02T15:13:12.027Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, PATCH} route","timestamp":"2026-05-02T15:13:12.027Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, DELETE} route","timestamp":"2026-05-02T15:13:12.027Z"}
+{"context":"RoutesResolver","level":"info","message":"AuthController {/auth}:","timestamp":"2026-05-02T15:13:12.027Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, POST} route","timestamp":"2026-05-02T15:13:12.027Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, GET} route","timestamp":"2026-05-02T15:13:12.027Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, GET} route","timestamp":"2026-05-02T15:13:12.028Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, PATCH} route","timestamp":"2026-05-02T15:13:12.028Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, DELETE} route","timestamp":"2026-05-02T15:13:12.028Z"}
+{"context":"RoutesResolver","level":"info","message":"AttributeController {/attribute}:","timestamp":"2026-05-02T15:13:12.028Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, POST} route","timestamp":"2026-05-02T15:13:12.028Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, GET} route","timestamp":"2026-05-02T15:13:12.028Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, GET} route","timestamp":"2026-05-02T15:13:12.028Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, PATCH} route","timestamp":"2026-05-02T15:13:12.029Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, DELETE} route","timestamp":"2026-05-02T15:13:12.029Z"}
+{"context":"PrismaService","level":"info","message":"Kết nối database thành công","timestamp":"2026-05-02T15:13:12.068Z"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started","timestamp":"2026-05-02T15:13:12.071Z"}
+{"level":"info","message":"Khởi tạo ứng dụng...","timestamp":"2026-05-02T15:13:16.586Z"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application...","timestamp":"2026-05-02T15:13:16.658Z"}
+{"context":"InstanceLoader","level":"info","message":"CommonModule dependencies initialized","timestamp":"2026-05-02T15:13:16.664Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized","timestamp":"2026-05-02T15:13:16.664Z"}
+{"context":"PrismaService","level":"info","message":"🔌 Prisma Connection String: postgresql://admin:******@localhost:5433/kyc_asset_db?schema=public","timestamp":"2026-05-02T15:13:16.666Z"}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized","timestamp":"2026-05-02T15:13:16.666Z"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized","timestamp":"2026-05-02T15:13:16.666Z"}
+{"context":"InstanceLoader","level":"info","message":"WhitelistIpModule dependencies initialized","timestamp":"2026-05-02T15:13:16.666Z"}
+{"context":"InstanceLoader","level":"info","message":"AuthModule dependencies initialized","timestamp":"2026-05-02T15:13:16.667Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized","timestamp":"2026-05-02T15:13:16.667Z"}
+{"context":"InstanceLoader","level":"info","message":"PrismaModule dependencies initialized","timestamp":"2026-05-02T15:13:16.667Z"}
+{"context":"InstanceLoader","level":"info","message":"AttributeModule dependencies initialized","timestamp":"2026-05-02T15:13:16.668Z"}
+{"context":"InstanceLoader","level":"info","message":"RolesModule dependencies initialized","timestamp":"2026-05-02T15:13:16.668Z"}
+{"context":"InstanceLoader","level":"info","message":"PermissionsModule dependencies initialized","timestamp":"2026-05-02T15:13:16.668Z"}
+{"context":"RoutesResolver","level":"info","message":"AppController {/}:","timestamp":"2026-05-02T15:13:16.688Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/, GET} route","timestamp":"2026-05-02T15:13:16.689Z"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:","timestamp":"2026-05-02T15:13:16.689Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, POST} route","timestamp":"2026-05-02T15:13:16.690Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, GET} route","timestamp":"2026-05-02T15:13:16.690Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route","timestamp":"2026-05-02T15:13:16.691Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, PATCH} route","timestamp":"2026-05-02T15:13:16.691Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route","timestamp":"2026-05-02T15:13:16.691Z"}
+{"context":"RoutesResolver","level":"info","message":"WhitelistIpController {/whitelist-ip}:","timestamp":"2026-05-02T15:13:16.691Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, POST} route","timestamp":"2026-05-02T15:13:16.692Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, GET} route","timestamp":"2026-05-02T15:13:16.692Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, GET} route","timestamp":"2026-05-02T15:13:16.692Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, PATCH} route","timestamp":"2026-05-02T15:13:16.692Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, DELETE} route","timestamp":"2026-05-02T15:13:16.692Z"}
+{"context":"RoutesResolver","level":"info","message":"RolesController {/roles}:","timestamp":"2026-05-02T15:13:16.692Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, POST} route","timestamp":"2026-05-02T15:13:16.693Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, GET} route","timestamp":"2026-05-02T15:13:16.693Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, GET} route","timestamp":"2026-05-02T15:13:16.693Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, PATCH} route","timestamp":"2026-05-02T15:13:16.693Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, DELETE} route","timestamp":"2026-05-02T15:13:16.693Z"}
+{"context":"RoutesResolver","level":"info","message":"PermissionsController {/permissions}:","timestamp":"2026-05-02T15:13:16.693Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, POST} route","timestamp":"2026-05-02T15:13:16.693Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, GET} route","timestamp":"2026-05-02T15:13:16.694Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, PATCH} route","timestamp":"2026-05-02T15:13:16.694Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, DELETE} route","timestamp":"2026-05-02T15:13:16.694Z"}
+{"context":"RoutesResolver","level":"info","message":"AuthController {/auth}:","timestamp":"2026-05-02T15:13:16.694Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, POST} route","timestamp":"2026-05-02T15:13:16.694Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, GET} route","timestamp":"2026-05-02T15:13:16.695Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, GET} route","timestamp":"2026-05-02T15:13:16.695Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, PATCH} route","timestamp":"2026-05-02T15:13:16.695Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, DELETE} route","timestamp":"2026-05-02T15:13:16.695Z"}
+{"context":"RoutesResolver","level":"info","message":"AttributeController {/attribute}:","timestamp":"2026-05-02T15:13:16.695Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, POST} route","timestamp":"2026-05-02T15:13:16.695Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, GET} route","timestamp":"2026-05-02T15:13:16.695Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, GET} route","timestamp":"2026-05-02T15:13:16.696Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, PATCH} route","timestamp":"2026-05-02T15:13:16.696Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, DELETE} route","timestamp":"2026-05-02T15:13:16.696Z"}
+{"context":"PrismaService","level":"info","message":"Kết nối database thành công","timestamp":"2026-05-02T15:13:16.733Z"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started","timestamp":"2026-05-02T15:13:16.736Z"}
+{"level":"info","message":"Khởi tạo ứng dụng...","timestamp":"2026-05-02T15:13:22.502Z"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application...","timestamp":"2026-05-02T15:13:22.580Z"}
+{"context":"InstanceLoader","level":"info","message":"CommonModule dependencies initialized","timestamp":"2026-05-02T15:13:22.585Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized","timestamp":"2026-05-02T15:13:22.586Z"}
+{"context":"PrismaService","level":"info","message":"🔌 Prisma Connection String: postgresql://admin:******@localhost:5433/kyc_asset_db?schema=public","timestamp":"2026-05-02T15:13:22.588Z"}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized","timestamp":"2026-05-02T15:13:22.588Z"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized","timestamp":"2026-05-02T15:13:22.588Z"}
+{"context":"InstanceLoader","level":"info","message":"WhitelistIpModule dependencies initialized","timestamp":"2026-05-02T15:13:22.588Z"}
+{"context":"InstanceLoader","level":"info","message":"AuthModule dependencies initialized","timestamp":"2026-05-02T15:13:22.588Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized","timestamp":"2026-05-02T15:13:22.589Z"}
+{"context":"InstanceLoader","level":"info","message":"PrismaModule dependencies initialized","timestamp":"2026-05-02T15:13:22.589Z"}
+{"context":"InstanceLoader","level":"info","message":"AttributeModule dependencies initialized","timestamp":"2026-05-02T15:13:22.590Z"}
+{"context":"InstanceLoader","level":"info","message":"RolesModule dependencies initialized","timestamp":"2026-05-02T15:13:22.590Z"}
+{"context":"InstanceLoader","level":"info","message":"PermissionsModule dependencies initialized","timestamp":"2026-05-02T15:13:22.590Z"}
+{"context":"RoutesResolver","level":"info","message":"AppController {/}:","timestamp":"2026-05-02T15:13:22.610Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/, GET} route","timestamp":"2026-05-02T15:13:22.612Z"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:","timestamp":"2026-05-02T15:13:22.612Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, POST} route","timestamp":"2026-05-02T15:13:22.612Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, GET} route","timestamp":"2026-05-02T15:13:22.612Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route","timestamp":"2026-05-02T15:13:22.612Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, PATCH} route","timestamp":"2026-05-02T15:13:22.613Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route","timestamp":"2026-05-02T15:13:22.613Z"}
+{"context":"RoutesResolver","level":"info","message":"WhitelistIpController {/whitelist-ip}:","timestamp":"2026-05-02T15:13:22.613Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, POST} route","timestamp":"2026-05-02T15:13:22.613Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, GET} route","timestamp":"2026-05-02T15:13:22.613Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, GET} route","timestamp":"2026-05-02T15:13:22.614Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, PATCH} route","timestamp":"2026-05-02T15:13:22.614Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, DELETE} route","timestamp":"2026-05-02T15:13:22.614Z"}
+{"context":"RoutesResolver","level":"info","message":"RolesController {/roles}:","timestamp":"2026-05-02T15:13:22.614Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, POST} route","timestamp":"2026-05-02T15:13:22.614Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, GET} route","timestamp":"2026-05-02T15:13:22.614Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, GET} route","timestamp":"2026-05-02T15:13:22.614Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, PATCH} route","timestamp":"2026-05-02T15:13:22.615Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, DELETE} route","timestamp":"2026-05-02T15:13:22.615Z"}
+{"context":"RoutesResolver","level":"info","message":"PermissionsController {/permissions}:","timestamp":"2026-05-02T15:13:22.615Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, POST} route","timestamp":"2026-05-02T15:13:22.615Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, GET} route","timestamp":"2026-05-02T15:13:22.615Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, PATCH} route","timestamp":"2026-05-02T15:13:22.615Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, DELETE} route","timestamp":"2026-05-02T15:13:22.615Z"}
+{"context":"RoutesResolver","level":"info","message":"AuthController {/auth}:","timestamp":"2026-05-02T15:13:22.615Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, POST} route","timestamp":"2026-05-02T15:13:22.616Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, GET} route","timestamp":"2026-05-02T15:13:22.616Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, GET} route","timestamp":"2026-05-02T15:13:22.616Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, PATCH} route","timestamp":"2026-05-02T15:13:22.616Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, DELETE} route","timestamp":"2026-05-02T15:13:22.616Z"}
+{"context":"RoutesResolver","level":"info","message":"AttributeController {/attribute}:","timestamp":"2026-05-02T15:13:22.616Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, POST} route","timestamp":"2026-05-02T15:13:22.616Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, GET} route","timestamp":"2026-05-02T15:13:22.617Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, GET} route","timestamp":"2026-05-02T15:13:22.617Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, PATCH} route","timestamp":"2026-05-02T15:13:22.617Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, DELETE} route","timestamp":"2026-05-02T15:13:22.617Z"}
+{"context":"PrismaService","level":"info","message":"Kết nối database thành công","timestamp":"2026-05-02T15:13:22.654Z"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started","timestamp":"2026-05-02T15:13:22.657Z"}
+{"level":"info","message":"Khởi tạo ứng dụng...","timestamp":"2026-05-02T15:13:32.052Z"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application...","timestamp":"2026-05-02T15:13:32.125Z"}
+{"context":"InstanceLoader","level":"info","message":"CommonModule dependencies initialized","timestamp":"2026-05-02T15:13:32.131Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized","timestamp":"2026-05-02T15:13:32.131Z"}
+{"context":"PrismaService","level":"info","message":"🔌 Prisma Connection String: postgresql://admin:******@localhost:5433/kyc_asset_db?schema=public","timestamp":"2026-05-02T15:13:32.133Z"}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized","timestamp":"2026-05-02T15:13:32.133Z"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized","timestamp":"2026-05-02T15:13:32.134Z"}
+{"context":"InstanceLoader","level":"info","message":"WhitelistIpModule dependencies initialized","timestamp":"2026-05-02T15:13:32.134Z"}
+{"context":"InstanceLoader","level":"info","message":"AuthModule dependencies initialized","timestamp":"2026-05-02T15:13:32.134Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized","timestamp":"2026-05-02T15:13:32.135Z"}
+{"context":"InstanceLoader","level":"info","message":"PrismaModule dependencies initialized","timestamp":"2026-05-02T15:13:32.135Z"}
+{"context":"InstanceLoader","level":"info","message":"AttributeModule dependencies initialized","timestamp":"2026-05-02T15:13:32.136Z"}
+{"context":"InstanceLoader","level":"info","message":"RolesModule dependencies initialized","timestamp":"2026-05-02T15:13:32.136Z"}
+{"context":"InstanceLoader","level":"info","message":"PermissionsModule dependencies initialized","timestamp":"2026-05-02T15:13:32.136Z"}
+{"context":"RoutesResolver","level":"info","message":"AppController {/}:","timestamp":"2026-05-02T15:13:32.156Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/, GET} route","timestamp":"2026-05-02T15:13:32.157Z"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:","timestamp":"2026-05-02T15:13:32.158Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, POST} route","timestamp":"2026-05-02T15:13:32.158Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, GET} route","timestamp":"2026-05-02T15:13:32.158Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route","timestamp":"2026-05-02T15:13:32.158Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, PATCH} route","timestamp":"2026-05-02T15:13:32.159Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route","timestamp":"2026-05-02T15:13:32.159Z"}
+{"context":"RoutesResolver","level":"info","message":"WhitelistIpController {/whitelist-ip}:","timestamp":"2026-05-02T15:13:32.159Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, POST} route","timestamp":"2026-05-02T15:13:32.159Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, GET} route","timestamp":"2026-05-02T15:13:32.159Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, GET} route","timestamp":"2026-05-02T15:13:32.159Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, PATCH} route","timestamp":"2026-05-02T15:13:32.160Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, DELETE} route","timestamp":"2026-05-02T15:13:32.160Z"}
+{"context":"RoutesResolver","level":"info","message":"RolesController {/roles}:","timestamp":"2026-05-02T15:13:32.160Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, POST} route","timestamp":"2026-05-02T15:13:32.160Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, GET} route","timestamp":"2026-05-02T15:13:32.160Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, GET} route","timestamp":"2026-05-02T15:13:32.160Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, PATCH} route","timestamp":"2026-05-02T15:13:32.161Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, DELETE} route","timestamp":"2026-05-02T15:13:32.161Z"}
+{"context":"RoutesResolver","level":"info","message":"PermissionsController {/permissions}:","timestamp":"2026-05-02T15:13:32.161Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, POST} route","timestamp":"2026-05-02T15:13:32.161Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, GET} route","timestamp":"2026-05-02T15:13:32.161Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, PATCH} route","timestamp":"2026-05-02T15:13:32.161Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, DELETE} route","timestamp":"2026-05-02T15:13:32.161Z"}
+{"context":"RoutesResolver","level":"info","message":"AuthController {/auth}:","timestamp":"2026-05-02T15:13:32.162Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, POST} route","timestamp":"2026-05-02T15:13:32.162Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, GET} route","timestamp":"2026-05-02T15:13:32.162Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, GET} route","timestamp":"2026-05-02T15:13:32.162Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, PATCH} route","timestamp":"2026-05-02T15:13:32.162Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, DELETE} route","timestamp":"2026-05-02T15:13:32.162Z"}
+{"context":"RoutesResolver","level":"info","message":"AttributeController {/attribute}:","timestamp":"2026-05-02T15:13:32.162Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, POST} route","timestamp":"2026-05-02T15:13:32.162Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, GET} route","timestamp":"2026-05-02T15:13:32.163Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, GET} route","timestamp":"2026-05-02T15:13:32.163Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, PATCH} route","timestamp":"2026-05-02T15:13:32.163Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, DELETE} route","timestamp":"2026-05-02T15:13:32.163Z"}
+{"context":"PrismaService","level":"info","message":"Kết nối database thành công","timestamp":"2026-05-02T15:13:32.201Z"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started","timestamp":"2026-05-02T15:13:32.203Z"}
+{"level":"info","message":"Khởi tạo ứng dụng...","timestamp":"2026-05-02T15:13:36.935Z"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application...","timestamp":"2026-05-02T15:13:37.009Z"}
+{"context":"InstanceLoader","level":"info","message":"CommonModule dependencies initialized","timestamp":"2026-05-02T15:13:37.015Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized","timestamp":"2026-05-02T15:13:37.015Z"}
+{"context":"PrismaService","level":"info","message":"🔌 Prisma Connection String: postgresql://admin:******@localhost:5433/kyc_asset_db?schema=public","timestamp":"2026-05-02T15:13:37.017Z"}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized","timestamp":"2026-05-02T15:13:37.018Z"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized","timestamp":"2026-05-02T15:13:37.018Z"}
+{"context":"InstanceLoader","level":"info","message":"WhitelistIpModule dependencies initialized","timestamp":"2026-05-02T15:13:37.018Z"}
+{"context":"InstanceLoader","level":"info","message":"AuthModule dependencies initialized","timestamp":"2026-05-02T15:13:37.018Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized","timestamp":"2026-05-02T15:13:37.018Z"}
+{"context":"InstanceLoader","level":"info","message":"PrismaModule dependencies initialized","timestamp":"2026-05-02T15:13:37.019Z"}
+{"context":"InstanceLoader","level":"info","message":"AttributeModule dependencies initialized","timestamp":"2026-05-02T15:13:37.020Z"}
+{"context":"InstanceLoader","level":"info","message":"RolesModule dependencies initialized","timestamp":"2026-05-02T15:13:37.020Z"}
+{"context":"InstanceLoader","level":"info","message":"PermissionsModule dependencies initialized","timestamp":"2026-05-02T15:13:37.020Z"}
+{"context":"RoutesResolver","level":"info","message":"AppController {/}:","timestamp":"2026-05-02T15:13:37.040Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/, GET} route","timestamp":"2026-05-02T15:13:37.041Z"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:","timestamp":"2026-05-02T15:13:37.041Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, POST} route","timestamp":"2026-05-02T15:13:37.042Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, GET} route","timestamp":"2026-05-02T15:13:37.042Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route","timestamp":"2026-05-02T15:13:37.042Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, PATCH} route","timestamp":"2026-05-02T15:13:37.042Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route","timestamp":"2026-05-02T15:13:37.042Z"}
+{"context":"RoutesResolver","level":"info","message":"WhitelistIpController {/whitelist-ip}:","timestamp":"2026-05-02T15:13:37.043Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, POST} route","timestamp":"2026-05-02T15:13:37.043Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, GET} route","timestamp":"2026-05-02T15:13:37.043Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, GET} route","timestamp":"2026-05-02T15:13:37.043Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, PATCH} route","timestamp":"2026-05-02T15:13:37.043Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, DELETE} route","timestamp":"2026-05-02T15:13:37.043Z"}
+{"context":"RoutesResolver","level":"info","message":"RolesController {/roles}:","timestamp":"2026-05-02T15:13:37.044Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, POST} route","timestamp":"2026-05-02T15:13:37.044Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, GET} route","timestamp":"2026-05-02T15:13:37.044Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, GET} route","timestamp":"2026-05-02T15:13:37.044Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, PATCH} route","timestamp":"2026-05-02T15:13:37.044Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, DELETE} route","timestamp":"2026-05-02T15:13:37.044Z"}
+{"context":"RoutesResolver","level":"info","message":"PermissionsController {/permissions}:","timestamp":"2026-05-02T15:13:37.045Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, POST} route","timestamp":"2026-05-02T15:13:37.045Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, GET} route","timestamp":"2026-05-02T15:13:37.045Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, PATCH} route","timestamp":"2026-05-02T15:13:37.045Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, DELETE} route","timestamp":"2026-05-02T15:13:37.045Z"}
+{"context":"RoutesResolver","level":"info","message":"AuthController {/auth}:","timestamp":"2026-05-02T15:13:37.045Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, POST} route","timestamp":"2026-05-02T15:13:37.045Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, GET} route","timestamp":"2026-05-02T15:13:37.046Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, GET} route","timestamp":"2026-05-02T15:13:37.046Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, PATCH} route","timestamp":"2026-05-02T15:13:37.046Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, DELETE} route","timestamp":"2026-05-02T15:13:37.046Z"}
+{"context":"RoutesResolver","level":"info","message":"AttributeController {/attribute}:","timestamp":"2026-05-02T15:13:37.046Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, POST} route","timestamp":"2026-05-02T15:13:37.047Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, GET} route","timestamp":"2026-05-02T15:13:37.047Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, GET} route","timestamp":"2026-05-02T15:13:37.047Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, PATCH} route","timestamp":"2026-05-02T15:13:37.047Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, DELETE} route","timestamp":"2026-05-02T15:13:37.047Z"}
+{"context":"PrismaService","level":"info","message":"Kết nối database thành công","timestamp":"2026-05-02T15:13:37.084Z"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started","timestamp":"2026-05-02T15:13:37.087Z"}
+{"level":"info","message":"Khởi tạo ứng dụng...","timestamp":"2026-05-02T15:13:55.769Z"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application...","timestamp":"2026-05-02T15:13:55.846Z"}
+{"context":"InstanceLoader","level":"info","message":"CommonModule dependencies initialized","timestamp":"2026-05-02T15:13:55.852Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized","timestamp":"2026-05-02T15:13:55.852Z"}
+{"context":"PrismaService","level":"info","message":"🔌 Prisma Connection String: postgresql://admin:******@localhost:5433/kyc_asset_db?schema=public","timestamp":"2026-05-02T15:13:55.854Z"}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized","timestamp":"2026-05-02T15:13:55.854Z"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized","timestamp":"2026-05-02T15:13:55.855Z"}
+{"context":"InstanceLoader","level":"info","message":"WhitelistIpModule dependencies initialized","timestamp":"2026-05-02T15:13:55.855Z"}
+{"context":"InstanceLoader","level":"info","message":"AuthModule dependencies initialized","timestamp":"2026-05-02T15:13:55.855Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized","timestamp":"2026-05-02T15:13:55.855Z"}
+{"context":"InstanceLoader","level":"info","message":"PrismaModule dependencies initialized","timestamp":"2026-05-02T15:13:55.856Z"}
+{"context":"InstanceLoader","level":"info","message":"AttributeModule dependencies initialized","timestamp":"2026-05-02T15:13:55.857Z"}
+{"context":"InstanceLoader","level":"info","message":"RolesModule dependencies initialized","timestamp":"2026-05-02T15:13:55.857Z"}
+{"context":"InstanceLoader","level":"info","message":"PermissionsModule dependencies initialized","timestamp":"2026-05-02T15:13:55.857Z"}
+{"context":"RoutesResolver","level":"info","message":"AppController {/}:","timestamp":"2026-05-02T15:13:55.877Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/, GET} route","timestamp":"2026-05-02T15:13:55.879Z"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:","timestamp":"2026-05-02T15:13:55.879Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, POST} route","timestamp":"2026-05-02T15:13:55.879Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, GET} route","timestamp":"2026-05-02T15:13:55.879Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route","timestamp":"2026-05-02T15:13:55.880Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, PATCH} route","timestamp":"2026-05-02T15:13:55.880Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route","timestamp":"2026-05-02T15:13:55.880Z"}
+{"context":"RoutesResolver","level":"info","message":"WhitelistIpController {/whitelist-ip}:","timestamp":"2026-05-02T15:13:55.880Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, POST} route","timestamp":"2026-05-02T15:13:55.881Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, GET} route","timestamp":"2026-05-02T15:13:55.881Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, GET} route","timestamp":"2026-05-02T15:13:55.881Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, PATCH} route","timestamp":"2026-05-02T15:13:55.881Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, DELETE} route","timestamp":"2026-05-02T15:13:55.881Z"}
+{"context":"RoutesResolver","level":"info","message":"RolesController {/roles}:","timestamp":"2026-05-02T15:13:55.881Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, POST} route","timestamp":"2026-05-02T15:13:55.882Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, GET} route","timestamp":"2026-05-02T15:13:55.882Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, GET} route","timestamp":"2026-05-02T15:13:55.882Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, PATCH} route","timestamp":"2026-05-02T15:13:55.882Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, DELETE} route","timestamp":"2026-05-02T15:13:55.882Z"}
+{"context":"RoutesResolver","level":"info","message":"PermissionsController {/permissions}:","timestamp":"2026-05-02T15:13:55.882Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, POST} route","timestamp":"2026-05-02T15:13:55.883Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, GET} route","timestamp":"2026-05-02T15:13:55.883Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, PATCH} route","timestamp":"2026-05-02T15:13:55.883Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, DELETE} route","timestamp":"2026-05-02T15:13:55.883Z"}
+{"context":"RoutesResolver","level":"info","message":"AuthController {/auth}:","timestamp":"2026-05-02T15:13:55.883Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, POST} route","timestamp":"2026-05-02T15:13:55.883Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, GET} route","timestamp":"2026-05-02T15:13:55.883Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, GET} route","timestamp":"2026-05-02T15:13:55.884Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, PATCH} route","timestamp":"2026-05-02T15:13:55.884Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, DELETE} route","timestamp":"2026-05-02T15:13:55.884Z"}
+{"context":"RoutesResolver","level":"info","message":"AttributeController {/attribute}:","timestamp":"2026-05-02T15:13:55.884Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, POST} route","timestamp":"2026-05-02T15:13:55.884Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, GET} route","timestamp":"2026-05-02T15:13:55.884Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, GET} route","timestamp":"2026-05-02T15:13:55.885Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, PATCH} route","timestamp":"2026-05-02T15:13:55.885Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, DELETE} route","timestamp":"2026-05-02T15:13:55.885Z"}
+{"context":"PrismaService","level":"info","message":"Kết nối database thành công","timestamp":"2026-05-02T15:13:55.922Z"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started","timestamp":"2026-05-02T15:13:55.925Z"}
+{"level":"info","message":"Khởi tạo ứng dụng...","timestamp":"2026-05-02T15:14:00.065Z"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application...","timestamp":"2026-05-02T15:14:00.136Z"}
+{"context":"InstanceLoader","level":"info","message":"CommonModule dependencies initialized","timestamp":"2026-05-02T15:14:00.143Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized","timestamp":"2026-05-02T15:14:00.143Z"}
+{"context":"PrismaService","level":"info","message":"🔌 Prisma Connection String: postgresql://admin:******@localhost:5433/kyc_asset_db?schema=public","timestamp":"2026-05-02T15:14:00.145Z"}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized","timestamp":"2026-05-02T15:14:00.145Z"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized","timestamp":"2026-05-02T15:14:00.145Z"}
+{"context":"InstanceLoader","level":"info","message":"WhitelistIpModule dependencies initialized","timestamp":"2026-05-02T15:14:00.145Z"}
+{"context":"InstanceLoader","level":"info","message":"AuthModule dependencies initialized","timestamp":"2026-05-02T15:14:00.146Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized","timestamp":"2026-05-02T15:14:00.146Z"}
+{"context":"InstanceLoader","level":"info","message":"PrismaModule dependencies initialized","timestamp":"2026-05-02T15:14:00.146Z"}
+{"context":"InstanceLoader","level":"info","message":"AttributeModule dependencies initialized","timestamp":"2026-05-02T15:14:00.147Z"}
+{"context":"InstanceLoader","level":"info","message":"RolesModule dependencies initialized","timestamp":"2026-05-02T15:14:00.147Z"}
+{"context":"InstanceLoader","level":"info","message":"PermissionsModule dependencies initialized","timestamp":"2026-05-02T15:14:00.147Z"}
+{"context":"RoutesResolver","level":"info","message":"AppController {/}:","timestamp":"2026-05-02T15:14:00.166Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/, GET} route","timestamp":"2026-05-02T15:14:00.168Z"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:","timestamp":"2026-05-02T15:14:00.168Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, POST} route","timestamp":"2026-05-02T15:14:00.168Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users, GET} route","timestamp":"2026-05-02T15:14:00.168Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route","timestamp":"2026-05-02T15:14:00.168Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, PATCH} route","timestamp":"2026-05-02T15:14:00.169Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route","timestamp":"2026-05-02T15:14:00.169Z"}
+{"context":"RoutesResolver","level":"info","message":"WhitelistIpController {/whitelist-ip}:","timestamp":"2026-05-02T15:14:00.169Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, POST} route","timestamp":"2026-05-02T15:14:00.169Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip, GET} route","timestamp":"2026-05-02T15:14:00.169Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, GET} route","timestamp":"2026-05-02T15:14:00.170Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, PATCH} route","timestamp":"2026-05-02T15:14:00.170Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/whitelist-ip/:id, DELETE} route","timestamp":"2026-05-02T15:14:00.170Z"}
+{"context":"RoutesResolver","level":"info","message":"RolesController {/roles}:","timestamp":"2026-05-02T15:14:00.170Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, POST} route","timestamp":"2026-05-02T15:14:00.170Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles, GET} route","timestamp":"2026-05-02T15:14:00.170Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, GET} route","timestamp":"2026-05-02T15:14:00.171Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, PATCH} route","timestamp":"2026-05-02T15:14:00.171Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/roles/:id, DELETE} route","timestamp":"2026-05-02T15:14:00.171Z"}
+{"context":"RoutesResolver","level":"info","message":"PermissionsController {/permissions}:","timestamp":"2026-05-02T15:14:00.171Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, POST} route","timestamp":"2026-05-02T15:14:00.172Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions, GET} route","timestamp":"2026-05-02T15:14:00.172Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, PATCH} route","timestamp":"2026-05-02T15:14:00.172Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/permissions/:id, DELETE} route","timestamp":"2026-05-02T15:14:00.172Z"}
+{"context":"RoutesResolver","level":"info","message":"AuthController {/auth}:","timestamp":"2026-05-02T15:14:00.172Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, POST} route","timestamp":"2026-05-02T15:14:00.173Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth, GET} route","timestamp":"2026-05-02T15:14:00.173Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, GET} route","timestamp":"2026-05-02T15:14:00.173Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, PATCH} route","timestamp":"2026-05-02T15:14:00.174Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/:id, DELETE} route","timestamp":"2026-05-02T15:14:00.174Z"}
+{"context":"RoutesResolver","level":"info","message":"AttributeController {/attribute}:","timestamp":"2026-05-02T15:14:00.174Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, POST} route","timestamp":"2026-05-02T15:14:00.174Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute, GET} route","timestamp":"2026-05-02T15:14:00.174Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, GET} route","timestamp":"2026-05-02T15:14:00.174Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, PATCH} route","timestamp":"2026-05-02T15:14:00.175Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/attribute/:id, DELETE} route","timestamp":"2026-05-02T15:14:00.175Z"}
+{"context":"PrismaService","level":"info","message":"Kết nối database thành công","timestamp":"2026-05-02T15:14:00.211Z"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started","timestamp":"2026-05-02T15:14:00.212Z"}

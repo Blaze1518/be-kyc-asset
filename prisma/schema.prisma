@@ -4,8 +4,8 @@
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
   moduleFormat = "cjs"
 }
 
@@ -14,36 +14,66 @@ datasource db {
 }
 
 model User {
-  id              String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  username        String      @unique @db.VarChar(255)
-  hashed_password String      @db.Text
-  displayName     String      @map("display_name") @db.VarChar(100)
-  isActive        Boolean     @default(true)
-  createdAt       DateTime    @default(now())
-  updatedAt       DateTime    @updatedAt
-  deletedAt       DateTime?   @map("deleted_at")
-  roles           UserRole[]
+  id              String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  username        String @unique @db.VarChar(255)
+  hashed_password String @db.Text
+  displayName     String @map("display_name") @db.VarChar(100)
 
-  @@map("users")
+  token_version Int @default(1)
+
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime? @map("deleted_at")
+
+  roles          UserRole[]
+  refresh_tokens RefreshToken[]
+
   @@index([username, isActive])
+  @@map("users")
+}
+
+model RefreshToken {
+  id      String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id String @db.Uuid
+
+  token_hash   String @db.VarChar(255)
+  token_family String @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  is_revoked Boolean   @default(false)
+  expires_at DateTime
+  used_at    DateTime?
+
+  device_id   String? @db.VarChar(255)
+  device_name String? @db.VarChar(255)
+  ip_address  String? @db.VarChar(50)
+  user_agent  String? @db.Text
+
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([token_hash])
+  @@index([token_family])
+  @@map("refresh_tokens")
 }
 
 model Role {
-  id             String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name           String      @unique @db.VarChar(255)
-  description    String?     @db.Text
-  parent_role_id String?     @db.Uuid
-  createdAt      DateTime    @default(now())
-  updatedAt      DateTime    @updatedAt
-  deletedAt      DateTime?   @map("deleted_at")
+  id             String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name           String    @unique @db.VarChar(255)
+  description    String?   @db.Text
+  parent_role_id String?   @db.Uuid
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime? @map("deleted_at")
 
-  parent_role    Role?       @relation("RoleHierarchy", fields: [parent_role_id], references: [id])
-  child_roles    Role[]      @relation("RoleHierarchy")
-  users          UserRole[]
-  permissions    RolePermission[]
+  parent_role Role?            @relation("RoleHierarchy", fields: [parent_role_id], references: [id])
+  child_roles Role[]           @relation("RoleHierarchy")
+  users       UserRole[]
+  permissions RolePermission[]
 
-  @@map("roles")
   @@index([parent_role_id])
+  @@map("roles")
 }
 
 model UserRole {
@@ -51,44 +81,44 @@ model UserRole {
   role_id    String   @db.Uuid
   assignedAt DateTime @default(now())
 
-  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  role       Role     @relation(fields: [role_id], references: [id], onDelete: Cascade)
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  role Role @relation(fields: [role_id], references: [id], onDelete: Cascade)
 
   @@id([user_id, role_id])
   @@map("user_roles")
 }
 
 model Permission {
-  id          String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name        String      @unique @db.VarChar(255)
-  description String?     @db.Text
-  createdAt   DateTime    @default(now())
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String   @unique @db.VarChar(255)
+  description String?  @db.Text
+  createdAt   DateTime @default(now())
 
-  roles       RolePermission[]
-  conditions  PermissionCondition[]
+  roles      RolePermission[]
+  conditions PermissionCondition[]
 
   @@map("permissions")
 }
 
 model RolePermission {
-  role_id       String     @db.Uuid
-  permission_id String     @db.Uuid
+  role_id       String @db.Uuid
+  permission_id String @db.Uuid
 
-  role          Role       @relation(fields: [role_id], references: [id], onDelete: Cascade)
-  permission    Permission @relation(fields: [permission_id], references: [id], onDelete: Cascade)
+  role       Role       @relation(fields: [role_id], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permission_id], references: [id], onDelete: Cascade)
 
   @@id([role_id, permission_id])
   @@map("role_permissions")
 }
 
 model PermissionCondition {
-  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  permission_id String    @db.Uuid
-  attribute_id  String    @db.Uuid
-  conditions    Json      @db.JsonB
+  id            String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  permission_id String @db.Uuid
+  attribute_id  String @db.Uuid
+  conditions    Json   @db.JsonB
 
-  permission    Permission @relation(fields: [permission_id], references: [id], onDelete: Cascade)
-  attribute     Attribute  @relation(fields: [attribute_id], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permission_id], references: [id], onDelete: Cascade)
+  attribute  Attribute  @relation(fields: [attribute_id], references: [id], onDelete: Cascade)
 
   @@map("permission_conditions")
 }
