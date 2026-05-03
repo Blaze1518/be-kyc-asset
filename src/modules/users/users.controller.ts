@@ -24,7 +24,7 @@ import { ApiStandardSuccess } from 'src/common/decorators/swagger/success.decora
 import { QueryDto } from 'src/common/dto/query.dto';
 import { ParamsWithIdDto } from 'src/common/dto/param-id.dto';
 import { ResponseUserDto } from './dto/response-user.dto';
-import { plainToInstance } from 'class-transformer';
+import { UsersMapper } from './users.mapper';
 
 @ApiTags('Users (Quản lý người dùng)')
 @ApiBearerAuth()
@@ -32,7 +32,10 @@ import { plainToInstance } from 'class-transformer';
 @UseInterceptors(ClassSerializerInterceptor)
 @ApiStandardError(undefined, '/users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly usersMapper: UsersMapper,
+  ) {}
 
   @Post()
   @ApiOperation({
@@ -44,9 +47,7 @@ export class UsersController {
   })
   async create(@Body() createUserDto: CreateUserDto): Promise<ResponseUserDto> {
     const result = await this.usersService.create(createUserDto);
-    return plainToInstance(ResponseUserDto, result, {
-      excludeExtraneousValues: true,
-    });
+    return this.usersMapper.toResponse(result);
   }
 
   @Get()
@@ -58,8 +59,9 @@ export class UsersController {
     isArray: true,
     isPaginated: true,
   })
-  findAll(@Query() query: QueryDto) {
-    return this.usersService.findAll(query);
+  async findAll(@Query() query: QueryDto) {
+    const result = await this.usersService.findAll(query);
+    return this.usersMapper.toPaginatedResponse(result);
   }
 
   @Get(':id')
@@ -67,9 +69,7 @@ export class UsersController {
   @ApiStandardSuccess(ResponseUserDto)
   async findOne(@Param() params: ParamsWithIdDto): Promise<ResponseUserDto> {
     const result = await this.usersService.findOne(params.id);
-    return plainToInstance(ResponseUserDto, result, {
-      excludeExtraneousValues: true,
-    });
+    return this.usersMapper.toResponse(result);
   }
 
   @Patch(':id')
@@ -80,9 +80,7 @@ export class UsersController {
     @Body() updateUserDto: UpdateUserDto,
   ): Promise<ResponseUserDto> {
     const result = await this.usersService.update(params.id, updateUserDto);
-    return plainToInstance(ResponseUserDto, result, {
-      excludeExtraneousValues: true,
-    });
+    return this.usersMapper.toResponse(result);
   }
 
   @Delete(':id')
@@ -90,8 +88,6 @@ export class UsersController {
   @ApiStandardSuccess(ResponseUserDto)
   async remove(@Param() params: ParamsWithIdDto): Promise<ResponseUserDto> {
     const result = await this.usersService.remove(params.id);
-    return plainToInstance(ResponseUserDto, result, {
-      excludeExtraneousValues: true,
-    });
+    return this.usersMapper.toResponse(result);
   }
 }

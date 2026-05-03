@@ -5,10 +5,16 @@ import { PrismaRepository } from 'src/prisma/prisma.repository';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handlePrismaError } from 'src/prisma/prisma-error-handler';
 
-const userWithRolesInclude = {
+export const userWithRolesInclude = {
   roles: {
     include: {
-      role: true,
+      role: {
+        select: {
+          id: true,
+          name: true,
+          description: true,
+        },
+      },
     },
   },
 } satisfies Prisma.UserInclude;
@@ -31,6 +37,39 @@ export class UsersRepository extends PrismaRepository<'User'> {
       return await this.getModel(ctx).findFirst({
         where: {
           id,
+          deletedAt: null,
+          isActive: true,
+        },
+        include: userWithRolesInclude,
+      });
+    } catch (error) {
+      return handlePrismaError(error, 'user');
+    }
+  }
+
+  async findUniqueWithRoles(
+    id: string,
+    ctx?: IDatabaseContext,
+  ): Promise<UserWithRoles | null> {
+    try {
+      return await this.getModel(ctx).findUnique({
+        where: { id },
+        include: userWithRolesInclude,
+      });
+    } catch (error) {
+      return handlePrismaError(error, 'user');
+    }
+  }
+
+  async findByUsernameWithRoles(
+    username: string,
+    ctx?: IDatabaseContext,
+  ): Promise<UserWithRoles | null> {
+    try {
+      return await this.getModel(ctx).findFirst({
+        where: {
+          username,
+          isActive: true,
           deletedAt: null,
         },
         include: userWithRolesInclude,
@@ -61,20 +100,20 @@ export class UsersRepository extends PrismaRepository<'User'> {
       const model = this.getModel(ctx);
       const operations = [
         model.findMany({
-          where,
+          where: { ...where, deletedAt: null },
           skip,
           take: limit,
           orderBy,
           include: userWithRolesInclude,
         }),
-        model.count({ where }),
+        model.count({ where: { ...where, deletedAt: null } }),
       ];
 
-      return ctx
-        ? (Promise.all(operations) as Promise<[UserWithRoles[], number]>)
-        : (this.prisma.$transaction(operations) as Promise<
-            [UserWithRoles[], number]
-          >);
+      const [users, count] = ctx
+        ? await Promise.all(operations)
+        : await this.prisma.$transaction(operations);
+
+      return [users, count];
     } catch (error) {
       return handlePrismaError(error, 'user');
     }

@@ -1,4 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { Prisma } from 'src/generated/prisma/client';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { TransactionManager } from 'src/common/database/abstract/transaction-manager.abstract';
@@ -9,9 +14,17 @@ import {
 import { UserRolesRepository } from './repositories/user-roles.repository';
 import { PasswordHasher } from './password-hasher.service';
 import { QueryDto } from 'src/common/dto/query.dto';
-import { plainToInstance } from 'class-transformer';
-import { ResponseUserDto } from './dto/response-user.dto';
 import { IDatabaseContext } from 'src/common/database/interface/db-context.interface';
+
+export interface UsersPageResult {
+  items: UserWithRoles[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
+}
 
 @Injectable()
 export class UsersService {
@@ -21,19 +34,6 @@ export class UsersService {
     private readonly userRolesRepository: UserRolesRepository,
     private readonly passwordHasher: PasswordHasher,
   ) {}
-
-  private toResponse(user: UserWithRoles): ResponseUserDto {
-    return plainToInstance(
-      ResponseUserDto,
-      {
-        ...user,
-        roles: user.roles.map((userRole) => userRole.role),
-      },
-      {
-        excludeExtraneousValues: true,
-      },
-    );
-  }
 
   private async findUserOrThrow(
     id: string,
@@ -48,44 +48,60 @@ export class UsersService {
     return user;
   }
 
-  async create(createUserDto: CreateUserDto) {
-    return await this.txManager.run(async (ctx) => {
-      const hashedPassword = await this.passwordHasher.hash(
-        createUserDto.password,
-      );
+  async create(
+    createUserDto: CreateUserDto,
+    ctx?: IDatabaseContext,
+  ): Promise<UserWithRoles> {
+    if (ctx) {
+      return this.createWithContext(createUserDto, ctx);
+    }
+    return this.txManager.run((txCtx) =>
+      this.createWithContext(createUserDto, txCtx),
+    );
+  }
 
-      const user = await this.usersRepository.create(
+  private async createWithContext(
+    createUserDto: CreateUserDto,
+    ctx: IDatabaseContext,
+  ): Promise<UserWithRoles> {
+    const hashedPassword = await this.passwordHasher.hash(
+      createUserDto.password,
+    );
+    const user = await this.usersRepository.create(
+      {
+        data: {
+          username: createUserDto.username,
+          displayName: createUserDto.displayName,
+          hashed_password: hashedPassword,
+        },
+      },
+      ctx,
+    );
+    const userId = user.id as string;
+    if (createUserDto.roles?.length) {
+      await this.userRolesRepository.createMany(
         {
-          data: {
-            username: createUserDto.username,
-            displayName: createUserDto.displayName,
-            hashed_password: hashedPassword,
-          },
+          data: createUserDto.roles.map((role) => ({
+            user_id: userId,
+            role_id: role.id,
+          })),
         },
         ctx,
       );
-      const userId = user.id as string;
-
-      if (createUserDto.roles && createUserDto.roles.length > 0) {
-        await this.userRolesRepository.createMany(
-          {
-            data: createUserDto.roles.map((role) => ({
-              user_id: userId,
-              role_id: role.id,
-            })),
-          },
-          ctx,
-        );
-      }
-
-      const createdUser = await this.findUserOrThrow(userId, ctx);
-      return this.toResponse(createdUser);
-    });
+    }
+    const createdUser = await this.usersRepository.findByIdWithRoles(
+      userId,
+      ctx,
+    );
+    if (!createdUser) {
+      throw new BadRequestException('Không thể tải lại user sau khi tạo');
+    }
+    return createdUser;
   }
 
-  async findAll(query: QueryDto) {
+  async findAll(query: QueryDto): Promise<UsersPageResult> {
     const { search, page = 1, limit = 10, ...paginationParams } = query;
-    let where = {
+    let where: Prisma.UserWhereInput = {
       deletedAt: null,
     };
 
@@ -96,7 +112,7 @@ export class UsersService {
           { username: { contains: search, mode: 'insensitive' } },
           { displayName: { contains: search, mode: 'insensitive' } },
         ],
-      } as typeof where;
+      };
     }
 
     const [items, total] = await this.usersRepository.findManyPaginated(
@@ -105,7 +121,7 @@ export class UsersService {
     );
 
     return {
-      items: items.map((item) => this.toResponse(item)),
+      items,
       meta: {
         total,
         page: Number(page),
@@ -115,95 +131,101 @@ export class UsersService {
     };
   }
 
-  async findOne(id: string) {
-    const user = await this.findUserOrThrow(id);
-    return this.toResponse(user);
+  async findOne(id: string): Promise<UserWithRoles> {
+    return this.findUserOrThrow(id);
   }
 
-  async update(id: string, updateUserDto: UpdateUserDto) {
-    return await this.txManager.run(async (ctx) => {
-      const data: {
-        displayName?: string;
-        isActive?: boolean;
-        hashed_password?: string;
-        token_version?: { increment: number };
-      } = {};
+  async update(
+    id: string,
+    updateUserDto: UpdateUserDto,
+  ): Promise<UserWithRoles> {
+    return this.txManager.run((ctx) =>
+      this.updateWithContext(id, updateUserDto, ctx),
+    );
+  }
 
-      if (updateUserDto.displayName !== undefined) {
-        data.displayName = updateUserDto.displayName;
-      }
+  private async updateWithContext(
+    id: string,
+    updateUserDto: UpdateUserDto,
+    ctx: IDatabaseContext,
+  ): Promise<UserWithRoles> {
+    const data: Prisma.UserUpdateInput = {};
 
-      if (updateUserDto.isActive !== undefined) {
-        data.isActive = updateUserDto.isActive;
-      }
+    if (updateUserDto.displayName !== undefined) {
+      data.displayName = updateUserDto.displayName;
+    }
 
-      if (updateUserDto.password !== undefined) {
-        data.hashed_password = await this.passwordHasher.hash(
-          updateUserDto.password,
-        );
-        data.token_version = { increment: 1 };
-      }
+    if (updateUserDto.isActive !== undefined) {
+      data.isActive = updateUserDto.isActive;
+    }
 
-      await this.usersRepository.update(
+    if (updateUserDto.password !== undefined) {
+      data.hashed_password = await this.passwordHasher.hash(
+        updateUserDto.password,
+      );
+      data.token_version = { increment: 1 };
+    }
+
+    await this.usersRepository.update(
+      {
+        where: { id },
+        data,
+      },
+      ctx,
+    );
+
+    if (updateUserDto.roles !== undefined) {
+      await this.userRolesRepository.deleteMany(
         {
-          where: { id },
-          data,
+          where: { user_id: id },
         },
         ctx,
       );
 
-      if (updateUserDto.roles !== undefined) {
-        await this.userRolesRepository.deleteMany(
+      if (updateUserDto.roles.length > 0) {
+        await this.userRolesRepository.createMany(
           {
-            where: { user_id: id },
+            data: updateUserDto.roles.map((role) => ({
+              user_id: id,
+              role_id: role.id,
+            })),
           },
           ctx,
         );
-
-        if (updateUserDto.roles.length > 0) {
-          await this.userRolesRepository.createMany(
-            {
-              data: updateUserDto.roles.map((role) => ({
-                user_id: id,
-                role_id: role.id,
-              })),
-            },
-            ctx,
-          );
-        }
       }
+    }
 
-      const updatedUser = await this.findUserOrThrow(id, ctx);
-      return this.toResponse(updatedUser);
-    });
+    return this.findUserOrThrow(id, ctx);
   }
 
-  async remove(id: string) {
-    return await this.txManager.run(async (ctx) => {
-      await this.findUserOrThrow(id, ctx);
+  async remove(id: string): Promise<UserWithRoles> {
+    return this.txManager.run((ctx) => this.removeWithContext(id, ctx));
+  }
 
-      await this.usersRepository.update(
-        {
-          where: { id },
-          data: {
-            deletedAt: new Date(),
-            isActive: false,
-            token_version: { increment: 1 },
-          } as any,
+  private async removeWithContext(
+    id: string,
+    ctx: IDatabaseContext,
+  ): Promise<UserWithRoles> {
+    await this.findUserOrThrow(id, ctx);
+
+    await this.usersRepository.update(
+      {
+        where: { id },
+        data: {
+          deletedAt: new Date(),
+          isActive: false,
+          token_version: { increment: 1 },
         },
-        ctx,
-      );
+      },
+      ctx,
+    );
 
-      const deletedUser = await this.usersRepository.findUnique(
-        {
-          where: { id },
-        },
-        ctx,
-      );
+    const deletedUser = await this.usersRepository.findUniqueWithRoles(id, ctx);
 
-      return plainToInstance(ResponseUserDto, deletedUser, {
-        excludeExtraneousValues: true,
-      });
-    });
+    if (!deletedUser) {
+      throw new BadRequestException('Không thể tải lại user sau khi xóa');
+    }
+
+    return deletedUser;
   }
 }

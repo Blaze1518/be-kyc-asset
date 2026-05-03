@@ -6,6 +6,7 @@ import { AllExceptionsFilter } from './common/exceptions/all-exceptions.filter';
 import { CustomValidationPipe } from './common/pipes/validation.pipe';
 import { setupSwagger } from './config/swagger/swagger.config';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
+import cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const logger = WinstonModule.createLogger(winstonConfig);
@@ -18,6 +19,7 @@ async function bootstrap() {
     });
 
     const httpAdapterHost = app.get(HttpAdapterHost);
+    app.use(cookieParser());
     app.useGlobalFilters(new AllExceptionsFilter(httpAdapterHost));
     app.useGlobalPipes(new CustomValidationPipe());
     app.useGlobalInterceptors(new TransformInterceptor());

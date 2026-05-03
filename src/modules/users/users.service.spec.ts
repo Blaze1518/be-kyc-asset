@@ -23,6 +23,21 @@ jest.mock('./repositories/user-roles.repository', () => ({
 
 describe('UsersService', () => {
   let service: UsersService;
+  const txCtx = { tx: true };
+  const externalCtx = { external: true };
+
+  const createdUser = {
+    id: 'user-id',
+    username: 'admin_pro',
+    displayName: 'Admin Pro',
+    hashed_password: 'hashed-password',
+    token_version: 1,
+    isActive: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    deletedAt: null,
+    roles: [],
+  };
 
   const mockTransactionManager = {
     run: jest.fn(),
@@ -77,5 +92,76 @@ describe('UsersService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+  });
+
+  it('creates a user inside caller transaction context when ctx is provided', async () => {
+    mockPasswordHasher.hash.mockResolvedValue('hashed-password');
+    mockUsersRepository.create.mockResolvedValue({ id: createdUser.id });
+    mockUsersRepository.findByIdWithRoles.mockResolvedValue(createdUser);
+
+    const result = await service.create(
+      {
+        username: createdUser.username,
+        displayName: createdUser.displayName,
+        password: 'Password@123',
+        roles: [{ id: 'role-id' }],
+      },
+      externalCtx as any,
+    );
+
+    expect(result).toBe(createdUser);
+    expect(mockTransactionManager.run).not.toHaveBeenCalled();
+    expect(mockUsersRepository.create).toHaveBeenCalledWith(
+      {
+        data: {
+          username: createdUser.username,
+          displayName: createdUser.displayName,
+          hashed_password: 'hashed-password',
+        },
+      },
+      externalCtx,
+    );
+    expect(mockUserRolesRepository.createMany).toHaveBeenCalledWith(
+      {
+        data: [
+          {
+            user_id: createdUser.id,
+            role_id: 'role-id',
+          },
+        ],
+      },
+      externalCtx,
+    );
+    expect(mockUsersRepository.findByIdWithRoles).toHaveBeenCalledWith(
+      createdUser.id,
+      externalCtx,
+    );
+  });
+
+  it('opens a transaction when creating a user without caller context', async () => {
+    mockTransactionManager.run.mockImplementation((work) => work(txCtx));
+    mockPasswordHasher.hash.mockResolvedValue('hashed-password');
+    mockUsersRepository.create.mockResolvedValue({ id: createdUser.id });
+    mockUsersRepository.findByIdWithRoles.mockResolvedValue(createdUser);
+
+    const result = await service.create({
+      username: createdUser.username,
+      displayName: createdUser.displayName,
+      password: 'Password@123',
+    });
+
+    expect(result).toBe(createdUser);
+    expect(mockTransactionManager.run).toHaveBeenCalledTimes(1);
+    expect(mockUsersRepository.create).toHaveBeenCalledWith(
+      {
+        data: {
+          username: createdUser.username,
+          displayName: createdUser.displayName,
+          hashed_password: 'hashed-password',
+        },
+      },
+      txCtx,
+    );
+    expect(mockUserRolesRepository.createMany).not.toHaveBeenCalled();
   });
 });

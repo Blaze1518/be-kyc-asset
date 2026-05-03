@@ -40,6 +40,10 @@ export class ResponseUserDto {
   @Expose()
   updatedAt: Date;
 
+  @ApiProperty({ example: 1 })
+  @Expose()
+  tokenVersion: number;
+
   @ApiPropertyOptional({
     example: null,
     nullable: true,

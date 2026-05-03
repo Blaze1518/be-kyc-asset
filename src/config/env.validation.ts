@@ -23,6 +23,16 @@ class EnvironmentVariables {
   PORT: number;
 
   @IsString()
+  JWT_ACCESS_SECRET: string;
+
+  @IsString()
+  JWT_ACCESS_EXPIRES_IN: string;
+
+  @IsNumber()
+  @Min(1)
+  REFRESH_TOKEN_TTL_DAYS: number;
+
+  @IsString()
   DB_TYPE: string;
 
   @IsString()
