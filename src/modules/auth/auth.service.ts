@@ -1,6 +1,7 @@
 import {
   BadRequestException,
   Injectable,
+  Logger,
   UnauthorizedException,
 } from '@nestjs/common';
 import type { Prisma } from 'src/generated/prisma/client';
@@ -38,6 +39,7 @@ export interface AuthMessageResult {
 
 @Injectable()
 export class AuthService {
+  private readonly logger = new Logger(AuthService.name);
   constructor(
     private readonly txManager: TransactionManager,
     private readonly usersService: UsersService,
@@ -158,8 +160,6 @@ export class AuthService {
         user,
         {
           ...meta,
-          deviceId: dto.deviceId ?? meta.deviceId,
-          deviceName: dto.deviceName ?? meta.deviceName,
         },
         ctx,
         'Đăng nhập thành công',
@@ -168,13 +168,9 @@ export class AuthService {
   }
 
   async refresh(
-    refreshTokenValue: string | undefined,
+    refreshTokenValue: string,
     meta: AuthRequestMeta,
   ): Promise<AuthSessionResult> {
-    if (!refreshTokenValue) {
-      throw new UnauthorizedException('Thiếu refresh token');
-    }
-
     const tokenHash = this.tokenService.hashRefreshToken(refreshTokenValue);
     const storedToken =
       await this.refreshTokensRepository.findByHash(tokenHash);
@@ -184,12 +180,21 @@ export class AuthService {
     }
 
     if (storedToken.is_revoked || storedToken.used_at) {
-      await this.txManager.run((ctx) =>
-        this.refreshTokensRepository.revokeFamily(
+      await this.txManager.run(async (ctx) => {
+        await this.refreshTokensRepository.revokeFamily(
           storedToken.token_family,
           ctx,
-        ),
-      );
+        );
+        await this.usersRepository.update(
+          {
+            where: { id: storedToken.user_id },
+            data: {
+              token_version: { increment: 1 },
+            },
+          },
+          ctx,
+        );
+      });
       throw new UnauthorizedException('Refresh token đã bị sử dụng lại');
     }
 
@@ -233,12 +238,8 @@ export class AuthService {
   async me(payload: AuthJwtPayload): Promise<UserWithRoles> {
     const user = await this.usersRepository.findByIdWithRoles(payload.sub);
 
-    if (!user || !user.isActive || user.deletedAt) {
+    if (!user) {
       throw new UnauthorizedException('Tài khoản không còn hoạt động');
-    }
-
-    if (user.token_version !== payload.tokenVersion) {
-      throw new UnauthorizedException('Phiên đăng nhập đã hết hiệu lực');
     }
 
     return user;

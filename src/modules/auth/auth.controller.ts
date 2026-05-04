@@ -22,12 +22,13 @@ import {
 } from './dto/auth-response.dto';
 import { ApiStandardError } from 'src/common/decorators/swagger/errors.decorator';
 import { ApiStandardSuccess } from 'src/common/decorators/swagger/success.decorator';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { CurrentUser } from './decorators/current-user.decorator';
 import type { AuthJwtPayload } from './token.service';
 import { GetAuthMeta } from 'src/common/decorators/auth/auth-meta.decorator';
 import { AuthCookieService } from './auth-cookie.service';
 import { AuthMapper } from './auth.mapper';
+import { Public } from './decorators/public.decorator';
+import { RefreshTokenGuard } from './guards/refresh-token.guard';
 
 @ApiTags('Auth (Quản lý đăng nhập và đăng ký)')
 @Controller('auth')
@@ -40,6 +41,7 @@ export class AuthController {
   ) {}
 
   @Post('register')
+  @Public()
   @ApiOperation({ summary: 'Đăng ký tài khoản mới' })
   @ApiStandardSuccess(AuthTokenResponseDto)
   async register(
@@ -53,6 +55,7 @@ export class AuthController {
   }
 
   @Post('login')
+  @Public()
   @ApiOperation({ summary: 'Đăng nhập' })
   @ApiStandardSuccess(AuthTokenResponseDto)
   async login(
@@ -66,17 +69,16 @@ export class AuthController {
   }
 
   @Post('refresh')
+  @Public()
+  @UseGuards(RefreshTokenGuard)
   @ApiOperation({ summary: 'Làm mới access token' })
   @ApiStandardSuccess(AuthTokenResponseDto)
   async refresh(
-    @Req() request: Request,
+    @Req() request: any,
     @GetAuthMeta() meta: AuthRequestMeta,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const session = await this.authService.refresh(
-      this.authCookieService.getRefreshToken(request),
-      meta,
-    );
+    const session = await this.authService.refresh(request.refreshToken, meta);
     this.authCookieService.setAuthCookies(response, session);
     return this.authMapper.toSessionResponse(session);
   }
@@ -97,7 +99,6 @@ export class AuthController {
 
   @Get('me')
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Lấy thông tin người dùng hiện tại' })
   @ApiStandardSuccess(AuthUserResponseDto)
   async me(@CurrentUser() user: AuthJwtPayload) {
@@ -107,7 +108,6 @@ export class AuthController {
 
   @Patch('me/password')
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Đổi mật khẩu người dùng hiện tại' })
   @ApiStandardSuccess(AuthMessageResponseDto)
   async changePassword(

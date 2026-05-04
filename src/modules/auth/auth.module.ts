@@ -6,15 +6,18 @@ import { UsersRepository } from 'src/modules/users/repositories/users.repository
 import { PasswordHasher } from 'src/modules/users/password-hasher.service';
 import { RefreshTokensRepository } from './repositories/refresh-tokens.repository';
 import { TokenService } from './token.service';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { ConfigService } from '@nestjs/config';
 import { AuthCookieService } from './auth-cookie.service';
 import { AuthMapper } from './auth.mapper';
 import { UsersModule } from 'src/modules/users/users.module';
-
+import { PassportModule } from '@nestjs/passport';
+import { AuthStrategy } from './constants/strategy.constant';
+import { AccessTokenGuard } from './guards/access-token.guard';
+import { AccessTokenStrategy } from './strategies/access-token.strategy';
 @Module({
   imports: [
     UsersModule,
+    PassportModule.register({ defaultStrategy: AuthStrategy.JWT_ACCESS }),
     JwtModule.registerAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
@@ -33,7 +36,8 @@ import { UsersModule } from 'src/modules/users/users.module';
     AuthService,
     RefreshTokensRepository,
     TokenService,
-    JwtAuthGuard,
+    AccessTokenGuard,
+    AccessTokenStrategy,
     AuthCookieService,
     AuthMapper,
   ],

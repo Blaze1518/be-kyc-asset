@@ -17,24 +17,4 @@ export class LoginDto {
   @IsString()
   @IsNotEmpty()
   password: string;
-
-  @ApiPropertyOptional({
-    example: 'browser-device-id',
-    description: 'ID thiết bị do client cung cấp nếu có',
-    maxLength: 255,
-  })
-  @IsOptional()
-  @IsString()
-  @MaxLength(255)
-  deviceId?: string;
-
-  @ApiPropertyOptional({
-    example: 'Chrome Windows',
-    description: 'Tên thiết bị hiển thị trong danh sách phiên đăng nhập',
-    maxLength: 255,
-  })
-  @IsOptional()
-  @IsString()
-  @MaxLength(255)
-  deviceName?: string;
 }
