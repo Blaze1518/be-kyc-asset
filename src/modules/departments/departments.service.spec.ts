@@ -32,9 +32,10 @@ describe('DepartmentsService', () => {
 
   const mockDepartmentsRepository = {
     create: jest.fn(),
-    findFirst: jest.fn(),
+    findActiveById: jest.fn(),
     findManyPaginated: jest.fn(),
     update: jest.fn(),
+    softDelete: jest.fn(),
   };
 
   beforeEach(async () => {
@@ -74,7 +75,7 @@ describe('DepartmentsService', () => {
   });
 
   describe('findAll', () => {
-    it('should return paginated departments with shaped meta', async () => {
+    it('should forward query to repository and shape paginated result', async () => {
       repository.findManyPaginated.mockResolvedValue([[department], 1]);
 
       const result = await service.findAll({
@@ -99,41 +100,35 @@ describe('DepartmentsService', () => {
         totalPages: 1,
       });
 
-      expect(repository.findManyPaginated).toHaveBeenCalledWith(
-        { page: 1, limit: 10 },
-        {
-          OR: [
-            { code: { contains: 'KYC', mode: 'insensitive' } },
-            { name: { contains: 'KYC', mode: 'insensitive' } },
-          ],
-        },
-      );
+      expect(repository.findManyPaginated).toHaveBeenCalledWith({
+        search: 'KYC',
+        page: 1,
+        limit: 10,
+      });
     });
 
-    it('should not build OR filter when search is omitted', async () => {
+    it('should default page/limit when omitted', async () => {
       repository.findManyPaginated.mockResolvedValue([[], 0]);
 
       await service.findAll({});
 
-      expect(repository.findManyPaginated).toHaveBeenCalledWith(
-        { page: 1, limit: 10 },
-        {},
-      );
+      expect(repository.findManyPaginated).toHaveBeenCalledWith({
+        page: 1,
+        limit: 10,
+      });
     });
   });
 
   describe('findOne', () => {
     it('should return a department by id', async () => {
-      repository.findFirst.mockResolvedValue(department);
+      repository.findActiveById.mockResolvedValue(department);
 
       await expect(service.findOne(departmentId)).resolves.toEqual(department);
-      expect(repository.findFirst).toHaveBeenCalledWith({
-        where: { id: departmentId, deletedAt: null },
-      });
+      expect(repository.findActiveById).toHaveBeenCalledWith(departmentId);
     });
 
     it('should throw NotFoundException when department does not exist', async () => {
-      repository.findFirst.mockResolvedValue(null);
+      repository.findActiveById.mockResolvedValue(null);
 
       await expect(service.findOne(departmentId)).rejects.toThrow(
         NotFoundException,
@@ -145,16 +140,14 @@ describe('DepartmentsService', () => {
     it('should update an existing department', async () => {
       const updatedDepartment = { ...department, ...updateDepartmentDto };
 
-      repository.findFirst.mockResolvedValue(department);
+      repository.findActiveById.mockResolvedValue(department);
       repository.update.mockResolvedValue(updatedDepartment);
 
       await expect(
         service.update(departmentId, updateDepartmentDto),
       ).resolves.toEqual(updatedDepartment);
 
-      expect(repository.findFirst).toHaveBeenCalledWith({
-        where: { id: departmentId, deletedAt: null },
-      });
+      expect(repository.findActiveById).toHaveBeenCalledWith(departmentId);
       expect(repository.update).toHaveBeenCalledWith({
         where: { id: departmentId },
         data: updateDepartmentDto,
@@ -162,7 +155,7 @@ describe('DepartmentsService', () => {
     });
 
     it('should throw NotFoundException and not update when department does not exist', async () => {
-      repository.findFirst.mockResolvedValue(null);
+      repository.findActiveById.mockResolvedValue(null);
 
       await expect(
         service.update(departmentId, updateDepartmentDto),
@@ -172,32 +165,26 @@ describe('DepartmentsService', () => {
   });
 
   describe('remove', () => {
-    it('should soft-delete an existing department', async () => {
+    it('should soft-delete an existing department through repository helper', async () => {
       const softDeleted = { ...department, deletedAt: new Date() };
 
-      repository.findFirst.mockResolvedValue(department);
-      repository.update.mockResolvedValue(softDeleted);
+      repository.findActiveById.mockResolvedValue(department);
+      repository.softDelete.mockResolvedValue(softDeleted);
 
       const result = await service.remove(departmentId);
 
       expect(result).toEqual(softDeleted);
-      expect(repository.findFirst).toHaveBeenCalledWith({
-        where: { id: departmentId, deletedAt: null },
-      });
-
-      const updateCall = repository.update.mock.calls[0][0];
-      expect(updateCall.where).toEqual({ id: departmentId });
-      expect(updateCall.data).toHaveProperty('deletedAt');
-      expect(updateCall.data.deletedAt).toBeInstanceOf(Date);
+      expect(repository.findActiveById).toHaveBeenCalledWith(departmentId);
+      expect(repository.softDelete).toHaveBeenCalledWith(departmentId);
     });
 
-    it('should throw NotFoundException and not update when department does not exist', async () => {
-      repository.findFirst.mockResolvedValue(null);
+    it('should throw NotFoundException and not soft-delete when department does not exist', async () => {
+      repository.findActiveById.mockResolvedValue(null);
 
       await expect(service.remove(departmentId)).rejects.toThrow(
         NotFoundException,
       );
-      expect(repository.update).not.toHaveBeenCalled();
+      expect(repository.softDelete).not.toHaveBeenCalled();
     });
   });
 });

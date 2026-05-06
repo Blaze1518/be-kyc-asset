@@ -9,9 +9,9 @@ import { AuthModule } from './modules/auth/auth.module';
 import { CommonModule } from './common/common.module';
 import { PrismaModule } from '../src/prisma/prisma.module';
 import { AttributeModule } from './modules/access-control/attribute/attribute.module';
-import { DepartmentsModule } from './departments/departments.module';
-import { PortsModule } from './ports/ports.module';
-import { FilesModule } from './files/files.module';
+import { DepartmentsModule } from './modules/departments/departments.module';
+import { PortsModule } from './modules/ports/ports.module';
+import { FilesModule } from './modules/files/files.module';
 
 @Module({
   imports: [

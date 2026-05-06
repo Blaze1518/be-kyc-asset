@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { DepartmentsController } from './departments.controller';
 import { DepartmentsService } from './departments.service';
 import { ResponseDepartmentDto } from './dto/response-department.dto';
+import { QueryDto, SortOrder } from 'src/common/dto/query.dto';
 
 jest.mock('./departments.service', () => ({
   DepartmentsService: class DepartmentsService {},
@@ -66,12 +67,12 @@ describe('DepartmentsController', () => {
     name: 'Phòng KYC TPHCM',
   };
 
-  const queryDto = {
+  const queryDto: QueryDto = {
     search: 'KYC',
     page: 1,
     limit: 10,
     sortBy: 'createdAt',
-    sortOrder: 'desc' as const,
+    sortOrder: SortOrder.DESC,
   };
 
   const mockDepartmentsService = {

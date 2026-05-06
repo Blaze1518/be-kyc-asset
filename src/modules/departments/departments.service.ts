@@ -1,6 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-import { Prisma } from 'src/generated/prisma/client';
 import { QueryDto } from 'src/common/dto/query.dto';
 import { CreateDepartmentDto } from './dto/create-department.dto';
 import { UpdateDepartmentDto } from './dto/update-department.dto';
@@ -12,9 +11,7 @@ export class DepartmentsService {
   constructor(private readonly departmentsRepository: DepartmentsRepository) {}
 
   private async findDepartmentOrThrow(id: string) {
-    const department = await this.departmentsRepository.findFirst({
-      where: { id, deletedAt: null },
-    });
+    const department = await this.departmentsRepository.findActiveById(id);
 
     if (!department) {
       throw new NotFoundException(`Đơn vị với ID #${id} không tồn tại`);
@@ -24,26 +21,19 @@ export class DepartmentsService {
   }
 
   async create(createDepartmentDto: CreateDepartmentDto) {
-    return await this.departmentsRepository.create({
+    return this.departmentsRepository.create({
       data: createDepartmentDto,
     });
   }
 
   async findAll(query: QueryDto) {
-    const { search, page = 1, limit = 10, ...paginationParams } = query;
+    const { page = 1, limit = 10 } = query;
 
-    const where: Prisma.DepartmentWhereInput = {};
-    if (search) {
-      where.OR = [
-        { code: { contains: search, mode: 'insensitive' } },
-        { name: { contains: search, mode: 'insensitive' } },
-      ];
-    }
-
-    const [items, total] = await this.departmentsRepository.findManyPaginated(
-      { page, limit, ...paginationParams },
-      where,
-    );
+    const [items, total] = await this.departmentsRepository.findManyPaginated({
+      ...query,
+      page,
+      limit,
+    });
 
     return {
       items: plainToInstance(ResponseDepartmentDto, items, {
@@ -59,13 +49,13 @@ export class DepartmentsService {
   }
 
   async findOne(id: string) {
-    return await this.findDepartmentOrThrow(id);
+    return this.findDepartmentOrThrow(id);
   }
 
   async update(id: string, updateDepartmentDto: UpdateDepartmentDto) {
     await this.findDepartmentOrThrow(id);
 
-    return await this.departmentsRepository.update({
+    return this.departmentsRepository.update({
       where: { id },
       data: updateDepartmentDto,
     });
@@ -74,9 +64,6 @@ export class DepartmentsService {
   async remove(id: string) {
     await this.findDepartmentOrThrow(id);
 
-    return await this.departmentsRepository.update({
-      where: { id },
-      data: { deletedAt: new Date() },
-    });
+    return this.departmentsRepository.softDelete(id);
   }
 }

@@ -5,20 +5,33 @@ import { PrismaRepository } from 'src/prisma/prisma.repository';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handlePrismaError } from 'src/prisma/prisma-error-handler';
 
+export interface FindDepartmentsQuery {
+  page?: number;
+  limit?: number;
+  sortBy?: string;
+  sortOrder?: 'asc' | 'desc';
+  search?: string;
+}
+
 @Injectable()
 export class DepartmentsRepository extends PrismaRepository<'Department'> {
   constructor(prisma: PrismaService) {
     super(prisma, 'department');
   }
 
+  async findActiveById(id: string, ctx?: IDatabaseContext) {
+    return this.findFirst({ where: { id, deletedAt: null } }, ctx);
+  }
+
+  async softDelete(id: string, ctx?: IDatabaseContext) {
+    return this.update(
+      { where: { id }, data: { deletedAt: new Date() } },
+      ctx,
+    );
+  }
+
   async findManyPaginated(
-    query: {
-      page?: number;
-      limit?: number;
-      sortBy?: string;
-      sortOrder?: 'asc' | 'desc';
-    },
-    where?: Prisma.DepartmentWhereInput,
+    query: FindDepartmentsQuery,
     ctx?: IDatabaseContext,
   ): Promise<[Prisma.DepartmentModel[], number]> {
     try {
@@ -29,20 +42,18 @@ export class DepartmentsRepository extends PrismaRepository<'Department'> {
         ? { [query.sortBy]: query.sortOrder ?? 'asc' }
         : { createdAt: 'desc' };
 
-      const scopedWhere: Prisma.DepartmentWhereInput = {
-        ...where,
-        deletedAt: null,
-      };
+      const where: Prisma.DepartmentWhereInput = { deletedAt: null };
+      if (query.search) {
+        where.OR = [
+          { code: { contains: query.search, mode: 'insensitive' } },
+          { name: { contains: query.search, mode: 'insensitive' } },
+        ];
+      }
 
       const model = this.getModel(ctx);
       const operations = [
-        model.findMany({
-          where: scopedWhere,
-          skip,
-          take: limit,
-          orderBy,
-        }),
-        model.count({ where: scopedWhere }),
+        model.findMany({ where, skip, take: limit, orderBy }),
+        model.count({ where }),
       ];
 
       return ctx
