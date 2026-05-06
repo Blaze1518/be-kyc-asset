@@ -72,7 +72,9 @@ export abstract class PrismaRepository<T extends Prisma.ModelName> {
   async findFirst(
     input?: Prisma.TypeMap['model'][T]['operations']['findFirst']['args'],
     ctx?: IDatabaseContext,
-  ): Promise<Prisma.TypeMap['model'][T]['operations']['findFirst']['result']> {
+  ): Promise<
+    Prisma.TypeMap['model'][T]['operations']['findFirst']['result'] | null
+  > {
     try {
       return await this.getModel(ctx).findFirst(input);
     } catch (error) {

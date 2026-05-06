@@ -16,6 +16,10 @@ enum Environment {
 }
 
 class EnvironmentVariables {
+  @IsString()
+  @IsOptional()
+  GLOBAL_PREFIX: string;
+
   @IsEnum(Environment)
   NODE_ENV: Environment;
 

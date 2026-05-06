@@ -7,6 +7,8 @@ import {
 } from '@nestjs/common';
 import { PrismaFieldMap, PrismaModelMap } from './constants/prisma-error-map';
 import { PrismaErrorMessages } from './constants/prisma-messages.vi';
+import { AppException } from 'src/common/exceptions/app.exception';
+import { ERROR_REGISTRY } from 'src/common/exceptions/error-registry';
 
 export const handlePrismaError = (error: any, modelName?: string) => {
   if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -17,10 +19,18 @@ export const handlePrismaError = (error: any, modelName?: string) => {
 
     const meta = error.meta as any;
 
+    const throwAppException = (registryEntry: any, customMessage?: string) => {
+      const entry = { ...registryEntry };
+      if (customMessage) entry.message = customMessage;
+      throw new AppException(entry);
+    };
+
     switch (error.code) {
       case 'P2000': {
-        const column = meta?.column_name || 'không xác định';
-        throw new BadRequestException(PrismaErrorMessages.P2000(column));
+        throwAppException(
+          ERROR_REGISTRY.DATABASE_VALIDATION_ERROR,
+          PrismaErrorMessages.P2000(meta?.column_name),
+        );
       }
 
       case 'P2001': {
@@ -148,7 +158,10 @@ export const handlePrismaError = (error: any, modelName?: string) => {
       }
 
       case 'P2034': {
-        throw new ConflictException(PrismaErrorMessages.P2034());
+        throwAppException(
+          ERROR_REGISTRY.DATABASE_CONFLICT,
+          PrismaErrorMessages.P2034(),
+        );
       }
 
       default:

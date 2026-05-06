@@ -4,6 +4,8 @@ import {
   Logger,
   UnauthorizedException,
 } from '@nestjs/common';
+import { AppException } from 'src/common/exceptions/app.exception';
+import { ERROR_REGISTRY } from 'src/common/exceptions/error-registry';
 import type { Prisma } from 'src/generated/prisma/client';
 import { TransactionManager } from 'src/common/database/abstract/transaction-manager.abstract';
 import type { IDatabaseContext } from 'src/common/database/interface/db-context.interface';
@@ -68,7 +70,7 @@ export class AuthService {
 
   private buildPayload(user: UserWithRoles): AuthJwtPayload {
     return {
-      sub: user.id,
+      id: user.id,
       username: user.username,
       displayName: user.displayName,
       tokenVersion: user.token_version,
@@ -143,7 +145,7 @@ export class AuthService {
     );
 
     if (!user) {
-      throw new UnauthorizedException('Thông tin đăng nhập không hợp lệ');
+      throw new AppException(ERROR_REGISTRY.INVALID_CREDENTIALS);
     }
 
     const isPasswordValid = await this.passwordHasher.verify(
@@ -152,7 +154,7 @@ export class AuthService {
     );
 
     if (!isPasswordValid) {
-      throw new UnauthorizedException('Thông tin đăng nhập không hợp lệ');
+      throw new AppException(ERROR_REGISTRY.INVALID_CREDENTIALS);
     }
 
     return this.txManager.run((ctx) =>
@@ -236,8 +238,9 @@ export class AuthService {
   }
 
   async me(payload: AuthJwtPayload): Promise<UserWithRoles> {
-    const user = await this.usersRepository.findByIdWithRoles(payload.sub);
-
+    this.logger.log(`payload: ${JSON.stringify(payload)}`);
+    const user = await this.usersRepository.findByIdWithRoles(payload.id);
+    this.logger.log(`user: ${JSON.stringify(user)}`);
     if (!user) {
       throw new UnauthorizedException('Tài khoản không còn hoạt động');
     }
@@ -259,7 +262,7 @@ export class AuthService {
       );
     }
 
-    const user = await this.usersRepository.findByIdWithRoles(payload.sub);
+    const user = await this.usersRepository.findByIdWithRoles(payload.id);
 
     if (!user || !user.isActive || user.deletedAt) {
       throw new UnauthorizedException('Tài khoản không còn hoạt động');

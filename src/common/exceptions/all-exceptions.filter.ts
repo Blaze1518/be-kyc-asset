@@ -8,6 +8,7 @@ import {
 } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
 import { getRequestId } from '../middleware/rtracer';
+import { AppException } from './app.exception';
 
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {
@@ -19,17 +20,28 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const request = ctx.getRequest();
     const requestId = getRequestId();
 
-    const isHttpException = exception instanceof HttpException;
-    const status = isHttpException
-      ? exception.getStatus()
-      : HttpStatus.INTERNAL_SERVER_ERROR;
+    const status =
+      exception instanceof HttpException
+        ? exception.getStatus()
+        : HttpStatus.INTERNAL_SERVER_ERROR;
 
-    const exceptionResponse = isHttpException ? exception.getResponse() : null;
+    let message: string | string[] = 'Internal Server Error';
+    let errorCode: string = 'INTERNAL_SERVER_ERROR';
 
-    const message =
-      typeof exceptionResponse === 'object'
-        ? (exceptionResponse as any).message || exception.message
-        : exception.message || 'Internal Server Error';
+    if (exception instanceof AppException) {
+      const res = exception.getResponse() as any;
+      errorCode = exception.errorCode;
+      message = res.message;
+    } else if (exception instanceof HttpException) {
+      const res = exception.getResponse();
+      message =
+        typeof res === 'object' && (res as any).message
+          ? (res as any).message
+          : exception.message;
+      errorCode = 'HTTP_EXCEPTION';
+    } else if (exception instanceof Error) {
+      message = exception.message;
+    }
 
     const displayMessage = Array.isArray(message)
       ? message.join(', ')
@@ -41,12 +53,13 @@ export class AllExceptionsFilter implements ExceptionFilter {
       path: httpAdapter.getRequestUrl(request),
       status,
       message: displayMessage,
+      errorCode,
       timestamp: new Date().toISOString(),
     };
 
     if (status >= 500) {
       this.logger.error(
-        `[RequestID: ${requestId}] ${logData.method} ${logData.path} | Status: ${status} | Error: ${message}`,
+        `[RequestID: ${requestId}] ${logData.method} ${logData.path} | Status: ${status} | Code: ${errorCode} | Error: ${message}`,
         exception.stack,
       );
     }
@@ -55,10 +68,11 @@ export class AllExceptionsFilter implements ExceptionFilter {
       success: false,
       error: {
         statusCode: status,
+        errorCode,
         message:
           status >= 500 && process.env.NODE_ENV === 'production'
             ? 'Internal Server Error'
-            : message,
+            : displayMessage,
         requestId,
         timestamp: new Date().toISOString(),
         path: httpAdapter.getRequestUrl(request),

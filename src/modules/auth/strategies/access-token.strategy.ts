@@ -5,6 +5,7 @@ import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import type { Request } from 'express';
 import { UsersService } from 'src/modules/users/users.service';
+import { AuthJwtPayload } from '../token.service';
 
 @Injectable()
 export class AccessTokenStrategy extends PassportStrategy(
@@ -36,6 +37,7 @@ export class AccessTokenStrategy extends PassportStrategy(
   async validate(req: Request, payload: any) {
     const { sub, tokenVersion } = payload;
     const user = await this.usersService.findOne(sub);
+    this.logger.log(`user: ${JSON.stringify(user)}`);
     if (!user || !user.isActive || user.deletedAt) {
       this.logger.warn(
         `Xác thực thất bại: User ${sub} không tồn tại hoặc bị khóa. IP: ${req.ip}`,
@@ -48,7 +50,6 @@ export class AccessTokenStrategy extends PassportStrategy(
       );
       throw new UnauthorizedException('Phiên đăng nhập đã hết hiệu lực');
     }
-    const { hashed_password, ...safeUser } = user;
-    return safeUser;
+    return user;
   }
 }

@@ -1,6 +1,5 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { UsersModule } from './modules/users/users.module';
 import { WhitelistIpModule } from './modules/whitelist-ip/whitelist-ip.module';
@@ -10,6 +9,9 @@ import { AuthModule } from './modules/auth/auth.module';
 import { CommonModule } from './common/common.module';
 import { PrismaModule } from '../src/prisma/prisma.module';
 import { AttributeModule } from './modules/access-control/attribute/attribute.module';
+import { DepartmentsModule } from './departments/departments.module';
+import { PortsModule } from './ports/ports.module';
+import { FilesModule } from './files/files.module';
 
 @Module({
   imports: [
@@ -21,9 +23,11 @@ import { AttributeModule } from './modules/access-control/attribute/attribute.mo
     AuthModule,
     PrismaModule,
     AttributeModule,
+    DepartmentsModule,
+    PortsModule,
+    FilesModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

@@ -15,10 +15,6 @@ export class AuthUserResponseDto {
   @Expose()
   displayName: string;
 
-  @ApiProperty({ example: true })
-  @Expose()
-  isActive: boolean;
-
   @ApiProperty({ type: () => [UserRoleResponseDto] })
   @Expose()
   @Type(() => UserRoleResponseDto)
@@ -26,18 +22,10 @@ export class AuthUserResponseDto {
 }
 
 export class AuthTokenResponseDto {
-  @ApiProperty({ example: 900 })
-  @Expose()
-  expiresIn: number;
-
   @ApiProperty({ type: () => AuthUserResponseDto })
   @Expose()
   @Type(() => AuthUserResponseDto)
   user: AuthUserResponseDto;
-
-  @ApiProperty({ example: 'Xác thực thành công' })
-  @Expose()
-  message: string;
 }
 
 export class AuthMessageResponseDto {

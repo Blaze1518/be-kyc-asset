@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ConfigService } from '@nestjs/config';
 
 export interface AuthJwtPayload {
-  sub: string;
+  id: string;
   username: string;
   displayName: string;
   tokenVersion: number;

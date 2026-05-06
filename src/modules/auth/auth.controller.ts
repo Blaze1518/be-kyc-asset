@@ -29,6 +29,7 @@ import { AuthCookieService } from './auth-cookie.service';
 import { AuthMapper } from './auth.mapper';
 import { Public } from './decorators/public.decorator';
 import { RefreshTokenGuard } from './guards/refresh-token.guard';
+import { plainToInstance } from 'class-transformer';
 
 @ApiTags('Auth (Quản lý đăng nhập và đăng ký)')
 @Controller('auth')
@@ -48,10 +49,12 @@ export class AuthController {
     @Body() registerDto: RegisterDto,
     @GetAuthMeta() meta: AuthRequestMeta,
     @Res({ passthrough: true }) response: Response,
-  ) {
+  ): Promise<AuthTokenResponseDto> {
     const session = await this.authService.register(registerDto, meta);
     this.authCookieService.setAuthCookies(response, session);
-    return this.authMapper.toSessionResponse(session);
+    return plainToInstance(AuthTokenResponseDto, session, {
+      excludeExtraneousValues: true,
+    });
   }
 
   @Post('login')

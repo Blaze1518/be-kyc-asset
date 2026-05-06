@@ -1,12 +1,10 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, HttpCode, HttpStatus } from '@nestjs/common';
 
-@Controller()
+@Controller({ path: 'ping', version: '1' })
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @HttpCode(HttpStatus.OK)
+  ping(): { message: string } {
+    return { message: 'pong' };
   }
 }
