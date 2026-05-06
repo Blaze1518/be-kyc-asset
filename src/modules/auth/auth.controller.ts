@@ -105,8 +105,7 @@ export class AuthController {
   @ApiOperation({ summary: 'Lấy thông tin người dùng hiện tại' })
   @ApiStandardSuccess(AuthUserResponseDto)
   async me(@CurrentUser() user: AuthJwtPayload) {
-    const result = await this.authService.me(user);
-    return this.authMapper.toUserResponse(result);
+    return await this.authService.me(user);
   }
 
   @Patch('me/password')

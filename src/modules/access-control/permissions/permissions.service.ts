@@ -21,6 +21,8 @@ export class PermissionsService {
       const permission = await this.permissionsRepository.create(
         {
           data: {
+            action: data.action,
+            subject: data.subject,
             name: data.name,
             description: data.description,
           },

@@ -29,6 +29,22 @@ export class PermissionConditionDto {
 
 export class CreatePermissionDto {
   /**
+   * @description Action của quyền
+   * @example "create"
+   */
+  @IsString()
+  @IsNotEmpty()
+  action: string;
+
+  /**
+   * @description Subject của quyền
+   * @example "user"
+   */
+  @IsString()
+  @IsNotEmpty()
+  subject: string;
+
+  /**
    * @description Tên định danh duy nhất của quyền
    * @example "view_user"
    */

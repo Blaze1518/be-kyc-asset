@@ -10,7 +10,10 @@ import type { Prisma } from 'src/generated/prisma/client';
 import { TransactionManager } from 'src/common/database/abstract/transaction-manager.abstract';
 import type { IDatabaseContext } from 'src/common/database/interface/db-context.interface';
 import { UsersRepository } from 'src/modules/users/repositories/users.repository';
-import type { UserWithRoles } from 'src/modules/users/repositories/users.repository';
+import type {
+  UserWithPermissions,
+  UserWithRoles,
+} from 'src/modules/users/repositories/users.repository';
 import { PasswordHasher } from 'src/modules/users/password-hasher.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
@@ -23,6 +26,7 @@ import { TokenService } from './token.service';
 import type { AuthJwtPayload } from './token.service';
 import { UsersService } from '../users/users.service';
 import type { AuthRequestMeta } from './interface/auth-meta.interface';
+import { AuthMapper } from './auth.mapper';
 
 export interface AuthTokenPair {
   accessToken: string;
@@ -49,6 +53,7 @@ export class AuthService {
     private readonly refreshTokensRepository: RefreshTokensRepository,
     private readonly passwordHasher: PasswordHasher,
     private readonly tokenService: TokenService,
+    private readonly authMapper: AuthMapper,
   ) {}
 
   async register(
@@ -237,15 +242,15 @@ export class AuthService {
     return { message: 'Đăng xuất thành công' };
   }
 
-  async me(payload: AuthJwtPayload): Promise<UserWithRoles> {
+  async me(payload: AuthJwtPayload) {
     this.logger.log(`payload: ${JSON.stringify(payload)}`);
-    const user = await this.usersRepository.findByIdWithRoles(payload.id);
+    const user = await this.usersRepository.findByIdWithPermissions(payload.id);
     this.logger.log(`user: ${JSON.stringify(user)}`);
     if (!user) {
       throw new UnauthorizedException('Tài khoản không còn hoạt động');
     }
 
-    return user;
+    return this.authMapper.toMeResponse(user);
   }
 
   async changePassword(

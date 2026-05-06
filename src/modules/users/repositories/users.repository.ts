@@ -13,14 +13,74 @@ export const userWithRolesInclude = {
           id: true,
           name: true,
           description: true,
+          permissions: {
+            include: {
+              permission: {
+                select: {
+                  action: true,
+                  subject: true,
+                  conditions: {
+                    select: {
+                      conditions: true,
+                      attribute: {
+                        select: {
+                          name: true,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       },
     },
   },
 } satisfies Prisma.UserInclude;
 
+const permissionSelect = {
+  action: true,
+  subject: true,
+  conditions: {
+    select: {
+      conditions: true,
+      attribute: {
+        select: { name: true },
+      },
+    },
+  },
+} satisfies Prisma.PermissionSelect;
+
+const roleSelect = {
+  name: true,
+  permissions: {
+    select: {
+      permission: {
+        select: permissionSelect,
+      },
+    },
+  },
+} satisfies Prisma.RoleSelect;
+
+export const userSelect = {
+  id: true,
+  displayName: true,
+  roles: {
+    select: {
+      role: {
+        select: roleSelect,
+      },
+    },
+  },
+} satisfies Prisma.UserSelect;
+
 export type UserWithRoles = Prisma.UserGetPayload<{
   include: typeof userWithRolesInclude;
+}>;
+
+export type UserWithPermissions = Prisma.UserGetPayload<{
+  select: typeof userSelect;
 }>;
 
 @Injectable()
@@ -41,6 +101,24 @@ export class UsersRepository extends PrismaRepository<'User'> {
           isActive: true,
         },
         include: userWithRolesInclude,
+      });
+    } catch (error) {
+      return handlePrismaError(error, 'user');
+    }
+  }
+
+  async findByIdWithPermissions(
+    id: string,
+    ctx?: IDatabaseContext,
+  ): Promise<UserWithPermissions | null> {
+    try {
+      return await this.getModel(ctx).findFirst({
+        where: {
+          id,
+          deletedAt: null,
+          isActive: true,
+        },
+        select: userSelect,
       });
     } catch (error) {
       return handlePrismaError(error, 'user');
