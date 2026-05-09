@@ -10,10 +10,7 @@ import type { Prisma } from 'src/generated/prisma/client';
 import { TransactionManager } from 'src/common/database/abstract/transaction-manager.abstract';
 import type { IDatabaseContext } from 'src/common/database/interface/db-context.interface';
 import { UsersRepository } from 'src/modules/users/repositories/users.repository';
-import type {
-  UserWithPermissions,
-  UserWithRoles,
-} from 'src/modules/users/repositories/users.repository';
+import type { UserWithRoles } from 'src/modules/users/repositories/users.repository';
 import { PasswordHasher } from 'src/modules/users/password-hasher.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
@@ -27,6 +24,7 @@ import type { AuthJwtPayload } from './token.service';
 import { UsersService } from '../users/users.service';
 import type { AuthRequestMeta } from './interface/auth-meta.interface';
 import { AuthMapper } from './auth.mapper';
+import { ConfigService } from '@nestjs/config';
 
 export interface AuthTokenPair {
   accessToken: string;
@@ -43,11 +41,17 @@ export interface AuthMessageResult {
   message: string;
 }
 
+type TokenPayloadSource = {
+  id: string;
+  token_version: number;
+};
+
 @Injectable()
 export class AuthService {
   private readonly logger = new Logger(AuthService.name);
   constructor(
     private readonly txManager: TransactionManager,
+    private readonly configService: ConfigService,
     private readonly usersService: UsersService,
     private readonly usersRepository: UsersRepository,
     private readonly refreshTokensRepository: RefreshTokensRepository,
@@ -73,13 +77,10 @@ export class AuthService {
     });
   }
 
-  private buildPayload(user: UserWithRoles): AuthJwtPayload {
+  private buildPayload(user: TokenPayloadSource): AuthJwtPayload {
     return {
       id: user.id,
-      username: user.username,
-      displayName: user.displayName,
       tokenVersion: user.token_version,
-      roles: user.roles.map((userRole) => userRole.role.name),
     };
   }
 
@@ -89,47 +90,91 @@ export class AuthService {
     return ipAddress.replace(/^::ffff:/, '');
   }
 
+  private ensureUserActive(user: {
+    isActive: boolean;
+    deletedAt: Date | null;
+  }) {
+    if (!user.isActive || user.deletedAt) {
+      throw new AppException(ERROR_REGISTRY.USER_NOT_FOUND);
+    }
+  }
+
   private ensureRefreshTokenUsable(token: RefreshTokenWithUser) {
     if (
       token.is_revoked ||
       token.used_at ||
       token.expires_at.getTime() <= Date.now()
     ) {
-      throw new UnauthorizedException('Refresh token không hợp lệ');
+      throw new AppException(ERROR_REGISTRY.INVALID_REFRESH_TOKEN);
     }
 
-    if (!token.user.isActive || token.user.deletedAt) {
-      throw new UnauthorizedException('Tài khoản không còn hoạt động');
-    }
+    this.ensureUserActive(token.user);
+  }
+
+  private async persistRefreshToken(
+    params: {
+      userId: string;
+      refreshToken: string;
+      tokenFamily: string;
+      meta: AuthRequestMeta;
+    },
+    ctx: IDatabaseContext,
+  ) {
+    await this.refreshTokensRepository.create(
+      {
+        data: {
+          user_id: params.userId,
+          token_hash: this.tokenService.hashRefreshToken(params.refreshToken),
+          token_family: params.tokenFamily,
+          expires_at: this.tokenService.getRefreshTokenExpiresAt(),
+          device_id: params.meta.deviceId,
+          device_name: params.meta.deviceName,
+          ip_address: this.normalizeIp(params.meta.ipAddress),
+          user_agent: params.meta.userAgent,
+        },
+      },
+      ctx,
+    );
+  }
+
+  private async createTokenPairForUser(
+    user: TokenPayloadSource,
+    meta: AuthRequestMeta,
+    ctx: IDatabaseContext,
+    tokenFamily?: string,
+  ): Promise<AuthTokenPair> {
+    const tokenPair = this.tokenService.generateTokenPair(
+      this.buildPayload(user),
+    );
+
+    await this.persistRefreshToken(
+      {
+        userId: user.id,
+        refreshToken: tokenPair.refreshToken,
+        tokenFamily: tokenFamily ?? tokenPair.tokenFamily,
+        meta,
+      },
+      ctx,
+    );
+
+    return {
+      accessToken: tokenPair.accessToken,
+      refreshToken: tokenPair.refreshToken,
+    };
   }
 
   private async createSessionForUser(
-    user: UserWithRoles,
+    user: UserWithRoles & TokenPayloadSource,
     meta: AuthRequestMeta,
     ctx: IDatabaseContext,
     message: string,
     tokenFamily?: string,
   ): Promise<AuthSessionResult> {
-    const tokenPair = this.tokenService.generateTokenPair(
-      this.buildPayload(user),
-    );
-
-    await this.refreshTokensRepository.create(
-      {
-        data: {
-          user_id: user.id,
-          token_hash: this.tokenService.hashRefreshToken(
-            tokenPair.refreshToken,
-          ),
-          token_family: tokenFamily ?? tokenPair.tokenFamily,
-          expires_at: this.tokenService.getRefreshTokenExpiresAt(),
-          device_id: meta.deviceId,
-          device_name: meta.deviceName,
-          ip_address: this.normalizeIp(meta.ipAddress),
-          user_agent: meta.userAgent,
-        },
-      },
+    const tokenPair = await this.createTokenPairForUser(
+      user,
+      meta,
       ctx,
+      tokenFamily,
     );
 
     return {
@@ -141,91 +186,113 @@ export class AuthService {
     };
   }
 
-  async login(
-    dto: LoginDto,
-    meta: AuthRequestMeta,
-  ): Promise<AuthSessionResult> {
-    const user = await this.usersRepository.findByUsernameWithRoles(
-      dto.username,
-    );
+  async login(dto: LoginDto, meta: AuthRequestMeta): Promise<AuthTokenPair> {
+    const user = await this.usersRepository.findUnique({
+      where: {
+        username: dto.username,
+      },
+    });
 
-    if (!user) {
+    if (
+      !user ||
+      !(await this.passwordHasher.verify(dto.password, user.hashed_password))
+    ) {
       throw new AppException(ERROR_REGISTRY.INVALID_CREDENTIALS);
     }
 
-    const isPasswordValid = await this.passwordHasher.verify(
-      dto.password,
-      user.hashed_password,
-    );
-
-    if (!isPasswordValid) {
-      throw new AppException(ERROR_REGISTRY.INVALID_CREDENTIALS);
-    }
-
-    return this.txManager.run((ctx) =>
-      this.createSessionForUser(
-        user,
-        {
-          ...meta,
-        },
+    return this.txManager.run(async (ctx) => {
+      return await this.createTokenPairForUser(
+        user as unknown as TokenPayloadSource,
+        meta,
         ctx,
-        'Đăng nhập thành công',
-      ),
-    );
+      );
+    });
   }
 
   async refresh(
     refreshTokenValue: string,
     meta: AuthRequestMeta,
-  ): Promise<AuthSessionResult> {
+  ): Promise<AuthTokenPair> {
     const tokenHash = this.tokenService.hashRefreshToken(refreshTokenValue);
-    const storedToken =
-      await this.refreshTokensRepository.findByHash(tokenHash);
+    const now = new Date();
+    const gracePeriodMs =
+      (this.configService.get<number>('AUTH_REFRESH_GRACE_PERIOD_SECONDS') ||
+        10) * 1000;
 
-    if (!storedToken) {
-      throw new UnauthorizedException('Refresh token không hợp lệ');
-    }
+    return await this.txManager.run(async (ctx) => {
+      const updateResult = await this.refreshTokensRepository.updateMany(
+        {
+          where: {
+            token_hash: tokenHash,
+            used_at: null,
+            is_revoked: false,
+            expires_at: { gt: now },
+          },
+          data: {
+            used_at: now,
+            is_revoked: true,
+          },
+        },
+        ctx,
+      );
 
-    if (storedToken.is_revoked || storedToken.used_at) {
-      await this.txManager.run(async (ctx) => {
-        await this.refreshTokensRepository.revokeFamily(
+      if (updateResult.count === 1) {
+        const storedToken = await this.refreshTokensRepository.findUnique(
+          {
+            where: { token_hash: tokenHash },
+            include: { user: true },
+          },
+          ctx,
+        );
+
+        if (!storedToken?.user.isActive || storedToken?.user.deletedAt) {
+          throw new AppException(ERROR_REGISTRY.USER_NOT_FOUND);
+        }
+
+        return await this.createTokenPairForUser(
+          storedToken.user as any,
+          meta,
+          ctx,
           storedToken.token_family,
+        );
+      }
+
+      const tokenStatus = await this.refreshTokensRepository.findUnique(
+        {
+          where: { token_hash: tokenHash },
+        },
+        ctx,
+      );
+
+      if (!tokenStatus)
+        throw new AppException(ERROR_REGISTRY.INVALID_REFRESH_TOKEN);
+      if (tokenStatus.expires_at <= now)
+        throw new AppException(ERROR_REGISTRY.TOKEN_EXPIRED);
+
+      if (tokenStatus.used_at || tokenStatus.is_revoked) {
+        const timeSinceUsed =
+          now.getTime() - (tokenStatus.used_at?.getTime() || 0);
+
+        if (timeSinceUsed < gracePeriodMs) {
+          throw new AppException(ERROR_REGISTRY.REFRESH_TOKEN_PENDING);
+        }
+
+        await this.refreshTokensRepository.revokeFamily(
+          tokenStatus.token_family,
           ctx,
         );
         await this.usersRepository.update(
           {
-            where: { id: storedToken.user_id },
-            data: {
-              token_version: { increment: 1 },
-            },
+            where: { id: tokenStatus.user_id },
+            data: { token_version: { increment: 1 } },
           },
           ctx,
         );
-      });
-      throw new UnauthorizedException('Refresh token đã bị sử dụng lại');
-    }
 
-    this.ensureRefreshTokenUsable(storedToken);
-
-    return await this.txManager.run(async (ctx) => {
-      await this.refreshTokensRepository.revokeByHash(tokenHash, ctx);
-
-      const user = await this.usersRepository.findByIdWithRoles(
-        storedToken.user_id,
-        ctx,
-      );
-
-      if (!user || !user.isActive || user.deletedAt) {
-        throw new UnauthorizedException('Tài khoản không còn hoạt động');
+        throw new AppException(ERROR_REGISTRY.INVALID_REFRESH_TOKEN);
       }
 
-      return this.createSessionForUser(
-        user,
-        meta,
-        ctx,
-        'Làm mới phiên đăng nhập thành công',
-        storedToken.token_family,
-      );
+      throw new AppException(ERROR_REGISTRY.INVALID_REFRESH_TOKEN);
     });
   }
 
@@ -243,9 +310,7 @@ export class AuthService {
   }
 
   async me(payload: AuthJwtPayload) {
-    this.logger.log(`payload: ${JSON.stringify(payload)}`);
     const user = await this.usersRepository.findByIdWithPermissions(payload.id);
-    this.logger.log(`user: ${JSON.stringify(user)}`);
     if (!user) {
       throw new UnauthorizedException('Tài khoản không còn hoạt động');
     }

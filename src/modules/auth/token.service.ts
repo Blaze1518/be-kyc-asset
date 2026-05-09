@@ -6,10 +6,7 @@ import { ConfigService } from '@nestjs/config';
 
 export interface AuthJwtPayload {
   id: string;
-  username: string;
-  displayName: string;
   tokenVersion: number;
-  roles: string[];
 }
 
 export interface GeneratedTokenPair {

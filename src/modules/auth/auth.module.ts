@@ -33,6 +33,7 @@ import { AccessTokenStrategy } from './strategies/access-token.strategy';
   ],
   controllers: [AuthController],
   providers: [
+    ConfigService,
     AuthService,
     RefreshTokensRepository,
     TokenService,

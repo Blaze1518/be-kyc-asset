@@ -68,7 +68,7 @@ export class AuthController {
   ) {
     const session = await this.authService.login(loginDto, meta);
     this.authCookieService.setAuthCookies(response, session);
-    return this.authMapper.toSessionResponse(session);
+    return;
   }
 
   @Post('refresh')
@@ -81,9 +81,16 @@ export class AuthController {
     @GetAuthMeta() meta: AuthRequestMeta,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const session = await this.authService.refresh(request.refreshToken, meta);
-    this.authCookieService.setAuthCookies(response, session);
-    return this.authMapper.toSessionResponse(session);
+    try {
+      const session = await this.authService.refresh(
+        request.refreshToken,
+        meta,
+      );
+      this.authCookieService.setAuthCookies(response, session);
+    } catch (error) {
+      this.authCookieService.clearAuthCookies(response);
+      throw error;
+    }
   }
 
   @Post('logout')

@@ -37,7 +37,7 @@ model RefreshToken {
   id      String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   user_id String @db.Uuid
 
-  token_hash   String @db.VarChar(255)
+  token_hash   String @unique @db.VarChar(255) 
   token_family String @default(dbgenerated("gen_random_uuid()")) @db.Uuid
 
   is_revoked Boolean   @default(false)

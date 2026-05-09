@@ -135,6 +135,22 @@ export class UsersService {
     return this.findUserOrThrow(id);
   }
 
+  async findOneById(id: string): Promise<any> {
+    const user = await this.usersRepository.findUnique({
+      where: {
+        id,
+        deletedAt: null,
+        isActive: true,
+      },
+    });
+
+    if (!user) {
+      throw new NotFoundException(`User với id #${id} không tồn tại`);
+    }
+
+    return user;
+  }
+
   async update(
     id: string,
     updateUserDto: UpdateUserDto,

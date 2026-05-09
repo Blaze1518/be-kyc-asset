@@ -6,6 +6,8 @@ import { ConfigService } from '@nestjs/config';
 import type { Request } from 'express';
 import { UsersService } from 'src/modules/users/users.service';
 import { AuthJwtPayload } from '../token.service';
+import { AppException } from 'src/common/exceptions/app.exception';
+import { ERROR_REGISTRY } from 'src/common/exceptions/error-registry';
 
 @Injectable()
 export class AccessTokenStrategy extends PassportStrategy(
@@ -35,20 +37,21 @@ export class AccessTokenStrategy extends PassportStrategy(
   }
 
   async validate(req: Request, payload: any) {
-    const { sub, tokenVersion } = payload;
-    const user = await this.usersService.findOne(sub);
+    const { id: userId, tokenVersion } = payload;
+    this.logger.log(`debugpayload: ${JSON.stringify(payload)}`);
+    const user = await this.usersService.findOneById(userId);
     this.logger.log(`user: ${JSON.stringify(user)}`);
     if (!user || !user.isActive || user.deletedAt) {
       this.logger.warn(
-        `Xác thực thất bại: User ${sub} không tồn tại hoặc bị khóa. IP: ${req.ip}`,
+        `Xác thực thất bại: User ${userId} không tồn tại hoặc bị khóa. IP: ${req.ip}`,
       );
-      throw new UnauthorizedException('Tài khoản không còn hoạt động');
+      throw new AppException(ERROR_REGISTRY.UNAUTHORIZED);
     }
     if (tokenVersion !== user.token_version) {
       this.logger.warn(
-        `Token lỗi thời: User ${user.username} (ID: ${sub}) thử truy cập bằng version ${tokenVersion}, bản hiện tại là ${user.token_version}. IP: ${req.ip}`,
+        `Token lỗi thời: User ${user.username} (ID: ${userId}) thử truy cập bằng version ${tokenVersion}, bản hiện tại là ${user.token_version}. IP: ${req.ip}`,
       );
-      throw new UnauthorizedException('Phiên đăng nhập đã hết hiệu lực');
+      throw new AppException(ERROR_REGISTRY.UNAUTHORIZED);
     }
     return user;
   }

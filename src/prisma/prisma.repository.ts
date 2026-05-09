@@ -82,10 +82,14 @@ export abstract class PrismaRepository<T extends Prisma.ModelName> {
     }
   }
 
-  async findUnique(
-    input: Prisma.TypeMap['model'][T]['operations']['findUnique']['args'],
+  async findUnique<
+    Args extends Prisma.TypeMap['model'][T]['operations']['findUnique']['args'],
+  >(
+    input: Args,
     ctx?: IDatabaseContext,
-  ): Promise<Prisma.TypeMap['model'][T]['operations']['findUnique']['result']> {
+  ): Promise<
+    Prisma.Result<PrismaService[Uncapitalize<T>], Args, 'findUnique'>
+  > {
     try {
       return await this.getModel(ctx).findUnique(input);
     } catch (error) {
@@ -121,6 +125,17 @@ export abstract class PrismaRepository<T extends Prisma.ModelName> {
   ): Promise<Prisma.TypeMap['model'][T]['operations']['update']['result']> {
     try {
       return await this.getModel(ctx).update(input);
+    } catch (error) {
+      return handlePrismaError(error, this.model);
+    }
+  }
+
+  async updateMany(
+    input: Prisma.TypeMap['model'][T]['operations']['updateMany']['args'],
+    ctx?: IDatabaseContext,
+  ): Promise<Prisma.TypeMap['model'][T]['operations']['updateMany']['result']> {
+    try {
+      return await this.getModel(ctx).updateMany(input);
     } catch (error) {
       return handlePrismaError(error, this.model);
     }

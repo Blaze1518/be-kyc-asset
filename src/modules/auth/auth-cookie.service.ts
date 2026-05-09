@@ -27,7 +27,7 @@ export class AuthCookieService {
 
     response.cookie(REFRESH_TOKEN_COOKIE, tokenPair.refreshToken, {
       ...this.baseCookieOptions(),
-      path: '/auth/refresh',
+      path: '/api/v1/auth/refresh',
       maxAge: this.getRefreshTokenTtlMs(),
     });
   }
@@ -40,7 +40,7 @@ export class AuthCookieService {
 
     response.clearCookie(REFRESH_TOKEN_COOKIE, {
       ...this.baseCookieOptions(),
-      path: '/auth/refresh',
+      path: '/api/v1/auth/refresh',
     });
   }
 

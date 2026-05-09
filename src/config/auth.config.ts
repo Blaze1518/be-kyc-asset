@@ -8,6 +8,7 @@ export interface AuthConfig {
   refresh: {
     ttlDays: number;
   };
+  refreshGracePeriodSeconds: number;
 }
 
 export default registerAs(
@@ -20,5 +21,8 @@ export default registerAs(
     refresh: {
       ttlDays: Number(process.env.REFRESH_TOKEN_TTL_DAYS || 30),
     },
+    refreshGracePeriodSeconds: Number(
+      process.env.AUTH_REFRESH_GRACE_PERIOD_SECONDS || 10,
+    ),
   }),
 );

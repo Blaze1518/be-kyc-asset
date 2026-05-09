@@ -15,6 +15,20 @@ export class RefreshTokensRepository extends PrismaRepository<'RefreshToken'> {
     super(prisma, 'refreshToken');
   }
 
+  async findUniqueByHash(
+    tokenHash: string,
+    ctx?: IDatabaseContext,
+  ): Promise<RefreshTokenWithUser | null> {
+    try {
+      return await this.getModel(ctx).findUnique({
+        where: { token_hash: tokenHash },
+        include: { user: true },
+      });
+    } catch (error) {
+      return handlePrismaError(error, 'refreshToken');
+    }
+  }
+
   async findByHash(
     tokenHash: string,
     ctx?: IDatabaseContext,

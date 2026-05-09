@@ -30,6 +30,21 @@ export const ERROR_REGISTRY = {
     message: 'Thông tin đăng nhập không hợp lệ',
     status: HttpStatus.UNAUTHORIZED,
   },
+  INVALID_REFRESH_TOKEN: {
+    errorCode: 'AUTH_004',
+    message: 'Refresh token không hợp lệ',
+    status: HttpStatus.UNAUTHORIZED,
+  },
+  TOKEN_EXPIRED: {
+    errorCode: 'AUTH_005',
+    message: 'Refresh token đã hết hạn',
+    status: HttpStatus.UNAUTHORIZED,
+  },
+  REFRESH_TOKEN_PENDING: {
+    errorCode: 'AUTH_006',
+    message: 'Refresh token đang được tạo mới',
+    status: HttpStatus.UNAUTHORIZED,
+  },
 
   // 3. Người dùng (User)
   USER_NOT_FOUND: {
