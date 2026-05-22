@@ -4,7 +4,7 @@ import { createHash, randomBytes } from 'node:crypto';
 import { v4 as uuidv4 } from 'uuid';
 import { ConfigService } from '@nestjs/config';
 
-export interface AuthJwtPayload {
+export interface AccessTokenPayload {
   id: string;
   tokenVersion: number;
 }
@@ -22,9 +22,8 @@ export class TokenService {
     private readonly configService: ConfigService,
   ) {}
 
-  generateTokenPair(payload: AuthJwtPayload): GeneratedTokenPair {
+  generateTokenPair(payload: AccessTokenPayload): GeneratedTokenPair {
     const accessToken = this.signAccessToken(payload);
-
     const refreshToken = this.generateRefreshToken();
     const tokenFamily = uuidv4();
 
@@ -35,7 +34,7 @@ export class TokenService {
     };
   }
 
-  signAccessToken(payload: AuthJwtPayload): string {
+  signAccessToken(payload: AccessTokenPayload): string {
     return this.jwtService.sign(payload);
   }
 
@@ -69,8 +68,8 @@ export class TokenService {
     return createHash('sha256').update(refreshToken).digest('hex');
   }
 
-  async verifyAccessToken(token: string): Promise<AuthJwtPayload> {
-    return this.jwtService.verifyAsync<AuthJwtPayload>(token);
+  async verifyAccessToken(token: string): Promise<AccessTokenPayload> {
+    return this.jwtService.verifyAsync<AccessTokenPayload>(token);
   }
 
   getRefreshTokenExpiresAt(): Date {

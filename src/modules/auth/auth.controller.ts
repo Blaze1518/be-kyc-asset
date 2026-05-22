@@ -1,5 +1,6 @@
 import {
   Body,
+  ClassSerializerInterceptor,
   Controller,
   Get,
   Patch,
@@ -7,6 +8,7 @@ import {
   Req,
   Res,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import type { Request, Response } from 'express';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -23,16 +25,18 @@ import {
 import { ApiStandardError } from 'src/common/decorators/swagger/errors.decorator';
 import { ApiStandardSuccess } from 'src/common/decorators/swagger/success.decorator';
 import { CurrentUser } from './decorators/current-user.decorator';
-import type { AuthJwtPayload } from './token.service';
+import type { AccessTokenPayload } from './services/token.service';
 import { GetAuthMeta } from 'src/common/decorators/auth/auth-meta.decorator';
-import { AuthCookieService } from './auth-cookie.service';
+import { AuthCookieService } from './services/auth-cookie.service';
 import { AuthMapper } from './auth.mapper';
 import { Public } from './decorators/public.decorator';
 import { RefreshTokenGuard } from './guards/refresh-token.guard';
 import { plainToInstance } from 'class-transformer';
+import { RegisterResponseDto } from './dto/auth-register-response.dto';
 
 @ApiTags('Auth (Quản lý đăng nhập và đăng ký)')
 @Controller('auth')
+@UseInterceptors(ClassSerializerInterceptor)
 @ApiStandardError(undefined, '/auth')
 export class AuthController {
   constructor(
@@ -44,17 +48,11 @@ export class AuthController {
   @Post('register')
   @Public()
   @ApiOperation({ summary: 'Đăng ký tài khoản mới' })
-  @ApiStandardSuccess(AuthTokenResponseDto)
+  @ApiStandardSuccess(RegisterResponseDto)
   async register(
     @Body() registerDto: RegisterDto,
-    @GetAuthMeta() meta: AuthRequestMeta,
-    @Res({ passthrough: true }) response: Response,
-  ): Promise<AuthTokenResponseDto> {
-    const session = await this.authService.register(registerDto, meta);
-    this.authCookieService.setAuthCookies(response, session);
-    return plainToInstance(AuthTokenResponseDto, session, {
-      excludeExtraneousValues: true,
-    });
+  ): Promise<RegisterResponseDto> {
+    return await this.authService.register(registerDto);
   }
 
   @Post('login')
@@ -66,8 +64,8 @@ export class AuthController {
     @GetAuthMeta() meta: AuthRequestMeta,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const session = await this.authService.login(loginDto, meta);
-    this.authCookieService.setAuthCookies(response, session);
+    const tokenPair = await this.authService.login(loginDto, meta);
+    this.authCookieService.setAuthCookies(response, tokenPair);
     return;
   }
 
@@ -111,7 +109,7 @@ export class AuthController {
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Lấy thông tin người dùng hiện tại' })
   @ApiStandardSuccess(AuthUserResponseDto)
-  async me(@CurrentUser() user: AuthJwtPayload) {
+  async me(@CurrentUser() user: AccessTokenPayload) {
     return await this.authService.me(user);
   }
 
@@ -120,7 +118,7 @@ export class AuthController {
   @ApiOperation({ summary: 'Đổi mật khẩu người dùng hiện tại' })
   @ApiStandardSuccess(AuthMessageResponseDto)
   async changePassword(
-    @CurrentUser() user: AuthJwtPayload,
+    @CurrentUser() user: AccessTokenPayload,
     @Body() changePasswordDto: ChangePasswordDto,
     @Res({ passthrough: true }) response: Response,
   ) {

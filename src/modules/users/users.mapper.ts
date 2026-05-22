@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
 import { ResponseUserDto } from './dto/response-user.dto';
-import { UserWithRoles } from './repositories/users.repository';
+import { UserWithRoles } from './repositories/prisma-users.repository';
 
 export interface PaginatedUsers<T> {
   items: T[];

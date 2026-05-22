@@ -10,8 +10,8 @@ import type { Prisma } from 'src/generated/prisma/client';
 import { TransactionManager } from 'src/common/database/abstract/transaction-manager.abstract';
 import type { IDatabaseContext } from 'src/common/database/interface/db-context.interface';
 import { UsersRepository } from 'src/modules/users/repositories/users.repository';
-import type { UserWithRoles } from 'src/modules/users/repositories/users.repository';
-import { PasswordHasher } from 'src/modules/users/password-hasher.service';
+import type { UserWithRoles } from 'src/modules/users/repositories/prisma-users.repository';
+import { PasswordHasher } from 'src/modules/auth/services/password-hasher.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
@@ -19,8 +19,8 @@ import {
   RefreshTokensRepository,
   RefreshTokenWithUser,
 } from './repositories/refresh-tokens.repository';
-import { TokenService } from './token.service';
-import type { AuthJwtPayload } from './token.service';
+import { TokenService } from './services/token.service';
+import type { AccessTokenPayload } from './services/token.service';
 import { UsersService } from '../users/users.service';
 import type { AuthRequestMeta } from './interface/auth-meta.interface';
 import { AuthMapper } from './auth.mapper';
@@ -60,24 +60,33 @@ export class AuthService {
     private readonly authMapper: AuthMapper,
   ) {}
 
-  async register(
-    dto: RegisterDto,
-    meta: AuthRequestMeta,
-  ): Promise<AuthSessionResult> {
+  async register(dto: RegisterDto): Promise<any> {
     return await this.txManager.run(async (ctx) => {
-      const userWithRoles = await this.usersService.create(dto, ctx);
-      return this.createSessionForUser(
-        userWithRoles,
+      const hashedPassword = await this.passwordHasher.hash(dto.password);
+
+      const user = await this.usersRepository.create(
         {
-          ...meta,
+          data: {
+            username: dto.username,
+            displayName: dto.displayName,
+            hashed_password: hashedPassword,
+          },
         },
         ctx,
-        'Đăng ký thành công',
       );
+
+      return {
+        message: 'Đăng ký tài khoản thành công.',
+        user: {
+          id: user.id,
+          username: user.username,
+          displayName: user.displayName,
+        },
+      };
     });
   }
 
-  private buildPayload(user: TokenPayloadSource): AuthJwtPayload {
+  private buildPayload(user: TokenPayloadSource): AccessTokenPayload {
     return {
       id: user.id,
       tokenVersion: user.token_version,
@@ -193,20 +202,55 @@ export class AuthService {
       },
     });
 
-    if (
-      !user ||
-      !(await this.passwordHasher.verify(dto.password, user.hashed_password))
-    ) {
+    if (!user) {
       throw new AppException(ERROR_REGISTRY.INVALID_CREDENTIALS);
     }
 
-    return this.txManager.run(async (ctx) => {
-      return await this.createTokenPairForUser(
-        user as unknown as TokenPayloadSource,
-        meta,
-        ctx,
-      );
+    const isPasswordValid = await this.passwordHasher.verify(
+      dto.password,
+      user.hashed_password,
+    );
+
+    if (!isPasswordValid) {
+      throw new AppException(ERROR_REGISTRY.INVALID_CREDENTIALS);
+    }
+
+    if (!user.isActive) {
+      throw new AppException(ERROR_REGISTRY.USER_NOT_ACTIVE);
+    }
+
+    if (user.deletedAt) {
+      throw new AppException(ERROR_REGISTRY.USER_DELETED);
+    }
+
+    const payload: AccessTokenPayload = {
+      id: user.id,
+      tokenVersion: user.token_version,
+    };
+
+    const generatedTokens = this.tokenService.generateTokenPair(payload);
+
+    await this.refreshTokensRepository.create({
+      data: {
+        user_id: user.id,
+        token_hash: this.tokenService.hashRefreshToken(
+          generatedTokens.refreshToken,
+        ),
+        token_family: generatedTokens.tokenFamily,
+        expires_at: this.tokenService.getRefreshTokenExpiresAt(),
+        device_id: meta.deviceId,
+        device_name: meta.deviceName,
+        ip_address: meta.ipAddress
+          ? meta.ipAddress.replace(/^::ffff:/, '')
+          : undefined,
+        user_agent: meta.userAgent,
+      },
     });
+
+    return {
+      accessToken: generatedTokens.accessToken,
+      refreshToken: generatedTokens.refreshToken,
+    };
   }
 
   async refresh(
@@ -309,7 +353,7 @@ export class AuthService {
     return { message: 'Đăng xuất thành công' };
   }
 
-  async me(payload: AuthJwtPayload) {
+  async me(payload: AccessTokenPayload) {
     const user = await this.usersRepository.findByIdWithPermissions(payload.id);
     if (!user) {
       throw new UnauthorizedException('Tài khoản không còn hoạt động');
@@ -319,7 +363,7 @@ export class AuthService {
   }
 
   async changePassword(
-    payload: AuthJwtPayload,
+    payload: AccessTokenPayload,
     dto: ChangePasswordDto,
   ): Promise<AuthMessageResult> {
     if (dto.newPassword !== dto.confirmPassword) {

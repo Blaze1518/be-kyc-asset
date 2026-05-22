@@ -3,7 +3,9 @@ import { ConfigModule } from '@nestjs/config';
 import { validate } from 'src/config/env.validation';
 import databaseConfig from 'src/config/database.config';
 import authConfig from 'src/config/auth.config';
+import redisConfig from 'src/config/redis.config';
 import { AccessTokenGuard } from 'src/modules/auth/guards/access-token.guard';
+import { CacheModule } from 'src/common/cache/cache.module';
 import { APP_GUARD } from '@nestjs/core';
 
 @Module({
@@ -11,9 +13,10 @@ import { APP_GUARD } from '@nestjs/core';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
-      load: [databaseConfig, authConfig],
+      load: [databaseConfig, authConfig, redisConfig],
       validate: validate,
     }),
+    CacheModule,
   ],
   providers: [
     {

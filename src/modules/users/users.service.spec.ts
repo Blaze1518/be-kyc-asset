@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsersService } from './users.service';
 import { TransactionManager } from 'src/common/database/abstract/transaction-manager.abstract';
-import { UsersRepository } from './repositories/users.repository';
+import { UsersRepository } from './repositories/prisma-users.repository';
 import { UserRolesRepository } from './repositories/user-roles.repository';
-import { PasswordHasher } from './password-hasher.service';
+import { PasswordHasher } from '../auth/services/password-hasher.service';
 
 jest.mock(
   'src/common/database/abstract/transaction-manager.abstract',

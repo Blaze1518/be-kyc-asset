@@ -12,16 +12,18 @@ import { AttributeModule } from './modules/access-control/attribute/attribute.mo
 import { DepartmentsModule } from './modules/departments/departments.module';
 import { PortsModule } from './modules/ports/ports.module';
 import { FilesModule } from './modules/files/files.module';
+import { OutboxModule } from './shared/outbox/outbox.module';
 
 @Module({
   imports: [
     CommonModule,
+    PrismaModule,
+    OutboxModule,
     UsersModule,
     WhitelistIpModule,
     RolesModule,
     PermissionsModule,
     AuthModule,
-    PrismaModule,
     AttributeModule,
     DepartmentsModule,
     PortsModule,

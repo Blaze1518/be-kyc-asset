@@ -2,8 +2,9 @@ import { Module } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
 import { UsersRepository } from './repositories/users.repository';
+import { PrismaUsersRepository } from './repositories/prisma-users.repository';
 import { UserRolesRepository } from './repositories/user-roles.repository';
-import { PasswordHasher } from './password-hasher.service';
+import { PasswordHasher } from '../auth/services/password-hasher.service';
 import { UsersMapper } from './users.mapper';
 
 @Module({
@@ -11,6 +12,7 @@ import { UsersMapper } from './users.mapper';
   providers: [
     UsersService,
     UsersRepository,
+    PrismaUsersRepository,
     UserRolesRepository,
     PasswordHasher,
     UsersMapper,

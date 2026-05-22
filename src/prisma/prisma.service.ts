@@ -9,6 +9,8 @@ import { ConfigService } from '@nestjs/config';
 import { PrismaClient } from '../generated/prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { DatabaseConfig } from 'src/config/database.config';
+import { Pool } from 'pg';
+
 @Injectable()
 export class PrismaService
   extends PrismaClient
@@ -27,7 +29,14 @@ export class PrismaService
       dbConfig.uri ||
       `postgresql://${dbConfig.user}:${encodeURIComponent(dbConfig.pass)}@${dbConfig.host}:${dbConfig.port}/${dbConfig.name}?schema=public`;
 
-    const adapter = new PrismaPg({ connectionString });
+    const pool = new Pool({
+      connectionString,
+      max: 40,
+      idleTimeoutMillis: 30000,
+      connectionTimeoutMillis: 5000,
+    });
+
+    const adapter = new PrismaPg(pool);
 
     super({
       adapter,

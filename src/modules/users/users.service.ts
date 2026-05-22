@@ -7,12 +7,10 @@ import { Prisma } from 'src/generated/prisma/client';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { TransactionManager } from 'src/common/database/abstract/transaction-manager.abstract';
-import {
-  UsersRepository,
-  UserWithRoles,
-} from './repositories/users.repository';
+import { UserWithRoles } from './repositories/prisma-users.repository';
+import { UsersRepository } from './repositories/users.repository';
 import { UserRolesRepository } from './repositories/user-roles.repository';
-import { PasswordHasher } from './password-hasher.service';
+import { PasswordHasher } from '../auth/services/password-hasher.service';
 import { QueryDto } from 'src/common/dto/query.dto';
 import { IDatabaseContext } from 'src/common/database/interface/db-context.interface';
 
@@ -136,13 +134,7 @@ export class UsersService {
   }
 
   async findOneById(id: string): Promise<any> {
-    const user = await this.usersRepository.findUnique({
-      where: {
-        id,
-        deletedAt: null,
-        isActive: true,
-      },
-    });
+    const user = await this.usersRepository.findUniqueByIdCached(id);
 
     if (!user) {
       throw new NotFoundException(`User với id #${id} không tồn tại`);

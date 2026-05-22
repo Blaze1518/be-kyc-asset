@@ -32,7 +32,7 @@ export function setupSwagger(app: INestApplication): void {
       },
       'JWT-auth',
     )
-    .addServer('http://localhost:3000/', 'Local environment')
+    .addServer('http://localhost:3001/', 'Local environment')
     .addServer('https://yourdomain.com', 'Staging')
     .build();
 

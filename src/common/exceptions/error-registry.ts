@@ -45,6 +45,16 @@ export const ERROR_REGISTRY = {
     message: 'Refresh token đang được tạo mới',
     status: HttpStatus.UNAUTHORIZED,
   },
+  USER_NOT_ACTIVE: {
+    errorCode: 'AUTH_007',
+    message: 'Người dùng chưa được kích hoạt',
+    status: HttpStatus.UNAUTHORIZED,
+  },
+  USER_DELETED: {
+    errorCode: 'AUTH_008',
+    message: 'Người dùng đã bị xóa',
+    status: HttpStatus.UNAUTHORIZED,
+  },
 
   // 3. Người dùng (User)
   USER_NOT_FOUND: {

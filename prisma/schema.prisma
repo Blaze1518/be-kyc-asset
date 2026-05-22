@@ -13,6 +13,18 @@ datasource db {
   provider = "postgresql"
 }
 
+model OutboxEvent {
+  id            String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  aggregateType String   @map("aggregate_type") @db.VarChar(100)
+  eventName     String   @map("event_name") @db.VarChar(255)
+  payload       Json     @db.JsonB
+  isProcessed   Boolean  @default(false) @map("is_processed")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@map("outbox_events")
+  @@index([isProcessed, createdAt])
+}
+
 model User {
   id              String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   username        String @unique @db.VarChar(255)

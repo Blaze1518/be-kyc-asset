@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import type { Request, Response } from 'express';
-import type { AuthTokenPair } from './auth.service';
+import type { AuthTokenPair } from '../auth.service';
 import { TokenService } from './token.service';
 
 const ACCESS_TOKEN_COOKIE = 'access_token';

@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from './auth.service';
 import { TransactionManager } from 'src/common/database/abstract/transaction-manager.abstract';
-import { UsersRepository } from 'src/modules/users/repositories/users.repository';
+import { UsersRepository } from 'src/modules/users/repositories/prisma-users.repository';
 import { RefreshTokensRepository } from './repositories/refresh-tokens.repository';
-import { PasswordHasher } from 'src/modules/users/password-hasher.service';
-import { TokenService } from './token.service';
+import { PasswordHasher } from 'src/modules/auth/services/password-hasher.service';
+import { TokenService } from './services/token.service';
 import { UsersService } from '../users/users.service';
 
 jest.mock(
@@ -15,21 +15,33 @@ jest.mock(
   { virtual: true },
 );
 
-jest.mock('src/modules/users/repositories/users.repository', () => ({
-  UsersRepository: class UsersRepository {},
-}), { virtual: true });
+jest.mock(
+  'src/modules/users/repositories/users.repository',
+  () => ({
+    UsersRepository: class UsersRepository {},
+  }),
+  { virtual: true },
+);
 
-jest.mock('src/modules/users/users.service', () => ({
-  UsersService: class UsersService {},
-}), { virtual: true });
+jest.mock(
+  'src/modules/users/users.service',
+  () => ({
+    UsersService: class UsersService {},
+  }),
+  { virtual: true },
+);
 
 jest.mock('../users/users.service', () => ({
   UsersService: class UsersService {},
 }));
 
-jest.mock('src/modules/users/password-hasher.service', () => ({
-  PasswordHasher: class PasswordHasher {},
-}), { virtual: true });
+jest.mock(
+  'src/modules/users/password-hasher.service',
+  () => ({
+    PasswordHasher: class PasswordHasher {},
+  }),
+  { virtual: true },
+);
 
 jest.mock('./token.service', () => ({
   TokenService: class TokenService {},

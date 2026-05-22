@@ -9,7 +9,7 @@ import type { AuthMessageResult, AuthSessionResult } from './auth.service';
 import type {
   UserWithPermissions,
   UserWithRoles,
-} from 'src/modules/users/repositories/users.repository';
+} from 'src/modules/users/repositories/prisma-users.repository';
 
 @Injectable()
 export class AuthMapper {

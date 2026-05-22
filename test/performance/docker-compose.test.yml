@@ -1,0 +1,8 @@
+services:
+  k6:
+    image: grafana/k6:latest
+    volumes:
+      - .:/apps
+    command: run /apps/load-test.js
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'

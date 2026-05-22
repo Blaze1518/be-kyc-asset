@@ -4,7 +4,7 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { AuthCookieService } from '../auth-cookie.service';
+import { AuthCookieService } from '../services/auth-cookie.service';
 
 @Injectable()
 export class RefreshTokenGuard implements CanActivate {

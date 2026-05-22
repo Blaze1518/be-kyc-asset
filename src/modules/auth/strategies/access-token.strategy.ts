@@ -5,7 +5,7 @@ import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import type { Request } from 'express';
 import { UsersService } from 'src/modules/users/users.service';
-import { AuthJwtPayload } from '../token.service';
+import { AccessTokenPayload } from '../services/token.service';
 import { AppException } from 'src/common/exceptions/app.exception';
 import { ERROR_REGISTRY } from 'src/common/exceptions/error-registry';
 

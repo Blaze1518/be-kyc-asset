@@ -60,6 +60,21 @@ class EnvironmentVariables {
   @IsString()
   @IsOptional()
   DB_URI: string;
+
+  @IsString()
+  REDIS_HOST: string;
+
+  @IsNumber()
+  @Min(1)
+  @Max(65535)
+  REDIS_PORT: number;
+
+  @IsString()
+  REDIS_PASSWORD: string;
+
+  @IsString()
+  @IsOptional()
+  REDIS_URI: string;
 }
 
 export function validate(config: Record<string, any>) {
