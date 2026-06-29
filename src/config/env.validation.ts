@@ -75,6 +75,21 @@ class EnvironmentVariables {
   @IsString()
   @IsOptional()
   REDIS_URI: string;
+
+  @IsString()
+  S3_ENDPOINT: string;
+
+  @IsString()
+  S3_REGION: string;
+
+  @IsString()
+  S3_ACCESS_KEY: string;
+
+  @IsString()
+  S3_SECRET_KEY: string;
+
+  @IsString()
+  S3_BUCKET_NAME: string;
 }
 
 export function validate(config: Record<string, any>) {

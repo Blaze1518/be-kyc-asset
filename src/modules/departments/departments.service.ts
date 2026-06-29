@@ -10,6 +10,18 @@ import { DepartmentsRepository } from './repositories/departments.repository';
 export class DepartmentsService {
   constructor(private readonly departmentsRepository: DepartmentsRepository) {}
 
+  async findByCode(code: string) {
+    const department = await this.departmentsRepository.findUnique({
+      where: { code },
+    });
+
+    if (!department || department.deletedAt !== null) {
+      return null;
+    }
+
+    return department;
+  }
+
   private async findDepartmentOrThrow(id: string) {
     const department = await this.departmentsRepository.findActiveById(id);
 

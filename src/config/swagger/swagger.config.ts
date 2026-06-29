@@ -9,16 +9,16 @@ export function setupSwagger(app: INestApplication): void {
     ['/api-docs', '/api-docs-json'],
     basicAuth.default({
       challenge: true,
-      realm: 'My App API Docs',
+      realm: 'ATT KYC API Docs',
       users: {
         [process.env.SWAGGER_USER || 'admin']:
-          process.env.SWAGGER_PASS || 'default-pass',
+          process.env.SWAGGER_PASS || 'default',
       },
     }),
   );
 
   const config = new DocumentBuilder()
-    .setTitle('NestJS Pro API')
+    .setTitle('ATT KYC API')
     .setDescription('Tài liệu API chi tiết cho dự án')
     .setVersion('1.0')
     .addBearerAuth(
@@ -32,7 +32,7 @@ export function setupSwagger(app: INestApplication): void {
       },
       'JWT-auth',
     )
-    .addServer('http://localhost:3001/', 'Local environment')
+    .addServer('http://localhost:3000/', 'Local environment')
     .addServer('https://yourdomain.com', 'Staging')
     .build();
 
@@ -54,7 +54,7 @@ export function setupSwagger(app: INestApplication): void {
       tagsSorter: 'alpha',
       // defaultModelsExpandDepth: -1,
     },
-    customSiteTitle: 'My Project API Documentation',
+    customSiteTitle: 'ATT KYC API Documentation',
     customCssUrl: themeUrl,
     customfavIcon: 'https://nestjs.com/logo-small-gradient.0ed287ce.svg',
   });

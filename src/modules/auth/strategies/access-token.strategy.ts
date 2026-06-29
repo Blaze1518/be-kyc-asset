@@ -40,7 +40,6 @@ export class AccessTokenStrategy extends PassportStrategy(
     const { id: userId, tokenVersion } = payload;
     this.logger.log(`debugpayload: ${JSON.stringify(payload)}`);
     const user = await this.usersService.findOneById(userId);
-    this.logger.log(`user: ${JSON.stringify(user)}`);
     if (!user || !user.isActive || user.deletedAt) {
       this.logger.warn(
         `Xác thực thất bại: User ${userId} không tồn tại hoặc bị khóa. IP: ${req.ip}`,

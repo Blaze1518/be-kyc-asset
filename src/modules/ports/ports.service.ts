@@ -1,26 +1,66 @@
-import { Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { plainToInstance } from 'class-transformer';
+import { QueryDto } from 'src/common/dto/query.dto';
 import { CreatePortDto } from './dto/create-port.dto';
 import { UpdatePortDto } from './dto/update-port.dto';
+import { PortResponseDto } from './dto/port-response.dto';
+import { PortsRepository } from './repositories/ports.repository';
+import { DepartmentsService } from '../departments/departments.service';
+export interface FindPortsQuery {
+  page?: number;
+  limit?: number;
+  sortBy?: string;
+  sortOrder?: 'asc' | 'desc';
+  search?: string;
+}
 
 @Injectable()
 export class PortsService {
-  create(createPortDto: CreatePortDto) {
-    return 'This action adds a new port';
+  constructor(
+    private readonly portsRepository: PortsRepository,
+    private readonly departmentsService: DepartmentsService,
+  ) {}
+
+  async create(createPortDto: CreatePortDto) {
+    const { code, codeDepartment } = createPortDto;
+
+    const department = await this.departmentsService.findByCode(codeDepartment);
+    if (!department) {
+      throw new NotFoundException(
+        `Phòng ban (Site) với mã #${codeDepartment} không tồn tại hoặc đã bị xóa`,
+      );
+    }
+
+    return this.portsRepository.create({
+      data: {
+        port_code: code,
+        department_id: department.id,
+      },
+    });
   }
 
-  findAll() {
-    return `This action returns all ports`;
-  }
+  async validatePortBelongsToDepartment(
+    departmentCode: string,
+    portCode: string,
+  ): Promise<boolean> {
+    const port = await this.portsRepository.findByCode(portCode);
+    if (!port) {
+      return false;
+    }
 
-  findOne(id: number) {
-    return `This action returns a #${id} port`;
-  }
+    const department = await this.departmentsService.findByCode(departmentCode);
+    if (!department) {
+      return false;
+    }
 
-  update(id: number, updatePortDto: UpdatePortDto) {
-    return `This action updates a #${id} port`;
-  }
+    if (port.department_id != department.id) {
+      return false;
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} port`;
+    return true;
   }
 }
