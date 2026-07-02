@@ -4,6 +4,7 @@ import {
   Inject,
   OnModuleInit,
   Logger,
+  InternalServerErrorException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
@@ -148,6 +149,58 @@ export class FilesService implements OnModuleInit {
       fileUrl,
       fileName: uniqueFileName,
     };
+  }
+
+  async findAllByPort(params: DepartmentPortParamsDto): Promise<any[]> {
+    const { departmentCode, portCode } = params;
+
+    const isValidPort = await this.portsService.validatePortBelongsToDepartment(
+      departmentCode,
+      portCode,
+    );
+
+    if (!isValidPort) {
+      throw new BadRequestException(
+        `Cổng #${portCode} không tồn tại hoặc không thuộc site #${departmentCode}`,
+      );
+    }
+
+    const prefix = `${departmentCode}/${portCode}/`;
+
+    const command = new ListObjectsV2Command({
+      Bucket: this.bucketName,
+      Prefix: prefix,
+    });
+
+    try {
+      const response = await this.s3Client.send(command);
+
+      if (!response.Contents || response.Contents.length === 0) {
+        return [];
+      }
+
+      const s3Config = this.configService.get<S3Config>('s3')!;
+
+      // const cdnBaseUrl = s3Config?.cdnUrl || 'https://mediatest22114.attapps.com';
+      const cdnBaseUrl = 'https://mediatest22114.attapps.com';
+
+      return response.Contents.map((item) => {
+        return {
+          fileName: path.basename(item.Key!),
+          fileSize: item.Size || 0,
+          lastModified: item.LastModified,
+          url: `${cdnBaseUrl}/storage/media/${item.Key}`,
+        };
+      });
+    } catch (error: any) {
+      this.logger.error(
+        `[SeaweedFS] Thất bại khi quét danh sách file tại phân vùng ${prefix}:`,
+        error,
+      );
+      throw new InternalServerErrorException(
+        'Lỗi hệ thống không thể truy xuất danh sách tệp tin từ lõi lưu trữ',
+      );
+    }
   }
 
   create(createFileDto: CreateFileDto) {

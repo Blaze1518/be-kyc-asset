@@ -125,16 +125,9 @@ export class FilesController {
   async getPortFiles(
     @Param() params: DepartmentPortParamsDto,
   ): Promise<FileResponseDto[]> {
-    const mockFiles = [
-      {
-        fileName: 'image_20260425153012_a7x9.jpg',
-        fileSize: 1024520,
-        lastModified: new Date(),
-        url: `http://localhost:8333/attpay-media/${params.departmentCode}/${params.portCode}/image_20260425153012_a7x9.jpg`,
-      },
-    ];
+    const files = await this.filesService.findAllByPort(params);
 
-    return plainToInstance(FileResponseDto, mockFiles, {
+    return plainToInstance(FileResponseDto, files, {
       excludeExtraneousValues: true,
     });
   }
