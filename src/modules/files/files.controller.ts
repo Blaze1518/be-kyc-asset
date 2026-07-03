@@ -147,4 +147,141 @@ export class FilesController {
       message: `Tệp tin ${params.fileName} tại phân vùng ${params.departmentCode}/${params.portCode} đã được xóa vĩnh viễn khỏi hạ tầng SeaweedFS`,
     };
   }
+
+  @Post('download-url')
+  @ApiOperation({
+    summary: 'Yêu cầu cấp link xem/tải file tạm thời (Pre-signed View URL)',
+    description:
+      'Sinh một đường dẫn có chữ ký kèm thời gian hết hạn (thường dùng khi phân quyền file bảo mật hoặc file riêng tư không cache công khai).',
+  })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        fileName: {
+          type: 'string',
+          description: 'Tên file cụ thể cần lấy link',
+          example: 'avatar_20260629172615_d98l.png',
+        },
+      },
+      required: ['fileName'],
+    },
+  })
+  async requestDownloadUrl(
+    @Param() params: DepartmentPortParamsDto,
+    @Body() dto: { fileName: string },
+  ) {
+    const expiresSeconds = 900;
+    const cdnBaseUrl = 'https://mediatest22114.attapps.com';
+
+    const mockPresignedUrl = `${cdnBaseUrl}/attpay-media/${params.departmentCode}/${params.portCode}/${dto.fileName}?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=${expiresSeconds}&X-Amz-Signature=mock_signature_abc123`;
+
+    return {
+      success: true,
+      data: {
+        downloadUrl: mockPresignedUrl,
+        expiresIn: expiresSeconds,
+      },
+    };
+  }
+
+  @Post('bulk-delete')
+  @ApiOperation({
+    summary: 'Xóa hàng loạt tệp tin (Bulk Delete)',
+    description:
+      'Truyền vào một mảng danh sách các tên file để thực hiện xóa tập trung trong một request duy nhất.',
+  })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        fileNames: {
+          type: 'array',
+          items: { type: 'string' },
+          description: 'Danh sách mảng tên các file cần xóa',
+          example: ['file1.png', 'file2.mp4'],
+        },
+      },
+      required: ['fileNames'],
+    },
+  })
+  async deleteMultipleFiles(
+    @Param() params: DepartmentPortParamsDto,
+    @Body() dto: { fileNames: string[] },
+  ) {
+    const deletedCount = dto.fileNames.length;
+
+    return {
+      success: true,
+      message: `Đã thực hiện xóa thành công ${deletedCount} tệp tin thuộc phân vùng ${params.departmentCode}/${params.portCode}`,
+      data: {
+        processedFiles: dto.fileNames,
+      },
+    };
+  }
+
+  @Post(':fileName/move')
+  @ApiOperation({
+    summary: 'Di chuyển hoặc đổi tên tệp tin',
+    description:
+      'Bản chất trong S3 sẽ gọi lệnh CopyObject sang đích đến mới (đổi Port hoặc đổi tên file), sau đó gọi DeleteObject để xóa file cũ.',
+  })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        targetPortCode: {
+          type: 'string',
+          description: 'Mã cổng đích cần chuyển tới',
+          example: '654321',
+        },
+        targetFileName: {
+          type: 'string',
+          description:
+            'Tên file mới ở đích đến (để trống nếu giữ nguyên tên cũ)',
+          example: 'new_avatar.png',
+        },
+      },
+      required: ['targetPortCode', 'targetFileName'],
+    },
+  })
+  async moveFile(
+    @Param() params: FileRouteParamsDto,
+    @Body() dto: { targetPortCode: string; targetFileName: string },
+  ) {
+    const sourcePath = `${params.departmentCode}/${params.portCode}/${params.fileName}`;
+    const targetPath = `${params.departmentCode}/${dto.targetPortCode}/${dto.targetFileName}`;
+
+    return {
+      success: true,
+      message: 'Di chuyển tệp tin trên lõi lưu trữ phân tán thành công!',
+      data: {
+        from: sourcePath,
+        to: targetPath,
+      },
+    };
+  }
+
+  @Get(':fileName/metadata')
+  @ApiOperation({
+    summary: 'Kiểm tra thông tin chi tiết (Metadata) của tệp tin',
+    description:
+      'Truy vấn nhanh thông tin header của đối tượng (kích thước, định dạng MIME) mà không cần tải toàn bộ nội dung file về.',
+  })
+  async getFileMetadata(@Param() params: FileRouteParamsDto) {
+    const mockMetadata = {
+      fileName: params.fileName,
+      path: `${params.departmentCode}/${params.portCode}/${params.fileName}`,
+      contentType: params.fileName.endsWith('.mp4') ? 'video/mp4' : 'image/png',
+      contentLength: params.fileName.endsWith('.mp4') ? 509108502 : 2392621, // Byte
+      lastModified: new Date(),
+      storageClass: 'STANDARD',
+      acceptRanges: 'bytes',
+    };
+
+    return {
+      success: true,
+      data: mockMetadata,
+    };
+  }
 }

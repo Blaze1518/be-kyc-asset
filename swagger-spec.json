@@ -64,8 +64,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "db14960c-e10c-48c2-ad6b-febe672a4b7a",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "f08c44c1-4af1-4c3f-9bd6-8ffb55691382",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -88,8 +88,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "baa4a454-2734-4fe8-8e2a-3ab9bb5f5d89",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "cd3ea3a8-8687-45ed-8b04-bb3d76c07cb5",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -112,8 +112,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "95f1f0e3-6529-436d-b853-d914fc482b77",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "fae54ddd-8790-4a29-a362-0a4bdee4f193",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -136,8 +136,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "fcf1945d-56e6-4036-b858-7c3f1cbe7021",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "10f1affe-f925-4558-8360-71c6d7266628",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -277,8 +277,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "db14960c-e10c-48c2-ad6b-febe672a4b7a",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "f08c44c1-4af1-4c3f-9bd6-8ffb55691382",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -301,8 +301,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "baa4a454-2734-4fe8-8e2a-3ab9bb5f5d89",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "cd3ea3a8-8687-45ed-8b04-bb3d76c07cb5",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -325,8 +325,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "95f1f0e3-6529-436d-b853-d914fc482b77",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "fae54ddd-8790-4a29-a362-0a4bdee4f193",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -349,8 +349,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "fcf1945d-56e6-4036-b858-7c3f1cbe7021",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "10f1affe-f925-4558-8360-71c6d7266628",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -420,8 +420,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "db14960c-e10c-48c2-ad6b-febe672a4b7a",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "f08c44c1-4af1-4c3f-9bd6-8ffb55691382",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -444,8 +444,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "baa4a454-2734-4fe8-8e2a-3ab9bb5f5d89",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "cd3ea3a8-8687-45ed-8b04-bb3d76c07cb5",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -468,8 +468,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "95f1f0e3-6529-436d-b853-d914fc482b77",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "fae54ddd-8790-4a29-a362-0a4bdee4f193",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -492,8 +492,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "fcf1945d-56e6-4036-b858-7c3f1cbe7021",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "10f1affe-f925-4558-8360-71c6d7266628",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -571,8 +571,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "db14960c-e10c-48c2-ad6b-febe672a4b7a",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "f08c44c1-4af1-4c3f-9bd6-8ffb55691382",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -595,8 +595,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "baa4a454-2734-4fe8-8e2a-3ab9bb5f5d89",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "cd3ea3a8-8687-45ed-8b04-bb3d76c07cb5",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -619,8 +619,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "95f1f0e3-6529-436d-b853-d914fc482b77",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "fae54ddd-8790-4a29-a362-0a4bdee4f193",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -643,8 +643,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "fcf1945d-56e6-4036-b858-7c3f1cbe7021",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "10f1affe-f925-4558-8360-71c6d7266628",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -712,8 +712,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "db14960c-e10c-48c2-ad6b-febe672a4b7a",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "f08c44c1-4af1-4c3f-9bd6-8ffb55691382",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -736,8 +736,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "baa4a454-2734-4fe8-8e2a-3ab9bb5f5d89",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "cd3ea3a8-8687-45ed-8b04-bb3d76c07cb5",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -760,8 +760,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "95f1f0e3-6529-436d-b853-d914fc482b77",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "fae54ddd-8790-4a29-a362-0a4bdee4f193",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -784,8 +784,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "fcf1945d-56e6-4036-b858-7c3f1cbe7021",
-                      "timestamp": "2026-07-03T06:02:27.697Z",
+                      "requestId": "10f1affe-f925-4558-8360-71c6d7266628",
+                      "timestamp": "2026-07-03T06:29:43.630Z",
                       "path": "/users"
                     }
                   }
@@ -854,8 +854,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "725c9a0e-4a16-441b-83f7-282507ccff65",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "1a5258ff-a3ae-4a50-9bf5-be32af21aac5",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -878,8 +878,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "7bb4898c-6f89-4a82-852d-748eb1dc0ae6",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "647d6c4b-f7bc-44cd-baeb-01c438200fd4",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -902,8 +902,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "df9a18c7-1cd5-4133-a7e1-199ad5609377",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "a911a92f-07af-4c61-b24f-e7adc7b5827a",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -926,8 +926,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "755d93de-ebd5-457b-b9ff-a0810946f769",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "931d47b7-c696-45ee-a8c6-36bbb7c6e94c",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1067,8 +1067,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "725c9a0e-4a16-441b-83f7-282507ccff65",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "1a5258ff-a3ae-4a50-9bf5-be32af21aac5",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1091,8 +1091,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "7bb4898c-6f89-4a82-852d-748eb1dc0ae6",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "647d6c4b-f7bc-44cd-baeb-01c438200fd4",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1115,8 +1115,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "df9a18c7-1cd5-4133-a7e1-199ad5609377",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "a911a92f-07af-4c61-b24f-e7adc7b5827a",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1139,8 +1139,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "755d93de-ebd5-457b-b9ff-a0810946f769",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "931d47b7-c696-45ee-a8c6-36bbb7c6e94c",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1210,8 +1210,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "725c9a0e-4a16-441b-83f7-282507ccff65",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "1a5258ff-a3ae-4a50-9bf5-be32af21aac5",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1234,8 +1234,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "7bb4898c-6f89-4a82-852d-748eb1dc0ae6",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "647d6c4b-f7bc-44cd-baeb-01c438200fd4",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1258,8 +1258,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "df9a18c7-1cd5-4133-a7e1-199ad5609377",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "a911a92f-07af-4c61-b24f-e7adc7b5827a",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1282,8 +1282,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "755d93de-ebd5-457b-b9ff-a0810946f769",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "931d47b7-c696-45ee-a8c6-36bbb7c6e94c",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1361,8 +1361,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "725c9a0e-4a16-441b-83f7-282507ccff65",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "1a5258ff-a3ae-4a50-9bf5-be32af21aac5",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1385,8 +1385,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "7bb4898c-6f89-4a82-852d-748eb1dc0ae6",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "647d6c4b-f7bc-44cd-baeb-01c438200fd4",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1409,8 +1409,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "df9a18c7-1cd5-4133-a7e1-199ad5609377",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "a911a92f-07af-4c61-b24f-e7adc7b5827a",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1433,8 +1433,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "755d93de-ebd5-457b-b9ff-a0810946f769",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "931d47b7-c696-45ee-a8c6-36bbb7c6e94c",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1502,8 +1502,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "725c9a0e-4a16-441b-83f7-282507ccff65",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "1a5258ff-a3ae-4a50-9bf5-be32af21aac5",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1526,8 +1526,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "7bb4898c-6f89-4a82-852d-748eb1dc0ae6",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "647d6c4b-f7bc-44cd-baeb-01c438200fd4",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1550,8 +1550,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "df9a18c7-1cd5-4133-a7e1-199ad5609377",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "a911a92f-07af-4c61-b24f-e7adc7b5827a",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1574,8 +1574,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "755d93de-ebd5-457b-b9ff-a0810946f769",
-                      "timestamp": "2026-07-03T06:02:27.706Z",
+                      "requestId": "931d47b7-c696-45ee-a8c6-36bbb7c6e94c",
+                      "timestamp": "2026-07-03T06:29:43.638Z",
                       "path": "/whitelist-ip"
                     }
                   }
@@ -1644,8 +1644,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "170679a5-600d-4a87-9c2a-0fa89eb092fc",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "74f63f29-2b2e-4dcf-b52e-26fa11bf0ba3",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -1668,8 +1668,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "55e70e71-ddf2-4558-8f68-4b2d5f2ab7c6",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "49d9a9f7-42c8-4976-99cd-bb6e441a829f",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -1692,8 +1692,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "0235abe9-262b-4deb-9813-1878e0ee1fb3",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "b5ec57ae-db2d-48ea-b42c-cc85e0e17146",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -1716,8 +1716,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "5dc7443d-4e7f-4627-b7ff-71e52c9c79de",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "ccf81f83-532f-4042-be04-303d557381ac",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -1857,8 +1857,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "170679a5-600d-4a87-9c2a-0fa89eb092fc",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "74f63f29-2b2e-4dcf-b52e-26fa11bf0ba3",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -1881,8 +1881,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "55e70e71-ddf2-4558-8f68-4b2d5f2ab7c6",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "49d9a9f7-42c8-4976-99cd-bb6e441a829f",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -1905,8 +1905,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "0235abe9-262b-4deb-9813-1878e0ee1fb3",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "b5ec57ae-db2d-48ea-b42c-cc85e0e17146",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -1929,8 +1929,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "5dc7443d-4e7f-4627-b7ff-71e52c9c79de",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "ccf81f83-532f-4042-be04-303d557381ac",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -2000,8 +2000,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "170679a5-600d-4a87-9c2a-0fa89eb092fc",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "74f63f29-2b2e-4dcf-b52e-26fa11bf0ba3",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -2024,8 +2024,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "55e70e71-ddf2-4558-8f68-4b2d5f2ab7c6",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "49d9a9f7-42c8-4976-99cd-bb6e441a829f",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -2048,8 +2048,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "0235abe9-262b-4deb-9813-1878e0ee1fb3",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "b5ec57ae-db2d-48ea-b42c-cc85e0e17146",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -2072,8 +2072,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "5dc7443d-4e7f-4627-b7ff-71e52c9c79de",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "ccf81f83-532f-4042-be04-303d557381ac",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -2151,8 +2151,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "170679a5-600d-4a87-9c2a-0fa89eb092fc",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "74f63f29-2b2e-4dcf-b52e-26fa11bf0ba3",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -2175,8 +2175,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "55e70e71-ddf2-4558-8f68-4b2d5f2ab7c6",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "49d9a9f7-42c8-4976-99cd-bb6e441a829f",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -2199,8 +2199,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "0235abe9-262b-4deb-9813-1878e0ee1fb3",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "b5ec57ae-db2d-48ea-b42c-cc85e0e17146",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -2223,8 +2223,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "5dc7443d-4e7f-4627-b7ff-71e52c9c79de",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "ccf81f83-532f-4042-be04-303d557381ac",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -2292,8 +2292,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "170679a5-600d-4a87-9c2a-0fa89eb092fc",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "74f63f29-2b2e-4dcf-b52e-26fa11bf0ba3",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -2316,8 +2316,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "55e70e71-ddf2-4558-8f68-4b2d5f2ab7c6",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "49d9a9f7-42c8-4976-99cd-bb6e441a829f",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -2340,8 +2340,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "0235abe9-262b-4deb-9813-1878e0ee1fb3",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "b5ec57ae-db2d-48ea-b42c-cc85e0e17146",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -2364,8 +2364,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "5dc7443d-4e7f-4627-b7ff-71e52c9c79de",
-                      "timestamp": "2026-07-03T06:02:27.715Z",
+                      "requestId": "ccf81f83-532f-4042-be04-303d557381ac",
+                      "timestamp": "2026-07-03T06:29:43.647Z",
                       "path": "/roles"
                     }
                   }
@@ -2434,8 +2434,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "9da58488-b66b-4f40-bcad-69228febb213",
-                      "timestamp": "2026-07-03T06:02:27.724Z",
+                      "requestId": "718584b3-8cc0-4fce-bc51-bf03d399202a",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -2458,8 +2458,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "d070ae8f-c545-4597-9b85-39bcdbcdb32f",
-                      "timestamp": "2026-07-03T06:02:27.725Z",
+                      "requestId": "1d6d8d12-8a1e-4292-a10c-642aaa51ca18",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -2482,8 +2482,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "ee0fa7e8-fd8a-4a2b-9e96-8733046d15f3",
-                      "timestamp": "2026-07-03T06:02:27.725Z",
+                      "requestId": "e6330720-5040-4085-b1ff-3d1ba65c9d91",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -2506,8 +2506,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "b8a14dca-0c6f-486d-a2cb-1a6ca35a81e2",
-                      "timestamp": "2026-07-03T06:02:27.725Z",
+                      "requestId": "8f67673d-0684-4f23-a4df-29fbf2f39abd",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -2647,8 +2647,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "9da58488-b66b-4f40-bcad-69228febb213",
-                      "timestamp": "2026-07-03T06:02:27.724Z",
+                      "requestId": "718584b3-8cc0-4fce-bc51-bf03d399202a",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -2671,8 +2671,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "d070ae8f-c545-4597-9b85-39bcdbcdb32f",
-                      "timestamp": "2026-07-03T06:02:27.725Z",
+                      "requestId": "1d6d8d12-8a1e-4292-a10c-642aaa51ca18",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -2695,8 +2695,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "ee0fa7e8-fd8a-4a2b-9e96-8733046d15f3",
-                      "timestamp": "2026-07-03T06:02:27.725Z",
+                      "requestId": "e6330720-5040-4085-b1ff-3d1ba65c9d91",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -2719,8 +2719,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "b8a14dca-0c6f-486d-a2cb-1a6ca35a81e2",
-                      "timestamp": "2026-07-03T06:02:27.725Z",
+                      "requestId": "8f67673d-0684-4f23-a4df-29fbf2f39abd",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -2800,8 +2800,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "9da58488-b66b-4f40-bcad-69228febb213",
-                      "timestamp": "2026-07-03T06:02:27.724Z",
+                      "requestId": "718584b3-8cc0-4fce-bc51-bf03d399202a",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -2824,8 +2824,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "d070ae8f-c545-4597-9b85-39bcdbcdb32f",
-                      "timestamp": "2026-07-03T06:02:27.725Z",
+                      "requestId": "1d6d8d12-8a1e-4292-a10c-642aaa51ca18",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -2848,8 +2848,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "ee0fa7e8-fd8a-4a2b-9e96-8733046d15f3",
-                      "timestamp": "2026-07-03T06:02:27.725Z",
+                      "requestId": "e6330720-5040-4085-b1ff-3d1ba65c9d91",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -2872,8 +2872,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "b8a14dca-0c6f-486d-a2cb-1a6ca35a81e2",
-                      "timestamp": "2026-07-03T06:02:27.725Z",
+                      "requestId": "8f67673d-0684-4f23-a4df-29fbf2f39abd",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -2941,8 +2941,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "9da58488-b66b-4f40-bcad-69228febb213",
-                      "timestamp": "2026-07-03T06:02:27.724Z",
+                      "requestId": "718584b3-8cc0-4fce-bc51-bf03d399202a",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -2965,8 +2965,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "d070ae8f-c545-4597-9b85-39bcdbcdb32f",
-                      "timestamp": "2026-07-03T06:02:27.725Z",
+                      "requestId": "1d6d8d12-8a1e-4292-a10c-642aaa51ca18",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -2989,8 +2989,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "ee0fa7e8-fd8a-4a2b-9e96-8733046d15f3",
-                      "timestamp": "2026-07-03T06:02:27.725Z",
+                      "requestId": "e6330720-5040-4085-b1ff-3d1ba65c9d91",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -3013,8 +3013,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "b8a14dca-0c6f-486d-a2cb-1a6ca35a81e2",
-                      "timestamp": "2026-07-03T06:02:27.725Z",
+                      "requestId": "8f67673d-0684-4f23-a4df-29fbf2f39abd",
+                      "timestamp": "2026-07-03T06:29:43.656Z",
                       "path": "/permissions"
                     }
                   }
@@ -3092,8 +3092,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "b682c4c3-5023-4c41-b6ad-2a86f757ea9d",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "406ea16e-f0c0-42c2-949f-f94a5c0f2d84",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3116,8 +3116,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "a51df0c6-ef49-4c71-bf15-ecb1576eaf0f",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "f31c112f-2ffc-4d6c-aa3d-1be778f2ad8d",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3140,8 +3140,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "812b9d91-5648-47d0-8f5f-56134fe52db8",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "06fbf40c-b645-4cc3-84ac-9caa6202976f",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3164,8 +3164,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "586feec8-98e7-4bab-92bf-7b673c4be200",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "ad436600-c633-473a-b52c-24e759e7ebfd",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3231,8 +3231,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "b682c4c3-5023-4c41-b6ad-2a86f757ea9d",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "406ea16e-f0c0-42c2-949f-f94a5c0f2d84",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3255,8 +3255,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "a51df0c6-ef49-4c71-bf15-ecb1576eaf0f",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "f31c112f-2ffc-4d6c-aa3d-1be778f2ad8d",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3279,8 +3279,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "812b9d91-5648-47d0-8f5f-56134fe52db8",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "06fbf40c-b645-4cc3-84ac-9caa6202976f",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3303,8 +3303,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "586feec8-98e7-4bab-92bf-7b673c4be200",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "ad436600-c633-473a-b52c-24e759e7ebfd",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3360,8 +3360,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "b682c4c3-5023-4c41-b6ad-2a86f757ea9d",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "406ea16e-f0c0-42c2-949f-f94a5c0f2d84",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3384,8 +3384,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "a51df0c6-ef49-4c71-bf15-ecb1576eaf0f",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "f31c112f-2ffc-4d6c-aa3d-1be778f2ad8d",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3408,8 +3408,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "812b9d91-5648-47d0-8f5f-56134fe52db8",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "06fbf40c-b645-4cc3-84ac-9caa6202976f",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3432,8 +3432,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "586feec8-98e7-4bab-92bf-7b673c4be200",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "ad436600-c633-473a-b52c-24e759e7ebfd",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3496,8 +3496,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "b682c4c3-5023-4c41-b6ad-2a86f757ea9d",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "406ea16e-f0c0-42c2-949f-f94a5c0f2d84",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3520,8 +3520,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "a51df0c6-ef49-4c71-bf15-ecb1576eaf0f",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "f31c112f-2ffc-4d6c-aa3d-1be778f2ad8d",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3544,8 +3544,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "812b9d91-5648-47d0-8f5f-56134fe52db8",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "06fbf40c-b645-4cc3-84ac-9caa6202976f",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3568,8 +3568,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "586feec8-98e7-4bab-92bf-7b673c4be200",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "ad436600-c633-473a-b52c-24e759e7ebfd",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3622,8 +3622,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "b682c4c3-5023-4c41-b6ad-2a86f757ea9d",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "406ea16e-f0c0-42c2-949f-f94a5c0f2d84",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3646,8 +3646,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "a51df0c6-ef49-4c71-bf15-ecb1576eaf0f",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "f31c112f-2ffc-4d6c-aa3d-1be778f2ad8d",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3670,8 +3670,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "812b9d91-5648-47d0-8f5f-56134fe52db8",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "06fbf40c-b645-4cc3-84ac-9caa6202976f",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3694,8 +3694,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "586feec8-98e7-4bab-92bf-7b673c4be200",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "ad436600-c633-473a-b52c-24e759e7ebfd",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3763,8 +3763,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "b682c4c3-5023-4c41-b6ad-2a86f757ea9d",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "406ea16e-f0c0-42c2-949f-f94a5c0f2d84",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3787,8 +3787,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "a51df0c6-ef49-4c71-bf15-ecb1576eaf0f",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "f31c112f-2ffc-4d6c-aa3d-1be778f2ad8d",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3811,8 +3811,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "812b9d91-5648-47d0-8f5f-56134fe52db8",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "06fbf40c-b645-4cc3-84ac-9caa6202976f",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3835,8 +3835,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "586feec8-98e7-4bab-92bf-7b673c4be200",
-                      "timestamp": "2026-07-03T06:02:27.776Z",
+                      "requestId": "ad436600-c633-473a-b52c-24e759e7ebfd",
+                      "timestamp": "2026-07-03T06:29:43.708Z",
                       "path": "/auth"
                     }
                   }
@@ -3905,8 +3905,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "47836800-248f-4c41-bef0-e8aab398fe49",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "f3cb50d3-c362-4661-bca2-c974fbe23614",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -3929,8 +3929,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "e2b07a86-e341-48d2-aad6-793b33edcc7b",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "426007af-90c9-4acb-8914-f5aa47843102",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -3953,8 +3953,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "48e4f46b-b9d1-4342-b651-4d316fbf3e16",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "91c7bb43-840e-439f-bbf0-51b4dad98d24",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -3977,8 +3977,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "66419c96-4dbd-49eb-b41f-f13b9810f54c",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "337ead8e-19ca-4c3e-a71e-5cd2a39db54e",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4118,8 +4118,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "47836800-248f-4c41-bef0-e8aab398fe49",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "f3cb50d3-c362-4661-bca2-c974fbe23614",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4142,8 +4142,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "e2b07a86-e341-48d2-aad6-793b33edcc7b",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "426007af-90c9-4acb-8914-f5aa47843102",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4166,8 +4166,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "48e4f46b-b9d1-4342-b651-4d316fbf3e16",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "91c7bb43-840e-439f-bbf0-51b4dad98d24",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4190,8 +4190,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "66419c96-4dbd-49eb-b41f-f13b9810f54c",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "337ead8e-19ca-4c3e-a71e-5cd2a39db54e",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4261,8 +4261,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "47836800-248f-4c41-bef0-e8aab398fe49",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "f3cb50d3-c362-4661-bca2-c974fbe23614",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4285,8 +4285,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "e2b07a86-e341-48d2-aad6-793b33edcc7b",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "426007af-90c9-4acb-8914-f5aa47843102",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4309,8 +4309,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "48e4f46b-b9d1-4342-b651-4d316fbf3e16",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "91c7bb43-840e-439f-bbf0-51b4dad98d24",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4333,8 +4333,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "66419c96-4dbd-49eb-b41f-f13b9810f54c",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "337ead8e-19ca-4c3e-a71e-5cd2a39db54e",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4412,8 +4412,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "47836800-248f-4c41-bef0-e8aab398fe49",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "f3cb50d3-c362-4661-bca2-c974fbe23614",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4436,8 +4436,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "e2b07a86-e341-48d2-aad6-793b33edcc7b",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "426007af-90c9-4acb-8914-f5aa47843102",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4460,8 +4460,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "48e4f46b-b9d1-4342-b651-4d316fbf3e16",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "91c7bb43-840e-439f-bbf0-51b4dad98d24",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4484,8 +4484,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "66419c96-4dbd-49eb-b41f-f13b9810f54c",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "337ead8e-19ca-4c3e-a71e-5cd2a39db54e",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4553,8 +4553,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "47836800-248f-4c41-bef0-e8aab398fe49",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "f3cb50d3-c362-4661-bca2-c974fbe23614",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4577,8 +4577,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "e2b07a86-e341-48d2-aad6-793b33edcc7b",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "426007af-90c9-4acb-8914-f5aa47843102",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4601,8 +4601,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "48e4f46b-b9d1-4342-b651-4d316fbf3e16",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "91c7bb43-840e-439f-bbf0-51b4dad98d24",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4625,8 +4625,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "66419c96-4dbd-49eb-b41f-f13b9810f54c",
-                      "timestamp": "2026-07-03T06:02:27.808Z",
+                      "requestId": "337ead8e-19ca-4c3e-a71e-5cd2a39db54e",
+                      "timestamp": "2026-07-03T06:29:43.742Z",
                       "path": "/attribute"
                     }
                   }
@@ -4695,8 +4695,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "1ead4aaf-7878-470e-b1bd-b42e24e61ed5",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "002e445e-2d41-4027-b200-37eb56e6e469",
+                      "timestamp": "2026-07-03T06:29:43.749Z",
                       "path": "/departments"
                     }
                   }
@@ -4719,8 +4719,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "07bdcb89-df3b-47cc-9f7f-685e4fa319e9",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "dba101a1-89d2-4f43-a00f-ced1c59f09d5",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -4743,8 +4743,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "5087ad0f-2e59-48c9-9d07-07687a2cf065",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "ab833d98-927e-4379-a821-c4a4d2fdc647",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -4767,8 +4767,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "231f455b-7a8e-4457-bf55-e74112511593",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "d43627af-0852-44f6-8cdb-322352fac751",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -4908,8 +4908,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "1ead4aaf-7878-470e-b1bd-b42e24e61ed5",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "002e445e-2d41-4027-b200-37eb56e6e469",
+                      "timestamp": "2026-07-03T06:29:43.749Z",
                       "path": "/departments"
                     }
                   }
@@ -4932,8 +4932,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "07bdcb89-df3b-47cc-9f7f-685e4fa319e9",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "dba101a1-89d2-4f43-a00f-ced1c59f09d5",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -4956,8 +4956,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "5087ad0f-2e59-48c9-9d07-07687a2cf065",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "ab833d98-927e-4379-a821-c4a4d2fdc647",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -4980,8 +4980,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "231f455b-7a8e-4457-bf55-e74112511593",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "d43627af-0852-44f6-8cdb-322352fac751",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -5051,8 +5051,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "1ead4aaf-7878-470e-b1bd-b42e24e61ed5",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "002e445e-2d41-4027-b200-37eb56e6e469",
+                      "timestamp": "2026-07-03T06:29:43.749Z",
                       "path": "/departments"
                     }
                   }
@@ -5075,8 +5075,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "07bdcb89-df3b-47cc-9f7f-685e4fa319e9",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "dba101a1-89d2-4f43-a00f-ced1c59f09d5",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -5099,8 +5099,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "5087ad0f-2e59-48c9-9d07-07687a2cf065",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "ab833d98-927e-4379-a821-c4a4d2fdc647",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -5123,8 +5123,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "231f455b-7a8e-4457-bf55-e74112511593",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "d43627af-0852-44f6-8cdb-322352fac751",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -5202,8 +5202,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "1ead4aaf-7878-470e-b1bd-b42e24e61ed5",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "002e445e-2d41-4027-b200-37eb56e6e469",
+                      "timestamp": "2026-07-03T06:29:43.749Z",
                       "path": "/departments"
                     }
                   }
@@ -5226,8 +5226,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "07bdcb89-df3b-47cc-9f7f-685e4fa319e9",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "dba101a1-89d2-4f43-a00f-ced1c59f09d5",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -5250,8 +5250,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "5087ad0f-2e59-48c9-9d07-07687a2cf065",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "ab833d98-927e-4379-a821-c4a4d2fdc647",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -5274,8 +5274,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "231f455b-7a8e-4457-bf55-e74112511593",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "d43627af-0852-44f6-8cdb-322352fac751",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -5344,8 +5344,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "1ead4aaf-7878-470e-b1bd-b42e24e61ed5",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "002e445e-2d41-4027-b200-37eb56e6e469",
+                      "timestamp": "2026-07-03T06:29:43.749Z",
                       "path": "/departments"
                     }
                   }
@@ -5368,8 +5368,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "07bdcb89-df3b-47cc-9f7f-685e4fa319e9",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "dba101a1-89d2-4f43-a00f-ced1c59f09d5",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -5392,8 +5392,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "5087ad0f-2e59-48c9-9d07-07687a2cf065",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "ab833d98-927e-4379-a821-c4a4d2fdc647",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -5416,8 +5416,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "231f455b-7a8e-4457-bf55-e74112511593",
-                      "timestamp": "2026-07-03T06:02:27.816Z",
+                      "requestId": "d43627af-0852-44f6-8cdb-322352fac751",
+                      "timestamp": "2026-07-03T06:29:43.750Z",
                       "path": "/departments"
                     }
                   }
@@ -5486,8 +5486,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "81ead350-b441-4c94-84bf-8e3cd4feb430",
-                      "timestamp": "2026-07-03T06:02:27.821Z",
+                      "requestId": "039915cd-2c1e-4d97-8771-c3217124c927",
+                      "timestamp": "2026-07-03T06:29:43.755Z",
                       "path": "/ports"
                     }
                   }
@@ -5510,8 +5510,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "cef8d96b-7c69-46d6-bdc8-f1f098071671",
-                      "timestamp": "2026-07-03T06:02:27.821Z",
+                      "requestId": "f0ca8e0f-b171-4499-bc82-19abdefee7e0",
+                      "timestamp": "2026-07-03T06:29:43.755Z",
                       "path": "/ports"
                     }
                   }
@@ -5534,8 +5534,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "c61a2860-c7aa-4e2e-8c27-117960a202e6",
-                      "timestamp": "2026-07-03T06:02:27.821Z",
+                      "requestId": "afb48b4d-f297-4278-a731-8326e553bfeb",
+                      "timestamp": "2026-07-03T06:29:43.755Z",
                       "path": "/ports"
                     }
                   }
@@ -5558,8 +5558,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "5350ad82-496a-4957-97be-5f7d289c92fd",
-                      "timestamp": "2026-07-03T06:02:27.821Z",
+                      "requestId": "f4bfe6eb-f64c-4988-ba0a-7424d9ffefce",
+                      "timestamp": "2026-07-03T06:29:43.755Z",
                       "path": "/ports"
                     }
                   }
@@ -5650,8 +5650,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "e471d815-cf4e-4988-8861-3e45c62ba61e",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "d2b3e398-460e-45e4-a0d5-f837ad3f89e7",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -5674,8 +5674,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "297ec3c0-1801-40ff-8587-fff4bee23670",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "12d1a6c3-514f-4bd0-b66e-3e208b3974d8",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -5698,8 +5698,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "a83bab2e-2824-4fdd-9e4f-66b890e53477",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "43d9c00b-0692-4fdb-917b-2b22bcae351b",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -5722,8 +5722,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "0ffa63d8-71bd-45a8-b61d-735897d7e5d5",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "a9ac3674-9020-46bf-aa0b-57d4af248e33",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -5799,8 +5799,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "e471d815-cf4e-4988-8861-3e45c62ba61e",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "d2b3e398-460e-45e4-a0d5-f837ad3f89e7",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -5823,8 +5823,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "297ec3c0-1801-40ff-8587-fff4bee23670",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "12d1a6c3-514f-4bd0-b66e-3e208b3974d8",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -5847,8 +5847,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "a83bab2e-2824-4fdd-9e4f-66b890e53477",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "43d9c00b-0692-4fdb-917b-2b22bcae351b",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -5871,8 +5871,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "0ffa63d8-71bd-45a8-b61d-735897d7e5d5",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "a9ac3674-9020-46bf-aa0b-57d4af248e33",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -5956,8 +5956,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "e471d815-cf4e-4988-8861-3e45c62ba61e",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "d2b3e398-460e-45e4-a0d5-f837ad3f89e7",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -5980,8 +5980,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "297ec3c0-1801-40ff-8587-fff4bee23670",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "12d1a6c3-514f-4bd0-b66e-3e208b3974d8",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -6004,8 +6004,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "a83bab2e-2824-4fdd-9e4f-66b890e53477",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "43d9c00b-0692-4fdb-917b-2b22bcae351b",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -6028,8 +6028,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "0ffa63d8-71bd-45a8-b61d-735897d7e5d5",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "a9ac3674-9020-46bf-aa0b-57d4af248e33",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -6120,8 +6120,8 @@
                     "error": {
                       "statusCode": 400,
                       "message": "Bad Request",
-                      "requestId": "e471d815-cf4e-4988-8861-3e45c62ba61e",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "d2b3e398-460e-45e4-a0d5-f837ad3f89e7",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -6144,8 +6144,8 @@
                     "error": {
                       "statusCode": 404,
                       "message": "Not Found",
-                      "requestId": "297ec3c0-1801-40ff-8587-fff4bee23670",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "12d1a6c3-514f-4bd0-b66e-3e208b3974d8",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -6168,8 +6168,8 @@
                     "error": {
                       "statusCode": 409,
                       "message": "Conflict",
-                      "requestId": "a83bab2e-2824-4fdd-9e4f-66b890e53477",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "43d9c00b-0692-4fdb-917b-2b22bcae351b",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -6192,8 +6192,8 @@
                     "error": {
                       "statusCode": 500,
                       "message": "Internal Server Error",
-                      "requestId": "0ffa63d8-71bd-45a8-b61d-735897d7e5d5",
-                      "timestamp": "2026-07-03T06:02:28.026Z",
+                      "requestId": "a9ac3674-9020-46bf-aa0b-57d4af248e33",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
                       "path": "/:departmentCode/:portCode/media"
                     }
                   }
@@ -6208,6 +6208,654 @@
           }
         ],
         "summary": "Xóa tệp tin cụ thể",
+        "tags": [
+          "Media Files (Quản lý tệp tin SeaweedFS S3)"
+        ]
+      }
+    },
+    "/api/v1/{departmentCode}/{portCode}/media/download-url": {
+      "post": {
+        "description": "Sinh một đường dẫn có chữ ký kèm thời gian hết hạn (thường dùng khi phân quyền file bảo mật hoặc file riêng tư không cache công khai).",
+        "operationId": "FilesController_requestDownloadUrl",
+        "parameters": [
+          {
+            "name": "departmentCode",
+            "required": true,
+            "in": "path",
+            "description": "Site trong hệ thống ATTPAY",
+            "schema": {
+              "example": "f8bet",
+              "type": "string"
+            }
+          },
+          {
+            "name": "portCode",
+            "required": true,
+            "in": "path",
+            "description": "Mã số cổng (Port Code) duy nhất của nhân viên",
+            "schema": {
+              "pattern": "^[0-9]+$",
+              "example": "123456",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fileName": {
+                    "type": "string",
+                    "description": "Tên file cụ thể cần lấy link",
+                    "example": "avatar_20260629172615_d98l.png"
+                  }
+                },
+                "required": [
+                  "fileName"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 400,
+                      "message": "Bad Request",
+                      "requestId": "d2b3e398-460e-45e4-a0d5-f837ad3f89e7",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 404,
+                      "message": "Not Found",
+                      "requestId": "12d1a6c3-514f-4bd0-b66e-3e208b3974d8",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 409,
+                      "message": "Conflict",
+                      "requestId": "43d9c00b-0692-4fdb-917b-2b22bcae351b",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 500,
+                      "message": "Internal Server Error",
+                      "requestId": "a9ac3674-9020-46bf-aa0b-57d4af248e33",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Yêu cầu cấp link xem/tải file tạm thời (Pre-signed View URL)",
+        "tags": [
+          "Media Files (Quản lý tệp tin SeaweedFS S3)"
+        ]
+      }
+    },
+    "/api/v1/{departmentCode}/{portCode}/media/bulk-delete": {
+      "post": {
+        "description": "Truyền vào một mảng danh sách các tên file để thực hiện xóa tập trung trong một request duy nhất.",
+        "operationId": "FilesController_deleteMultipleFiles",
+        "parameters": [
+          {
+            "name": "departmentCode",
+            "required": true,
+            "in": "path",
+            "description": "Site trong hệ thống ATTPAY",
+            "schema": {
+              "example": "f8bet",
+              "type": "string"
+            }
+          },
+          {
+            "name": "portCode",
+            "required": true,
+            "in": "path",
+            "description": "Mã số cổng (Port Code) duy nhất của nhân viên",
+            "schema": {
+              "pattern": "^[0-9]+$",
+              "example": "123456",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fileNames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Danh sách mảng tên các file cần xóa",
+                    "example": [
+                      "file1.png",
+                      "file2.mp4"
+                    ]
+                  }
+                },
+                "required": [
+                  "fileNames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 400,
+                      "message": "Bad Request",
+                      "requestId": "d2b3e398-460e-45e4-a0d5-f837ad3f89e7",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 404,
+                      "message": "Not Found",
+                      "requestId": "12d1a6c3-514f-4bd0-b66e-3e208b3974d8",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 409,
+                      "message": "Conflict",
+                      "requestId": "43d9c00b-0692-4fdb-917b-2b22bcae351b",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 500,
+                      "message": "Internal Server Error",
+                      "requestId": "a9ac3674-9020-46bf-aa0b-57d4af248e33",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Xóa hàng loạt tệp tin (Bulk Delete)",
+        "tags": [
+          "Media Files (Quản lý tệp tin SeaweedFS S3)"
+        ]
+      }
+    },
+    "/api/v1/{departmentCode}/{portCode}/media/{fileName}/move": {
+      "post": {
+        "description": "Bản chất trong S3 sẽ gọi lệnh CopyObject sang đích đến mới (đổi Port hoặc đổi tên file), sau đó gọi DeleteObject để xóa file cũ.",
+        "operationId": "FilesController_moveFile",
+        "parameters": [
+          {
+            "name": "departmentCode",
+            "required": true,
+            "in": "path",
+            "description": "Site trong hệ thống ATTPAY",
+            "schema": {
+              "example": "f8bet",
+              "type": "string"
+            }
+          },
+          {
+            "name": "portCode",
+            "required": true,
+            "in": "path",
+            "description": "Mã số cổng (Port Code) duy nhất của nhân viên",
+            "schema": {
+              "pattern": "^[0-9]+$",
+              "example": "123456",
+              "type": "string"
+            }
+          },
+          {
+            "name": "fileName",
+            "required": true,
+            "in": "path",
+            "description": "Tên đầy đủ của tệp tin bao gồm cả đuôi mở rộng",
+            "schema": {
+              "example": "image_20260425153012_a7x9.jpg",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "targetPortCode": {
+                    "type": "string",
+                    "description": "Mã cổng đích cần chuyển tới",
+                    "example": "654321"
+                  },
+                  "targetFileName": {
+                    "type": "string",
+                    "description": "Tên file mới ở đích đến (để trống nếu giữ nguyên tên cũ)",
+                    "example": "new_avatar.png"
+                  }
+                },
+                "required": [
+                  "targetPortCode",
+                  "targetFileName"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 400,
+                      "message": "Bad Request",
+                      "requestId": "d2b3e398-460e-45e4-a0d5-f837ad3f89e7",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 404,
+                      "message": "Not Found",
+                      "requestId": "12d1a6c3-514f-4bd0-b66e-3e208b3974d8",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 409,
+                      "message": "Conflict",
+                      "requestId": "43d9c00b-0692-4fdb-917b-2b22bcae351b",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 500,
+                      "message": "Internal Server Error",
+                      "requestId": "a9ac3674-9020-46bf-aa0b-57d4af248e33",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Di chuyển hoặc đổi tên tệp tin",
+        "tags": [
+          "Media Files (Quản lý tệp tin SeaweedFS S3)"
+        ]
+      }
+    },
+    "/api/v1/{departmentCode}/{portCode}/media/{fileName}/metadata": {
+      "get": {
+        "description": "Truy vấn nhanh thông tin header của đối tượng (kích thước, định dạng MIME) mà không cần tải toàn bộ nội dung file về.",
+        "operationId": "FilesController_getFileMetadata",
+        "parameters": [
+          {
+            "name": "departmentCode",
+            "required": true,
+            "in": "path",
+            "description": "Site trong hệ thống ATTPAY",
+            "schema": {
+              "example": "f8bet",
+              "type": "string"
+            }
+          },
+          {
+            "name": "portCode",
+            "required": true,
+            "in": "path",
+            "description": "Mã số cổng (Port Code) duy nhất của nhân viên",
+            "schema": {
+              "pattern": "^[0-9]+$",
+              "example": "123456",
+              "type": "string"
+            }
+          },
+          {
+            "name": "fileName",
+            "required": true,
+            "in": "path",
+            "description": "Tên đầy đủ của tệp tin bao gồm cả đuôi mở rộng",
+            "schema": {
+              "example": "image_20260425153012_a7x9.jpg",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 400,
+                      "message": "Bad Request",
+                      "requestId": "d2b3e398-460e-45e4-a0d5-f837ad3f89e7",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 404,
+                      "message": "Not Found",
+                      "requestId": "12d1a6c3-514f-4bd0-b66e-3e208b3974d8",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 409,
+                      "message": "Conflict",
+                      "requestId": "43d9c00b-0692-4fdb-917b-2b22bcae351b",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponseDto"
+                    }
+                  ],
+                  "example": {
+                    "success": false,
+                    "error": {
+                      "statusCode": 500,
+                      "message": "Internal Server Error",
+                      "requestId": "a9ac3674-9020-46bf-aa0b-57d4af248e33",
+                      "timestamp": "2026-07-03T06:29:43.948Z",
+                      "path": "/:departmentCode/:portCode/media"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Kiểm tra thông tin chi tiết (Metadata) của tệp tin",
         "tags": [
           "Media Files (Quản lý tệp tin SeaweedFS S3)"
         ]
