@@ -140,9 +140,11 @@ export class FilesController {
   })
   @ApiStandardSuccess(FileResponseDto)
   async deleteFile(@Param() params: FileRouteParamsDto) {
+    await this.filesService.removeFile(params);
+
     return {
       success: true,
-      message: `Yêu cầu xóa tệp ${params.fileName} tại phân vùng ${params.departmentCode}/${params.portCode} đã được ghi nhận`,
+      message: `Tệp tin ${params.fileName} tại phân vùng ${params.departmentCode}/${params.portCode} đã được xóa vĩnh viễn khỏi hạ tầng SeaweedFS`,
     };
   }
 }

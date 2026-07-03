@@ -189,7 +189,7 @@ export class FilesService implements OnModuleInit {
           fileName: path.basename(item.Key!),
           fileSize: item.Size || 0,
           lastModified: item.LastModified,
-          url: `${cdnBaseUrl}/storage/media/${item.Key}`,
+          url: `${cdnBaseUrl}/attpay-media/${item.Key}`,
         };
       });
     } catch (error: any) {
@@ -199,6 +199,43 @@ export class FilesService implements OnModuleInit {
       );
       throw new InternalServerErrorException(
         'Lỗi hệ thống không thể truy xuất danh sách tệp tin từ lõi lưu trữ',
+      );
+    }
+  }
+
+  async removeFile(params: FileRouteParamsDto): Promise<void> {
+    const { departmentCode, portCode, fileName } = params;
+
+    const isValidPort = await this.portsService.validatePortBelongsToDepartment(
+      departmentCode,
+      portCode,
+    );
+
+    if (!isValidPort) {
+      throw new BadRequestException(
+        `Cổng #${portCode} không tồn tại hoặc không thuộc site #${departmentCode}`,
+      );
+    }
+
+    const s3Key = `${departmentCode}/${portCode}/${fileName}`;
+
+    const command = new DeleteObjectCommand({
+      Bucket: this.bucketName,
+      Key: s3Key,
+    });
+
+    try {
+      await this.s3Client.send(command);
+      this.logger.log(
+        `[SeaweedFS] Đã xóa đối tượng vĩnh viễn thành công: ${s3Key}`,
+      );
+    } catch (error: any) {
+      this.logger.error(
+        `[SeaweedFS] Thất bại khi thực hiện lệnh xóa đối tượng ${s3Key}:`,
+        error,
+      );
+      throw new InternalServerErrorException(
+        'Lỗi hệ thống không thể xóa tệp tin khỏi lõi lưu trữ tập trung',
       );
     }
   }
